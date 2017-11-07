@@ -6,7 +6,7 @@
 #    By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 14:51:07 by ssabbah           #+#    #+#              #
-#    Updated: 2017/11/07 15:13:15 by ssabbah          ###   ########.fr        #
+#    Updated: 2017/11/07 15:24:57 by ssabbah          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,14 @@ obj:
 	mkdir -p $(OBJDIR)
 
 $(OBJDIR)%.o:$(SRCDIR)%.c
+	$(CC) $(CFLAGS) $(LIBINC) -I $(INCDIR) -o $@ -c $<
+
+libft:$(LIBFT)
+
+$(LIBFT):
+	make -C ./libft
+
+$(NAME): obj libft $(OBJ)
 	$(CC) $(LIBLINK) -o $(NAME) $(OBJ)
 
 remlib:
