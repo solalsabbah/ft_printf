@@ -1,41 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_putsign.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/03 14:36:05 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/11/08 16:48:53 by ssabbah          ###   ########.fr       */
+/*   Created: 2017/11/08 16:31:52 by ssabbah           #+#    #+#             */
+/*   Updated: 2017/11/08 16:50:28 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft/libft.h"
+#include <stdio.h>
 
-char	*ft_itoa(int n)
+char	*ft_putsign(int	nb)
 {
 	char	*str;
-	int		len;
-	int		isneg;
-
-	isneg = 0;
-	if (n == -2147483648)
-		return (ft_strdup("-2147483648"));
-	if (n < 0)
-	{
-		isneg = 1;
-		n = -n;
-	}
-	len = int_len(n) + isneg;
-	if (!(str = (char *)malloc(sizeof(*str) * len + 1)))
-		return (NULL);
-	str[len] = 0;
-	while (len-- >= 0)
-	{
-		str[len] = n % 10 + '0';
-		n = n / 10;
-	}
-	if (isneg == 1)
-		str[0] = '-';
+	
+	if (nb > 0) 
+		str = ft_strcat("+", ft_itoa(nb));
+	else 
+		str = ft_strcat("-", ft_itoa(nb));
 	return (str);
+}
+
+int		main(void)
+{
+	printf("%s\n", ft_putsign(+345));
+	return (0);
 }

@@ -1,41 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_convert_oct.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/03 14:36:05 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/11/08 16:48:53 by ssabbah          ###   ########.fr       */
+/*   Created: 2017/11/08 15:54:43 by ssabbah           #+#    #+#             */
+/*   Updated: 2017/11/08 15:56:28 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-char	*ft_itoa(int n)
+int		ft_convert_oct(int nn)
 {
-	char	*str;
-	int		len;
-	int		isneg;
+	int o;
+	int nb;
+	int j;
 
-	isneg = 0;
-	if (n == -2147483648)
-		return (ft_strdup("-2147483648"));
-	if (n < 0)
+	o = n;
+
+	nb = 0;
+	j = 0;
+	while (j > 0)
 	{
-		isneg = 1;
-		n = -n;
+		nb = nb * 10 + (j % 8);
+		j = j / 8;
 	}
-	len = int_len(n) + isneg;
-	if (!(str = (char *)malloc(sizeof(*str) * len + 1)))
-		return (NULL);
-	str[len] = 0;
-	while (len-- >= 0)
+	while (nb > 0)
 	{
-		str[len] = n % 10 + '0';
-		n = n / 10;
+		o = o * 10 + (nb % 10);
+		nb = nb / 10;
 	}
-	if (isneg == 1)
-		str[0] = '-';
-	return (str);
+	return (o);
 }
