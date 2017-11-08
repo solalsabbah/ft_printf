@@ -6,13 +6,14 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:18:22 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/11/07 15:28:18 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/11/08 17:55:03 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef HEADER_H
 # define HEADER_H
 
-
+# include <stdarg.h>
+# include <unistd.h>
 
 #endif 

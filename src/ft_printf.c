@@ -6,12 +6,17 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:15:41 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/11/08 17:45:48 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/11/08 17:53:16 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/header.h"
 #include <stdio.h>
+
+int		ft_printf(const char *restrict format, ...)
+{
+	return (0);
+}
 
 int		main(int argc, char **argv)
 {
