@@ -12,44 +12,57 @@
 
 #include <stdio.h>
 #include <stdarg.h>
+#include "../libft/libft.h"
 
 void	ft_minprintf(const char *fmt, ...)
 {
 	va_list		ap;
 	const char	*p;
 	const char	*sval;
-	int			ival;
+	int		ival;
 	double		dval;
-	
+	char		cval;
+
 	va_start(ap, fmt);
 	p = fmt;
-	while (*p++ != 0) 
-	//for (p = fmt; *p; p++)
+	while (*p != 0) 
 	{
 		if (*p != '%')
+			ft_putchar(*p);
+		else if (*p == '%')
 		{
-			putchar(*p);
-			continue; 
+			p++;
+			if (*p == 'd')
+			{
+				ival = va_arg(ap, int);
+				ft_putnbr(ival);
+			}
+			if (*p == 's')
+			{
+				sval = va_arg(ap, char *);
+				while (*sval != 0)
+				{
+					ft_putchar(*sval);
+					sval++;	
+				}
+
+			}
+			if (*p == 'c')
+			{	
+				cval = va_arg(ap, int);	
+				ft_putchar(cval);
+			}
 		}
-		switch (*++p)
-		{
-		case 'd':
-			ival = va_arg(ap, int);
-			printf("%d", ival);
-			break ;
-		case 's':
-			for (sval = va_arg(ap, char *); *sval; sval++)
-					  putchar(*sval);
-				  break;
-		}
+			p++;
 	}
 	va_end(ap);
 }
 
 int main() 
-{
-	ft_minprintf("int %d\n", 5);
-	ft_minprintf("String %s et int %d\n","Bonjour",5);
+{	
+	ft_minprintf("%c\n", 'c');
+	ft_minprintf("int %d ok\n", 523);
+	ft_minprintf("Je m'appelle %s, j'ai %d\n","Solal", 15);
 	ft_minprintf("Une serie d'entiers: %d, %d, %d, %d, %d\n",1,2,3,4,5);
-	return 0;
+	return (0);
 }
