@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:15:41 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/11/09 11:51:06 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/11/13 14:29:01 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,16 @@
 
 int		ft_printf(const char *restrict format, ...)
 {
+	format = NULL;
+	//ft_minprintf("%c\n", 'c');
+	ft_minprintf("J'ai %x ans en hexadecimal\n", 23);
+	ft_minprintf("Je m'appelle %s, j'ai %d\n","Solal", 15);
+	//ft_minprintf("Une serie d'entiers: %d, %d, %d, %d, %d\n",1,2,3,4,5);
 	return (0);
 }
 
-int		main(int argc, char **argv)
+int main(void)
 {
-	int number;
-
-	number = 3543;	
-	printf("%#d\n", number);
-	/*printf(" %010d \n", number);
-	printf(" %-#10x \n", number);  
-	printf(" %u \n", number / 2);  
-	printf(" %#x \n", number);
-	printf("%%no argument expected");
-	*/return (0);	
+	ft_printf("14");
+	return (0);
 }

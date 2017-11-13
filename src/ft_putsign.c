@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 16:31:52 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/11/09 11:05:59 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/11/13 12:53:18 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,4 @@ char	*ft_putsign(int	nb)
 	else 
 		str = ft_strcat("-", ft_itoa(nb));
 	return (str);
-}
-
-int		main(void)
-{
-	printf("%s\n", ft_putsign(+345));
-	return (0);
 }

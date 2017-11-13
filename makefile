@@ -6,17 +6,20 @@
 #    By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 14:51:07 by ssabbah           #+#    #+#              #
-#    Updated: 2017/11/07 15:24:57 by ssabbah          ###   ########.fr        #
+#    Updated: 2017/11/13 14:22:10 by ssabbah          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME= ft_printf
 
 SRC= ft_printf.c\
+	 ft_convert.c\
+	 ft_putsign.c\
+	 ft_minprintf.c\
 	
 OBJ= $(addprefix $(OBJDIR), $(SRC:.c=.o))
 
-OBJDIR = ./obj/
+CC= gcc
 
 CFLAGS= -Wall -Wextra -Werror
 
@@ -36,7 +39,7 @@ obj:
 $(OBJDIR)%.o:$(SRCDIR)%.c
 	$(CC) $(CFLAGS) $(LIBINC) -I $(INCDIR) -o $@ -c $<
 
-libft:$(LIBFT)
+libft: $(LIBFT)
 
 $(LIBFT):
 	make -C ./libft
@@ -48,7 +51,7 @@ remlib:
 	rm -rf $(LIBFT)
 
 remoblib:
-	make flcean -C ./libft/
+	make fclean -C ./libft/
 
 clean: remoblib
 	rm -rf $(NAME)

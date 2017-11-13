@@ -6,12 +6,13 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 15:04:17 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/11/09 16:15:48 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/11/13 15:18:28 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdarg.h>
+#include "../includes/header.h"
 #include "../libft/libft.h"
 
 void	ft_minprintf(const char *fmt, ...)
@@ -20,7 +21,7 @@ void	ft_minprintf(const char *fmt, ...)
 	const char	*p;
 	const char	*sval;
 	int		ival;
-	double		dval;
+//	double		dval;
 	char		cval;
 
 	va_start(ap, fmt);
@@ -32,10 +33,13 @@ void	ft_minprintf(const char *fmt, ...)
 		else if (*p == '%')
 		{
 			p++;
-			if (*p == 'd')
+			if (*p == 'd' || *p == 'x' || *p == 'o' )
 			{
 				ival = va_arg(ap, int);
-				ft_putnbr(ival);
+				if (*p == 'd')
+					ft_putnbr(ival);
+				if (*p == 'x')
+					ft_convert_hex(ival);
 			}
 			if (*p == 's')
 			{
@@ -45,7 +49,6 @@ void	ft_minprintf(const char *fmt, ...)
 					ft_putchar(*sval);
 					sval++;	
 				}
-
 			}
 			if (*p == 'c')
 			{	
@@ -56,13 +59,4 @@ void	ft_minprintf(const char *fmt, ...)
 			p++;
 	}
 	va_end(ap);
-}
-
-int main() 
-{	
-	ft_minprintf("%c\n", 'c');
-	ft_minprintf("int %d ok\n", 523);
-	ft_minprintf("Je m'appelle %s, j'ai %d\n","Solal", 15);
-	ft_minprintf("Une serie d'entiers: %d, %d, %d, %d, %d\n",1,2,3,4,5);
-	return (0);
 }
