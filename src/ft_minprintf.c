@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 15:04:17 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/11/13 15:18:28 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/11/13 16:02:51 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ void	ft_minprintf(const char *fmt, ...)
 					ft_putnbr(ival);
 				if (*p == 'x')
 					ft_convert_hex(ival);
+				if (*p == 'o')
+					ft_convert_oct(ival);
 			}
 			if (*p == 's')
 			{
