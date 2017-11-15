@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 15:04:17 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/11/14 17:30:52 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/11/15 20:17:18 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,29 +15,31 @@
 #include "../includes/header.h"
 #include "../libft/libft.h"
 
-const char		*after_percent(const char *p)
+void	ft_print_number(const char p, int ival, int nb)
 {
-	int nb;
-	int i;
-	
-	i = 0;	
-	nb = ft_atoi(&p[i]);
-	while (p[i] >= '0' && p[i] <= '9')
-		i++;
-	return (&p[i]);
+	int_len(ival);	
+	if (p == 'd')
+	{
+		nb = 0;
+		ft_putnbr(ival);
+	}
+	if (p == 'x')
+		ft_convert_hex(ival);
+	if (p == 'o')
+		ft_convert_oct(ival);
+
 }
+
 void	ft_minprintf(const char *fmt, ...)
 {
 	va_list		ap;
 	const char	*p;
 	const char	*sval;
 	int		ival;
-//	double		dval;
 	char		cval;
-//	int			nb;
-	int			tot;
+	int			nb;
 
-	tot = 0;
+	nb = 0;
 	va_start(ap, fmt);
 	p = fmt;
 	while (*p != 0) 
@@ -47,16 +49,13 @@ void	ft_minprintf(const char *fmt, ...)
 		else if (*p == '%')
 		{
 			p++;
-			p = after_percent(&*p);
+			nb = ft_atoi(p);
+			while (*p >= '0' && *p <= '9')
+				p++;
 			if (*p == 'd' || *p == 'x' || *p == 'o' )
 			{
 				ival = va_arg(ap, int);
-				if (*p == 'd')
-					ft_putnbr(ival);
-				if (*p == 'x')
-					ft_convert_hex(ival);
-				if (*p == 'o')
-					ft_convert_oct(ival);
+				ft_print_number(*p, ival, nb);
 			}
 			if (*p == 's')
 			{
@@ -69,7 +68,7 @@ void	ft_minprintf(const char *fmt, ...)
 				ft_putchar(cval);
 			}
 		}
-			p++;
+		p++;
 	}
 	va_end(ap);
 }

@@ -6,7 +6,7 @@
 #    By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 14:51:07 by ssabbah           #+#    #+#              #
-#    Updated: 2017/11/13 14:22:10 by ssabbah          ###   ########.fr        #
+#    Updated: 2017/11/13 17:11:36 by ssabbah          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ SRC= ft_printf.c\
 	 ft_convert.c\
 	 ft_putsign.c\
 	 ft_minprintf.c\
-	
+	 ft_width.c\
+
 OBJ= $(addprefix $(OBJDIR), $(SRC:.c=.o))
 
 CC= gcc

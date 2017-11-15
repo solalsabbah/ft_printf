@@ -6,12 +6,14 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:15:41 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/11/14 17:16:26 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/11/15 20:17:29 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/header.h"
+#include "../libft/libft.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 int		ft_printf(const char *restrict format, ...)
 {
@@ -24,8 +26,11 @@ int		ft_printf(const char *restrict format, ...)
 
 int main(void)
 {
-	//printf("%u\n", 5);
-	ft_printf("Je m'appelle %s, j'ai %42d ans\n", "Solal", 23);
+	printf("%s\n", ft_convert_hex(511390));
+	printf("%X\n", 511390);
+	//ft_printf("Je m'appelle %s, j'ai %42d ans\n", "Solal", 23);
 	//ft_printf("J'ai %x ans en hexadecimal\n", 23);
+	//printf("%6s\n", "chien");
+	//printf("%d\n", ft_atoi("005d\n"));
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:18:22 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/11/13 13:40:24 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/11/15 19:54:01 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	ft_minprintf(const char *fmt, ...);
 int		ft_convert_oct(int nn);
 int		ft_printf(const char *restrict format, ...);
 char	*ft_putsign(int	nb);
-int		ft_convert_hex(int n);
+char	*ft_convert_hex(int n);
+int		ft_width(int ival, int nb);
 
 #endif 
