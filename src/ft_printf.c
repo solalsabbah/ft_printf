@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:15:41 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/11/15 20:17:29 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/11/16 14:40:58 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,21 @@ int		ft_printf(const char *restrict format, ...)
 }
 
 int main(void)
-{
-	printf("%s\n", ft_convert_hex(511390));
-	printf("%X\n", 511390);
+{	
+	ft_printf("%0023d\n", 511390);
+	printf("%023d\n", 511390);
+	printf("===============\n");
+	ft_printf("%23s\n", "511390");
+	printf("%23s\n", "511390");
+	printf("===============\n");
+	ft_printf("%0023X\n", 511390);
+	printf("%023X\n", 511390);
+	printf("===============\n");
+	ft_printf("%0023o\n", 511390);
+	printf("%023o\n", 511390);
+	printf("===============\n");
+	ft_printf(" Je m'apelle %12s, j'ai %11o ans\n", "Solal", 23);
+	printf(" Je m'apelle %12s, j'ai %11o ans\n", "Solal", 23);
 	//ft_printf("Je m'appelle %s, j'ai %42d ans\n", "Solal", 23);
 	//ft_printf("J'ai %x ans en hexadecimal\n", 23);
 	//printf("%6s\n", "chien");

@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 15:04:17 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/11/15 20:17:18 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/11/16 17:20:03 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,59 @@
 #include "../includes/header.h"
 #include "../libft/libft.h"
 
-void	ft_print_number(const char p, int ival, int nb)
+int		print_width(int nb, int len, int flag)
 {
-	int_len(ival);	
+	char c;
+	
+	c = ' ';
+	if (flag == 1)
+		c = '0';
+	while (nb > len)
+	{
+		ft_putchar(c);
+		nb--;
+	}
+	return (0);
+}
+
+void	print_str(const char *sval, int nb)
+{
+		int	len;
+
+		len = ft_strlen(sval);
+		while (nb > len)
+		{
+			ft_putchar(' ');
+			nb--;
+		}
+		ft_putstr(sval);
+}
+
+void	ft_print_number(const char p, int ival, int nb, int flag)
+{
+	int		len;
+	char	*str;
+	
 	if (p == 'd')
 	{
-		nb = 0;
+		len = int_len(ival);
+		print_width(nb, len, flag);
 		ft_putnbr(ival);
 	}
-	if (p == 'x')
-		ft_convert_hex(ival);
+	if (p == 'X')
+	{
+		str = ft_convert_hex(ival);
+		len = ft_strlen(str);
+		print_width(nb, len, flag);
+		ft_putstr(str);
+		
+	}	
 	if (p == 'o')
-		ft_convert_oct(ival);
-
+	{
+		len = int_len(ft_convert_oct(ival));	
+		print_width(nb, len, flag);	
+		ft_putnbr(ft_convert_oct(ival));
+	}
 }
 
 void	ft_minprintf(const char *fmt, ...)
@@ -38,10 +78,11 @@ void	ft_minprintf(const char *fmt, ...)
 	int		ival;
 	char		cval;
 	int			nb;
+	int			flag;
 
-	nb = 0;
 	va_start(ap, fmt);
 	p = fmt;
+	flag = 0;
 	while (*p != 0) 
 	{
 		if (*p != '%')
@@ -51,18 +92,22 @@ void	ft_minprintf(const char *fmt, ...)
 			p++;
 			nb = ft_atoi(p);
 			while (*p >= '0' && *p <= '9')
+			{
+				if (*p == '0')
+					flag = 1;	
 				p++;
-			if (*p == 'd' || *p == 'x' || *p == 'o' )
+			}
+			if (*p == 'd' || *p == 'X' || *p == 'o' )
 			{
 				ival = va_arg(ap, int);
-				ft_print_number(*p, ival, nb);
+				ft_print_number(*p, ival, nb, flag);
 			}
-			if (*p == 's')
+			else if (*p == 's')
 			{
 				sval = va_arg(ap, char *);
-				ft_putstr(sval);
+				print_str(sval, nb);
 			}
-			if (*p == 'c')
+			else if (*p == 'c')
 			{	
 				cval = va_arg(ap, int);	
 				ft_putchar(cval);
