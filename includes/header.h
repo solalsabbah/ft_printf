@@ -16,39 +16,16 @@
 # include <stdarg.h>
 # include <unistd.h>
 
-t_fct        g_fct_tab[] =
-{
-	{'s', &print_str},
-	{'S', &print_str},
-	{'p', &print_ptr},
-	{'d', &print_int},
-	{'D', &print_int},
-	{'b', &print_bin},
-	{'B', &print_bin},
-	{'i', &print_int},
-	{'o', &print_oct},
-	{'O', &print_oct},
-	{'u', &print_uns_int},
-	{'U', &print_uns_int},
-	{'x', &print_hex},
-	{'X', &print_hex},
-	{'c', &print_char},
-	{'C', &print_char},
-	{'n', &get_len},
-	{0, NULL}
-};
-
 typedef	struct		s_fct
 {
-	char			c;
-	int				(*f) (va_list ap, t_form* form, t_data* data);
-}					t_fct;
+	char		c;
+	int		(*f) (va_list ap);
+}			t_fct;
 
-void	ft_minprintf(const char *fmt, ...);
-int		ft_convert_oct(int nn);
-int		ft_printf(const char *restrict format, ...);
+int	ft_convert_oct(int nn);
+int	ft_printf(const char *restrict format, ...);
 char	*ft_putsign(int	nb);
 char	*ft_convert_hex(int n);
-int		ft_width(int ival, int nb);
+int	ft_width(int ival, int nb);
 
 #endif
