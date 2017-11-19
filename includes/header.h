@@ -19,7 +19,7 @@
 typedef	struct		s_fct
 {
 	char		c;
-	int		(*f) (va_list ap);
+	void		(*f) (va_list ap, int nb);
 }			t_fct;
 
 int	ft_convert_oct(int nn);
@@ -27,5 +27,11 @@ int	ft_printf(const char *restrict format, ...);
 char	*ft_putsign(int	nb);
 char	*ft_convert_hex(int n);
 int	ft_width(int ival, int nb);
+void	print_char(va_list ap, int nb);
+void	print_hex(va_list ap, int nb);
+void	print_oct(va_list ap, int nb);
+void	print_int(va_list ap, int nb);
+void	print_str(va_list ap, int nb);
+
 
 #endif

@@ -15,6 +15,7 @@ NAME= ft_printf
 SRC= 	ft_printf.c\
 	ft_convert.c\
 	ft_putsign.c\
+	print_fmt.c\
 
 OBJ= $(addprefix $(OBJDIR), $(SRC:.c=.o))
 
