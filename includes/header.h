@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:18:22 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/11/16 17:20:02 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/11/20 16:10:52 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	print_hex(va_list ap, int nb);
 void	print_oct(va_list ap, int nb);
 void	print_int(va_list ap, int nb);
 void	print_str(va_list ap, int nb);
-
+void	print_ptr(va_list ap, int nb);
+void	print_blank(va_list ap, int nb);
 
 #endif

@@ -16,17 +16,23 @@ int		print_width(int nb, int len, int flag)
 	return (0);
 }
 
-/*void	print_ptr(va_list ap, int nb)
+void	print_blank(va_list ap, int nb)
 {
-	int *p_ap = &ap;
-	ft_put
-}*/
+	 ap = 0;
+	 nb = 0;
+}
+
+void	print_ptr(va_list ap, int nb)
+{
+	nb = 0;
+	ap = 0;
+}
 
 void	print_str(va_list ap, int nb)
 {
 	int	len;
 	const char	*sval;
-
+	
 	sval = va_arg(ap, char *);
 	len = ft_strlen(sval);
 	while (nb > len)
@@ -36,6 +42,7 @@ void	print_str(va_list ap, int nb)
 	}
 	ft_putstr(sval);
 }
+
 void	print_int(va_list ap, int nb)
 {
 	int len;
