@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 15:04:17 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/11/20 17:01:29 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/11/28 16:18:07 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,21 +101,21 @@ int	ft_printf(const char *format, ...)
 
 int main(void)
 {
-	int a = 4;
+	//int a = 4;
 
-	a = 0;	
+	//a = 0;	
 	//printf("%i\n", 'c');
 	//ft_printf("%i\n", 'c');
 	//ft_printf("salut %n toi\n", &a);
 	//printf("salut %n toi\n", &a);
-	int age = 33;
-	int *ptrage = &age;
-	char c = 's';
-	char *ptrc = &c;	
-	printf("---------\n");
-	ft_printf("%p\n", age);
-	printf("---------\n");	
-	printf("%p\n", &c);
+	//int age = 33;
+	//int *ptrage = &age;
+	//char c = 's';
+	//char *ptrc = &c;	
+	//printf("---------\n");
+	//ft_printf("%p\n", age);
+	//printf("---------\n");	
+	//printf("%p\n", &c);
 	/*printf("---------\n");
 	ft_printf("hexa %x\n", &age);
 	printf("---------\n");
