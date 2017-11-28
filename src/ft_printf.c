@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 15:04:17 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/11/28 16:18:07 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/11/28 17:05:56 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	ft_printf(const char *format, ...)
 	{
 		{'S', &print_str},
 		{'s', &print_str},
-		{'p', &print_ptr},
+	//	{'p', &print_ptr},
 		{'d', &print_int},
 		{'D', &print_int},
 		{'i', &print_int},
@@ -60,10 +60,10 @@ int	ft_printf(const char *format, ...)
 		{'c', &print_char},
 		{'C', &print_char},
 		{'n', &print_blank}, 
+		{'u', &print_uns_int},
+		{'U', &print_uns_int}, 
 		/*		{'b', &print_bin},
-				{'B', &print_bin},
-				{'u', &print_uns_int},
-				{'U', &print_uns_int}, */
+				{'B', &print_bin}, */
 		{0, NULL}
 	};
 	va_start(ap, format);
@@ -101,8 +101,9 @@ int	ft_printf(const char *format, ...)
 
 int main(void)
 {
-	//int a = 4;
+	unsigned int a = 2147483648;
 
+	ft_printf("%u\n", a);
 	//a = 0;	
 	//printf("%i\n", 'c');
 	//ft_printf("%i\n", 'c');

@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:18:22 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/11/20 16:10:52 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/11/28 16:31:53 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,6 @@ void	print_int(va_list ap, int nb);
 void	print_str(va_list ap, int nb);
 void	print_ptr(va_list ap, int nb);
 void	print_blank(va_list ap, int nb);
+void	print_uns_int(va_list ap, int nb);
 
 #endif

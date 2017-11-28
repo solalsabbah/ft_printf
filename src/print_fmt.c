@@ -28,6 +28,38 @@ void	print_ptr(va_list ap, int nb)
 	ap = 0;
 }
 
+void	ft_putnbr_uns(long int n)
+{
+	long int nb;
+	int p;
+
+	p = 0;
+	nb = n;
+	if (nb < 0 && p == 0)
+	{	
+		write(1, "-1", 2);
+		p = 1;
+	}
+	if (nb > 9)
+	{
+		ft_putnbr_uns(nb / 10);
+		ft_putnbr_uns(nb % 10);
+	}
+	else 
+		ft_putchar(nb + '0');
+}
+
+void	print_uns_int(va_list ap, int nb)
+{
+		int len;
+		unsigned int ival;
+
+		ival = va_arg(ap, unsigned int);
+		len = int_len(ival);
+		print_width(nb, len, 0);
+		ft_putnbr_uns(ival);
+}
+
 void	print_str(va_list ap, int nb)
 {
 	int	len;
