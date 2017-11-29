@@ -5,17 +5,18 @@
 #                                                     +:+ +:+         +:+      #
 #    By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2017/11/07 14:51:07 by ssabbah           #+#    #+#              #
-#    Updated: 2017/11/13 17:11:36 by ssabbah          ###   ########.fr        #
+#    Created: 2017/11/29 10:48:28 by ssabbah           #+#    #+#              #
+#    Updated: 2017/11/29 14:42:26 by ssabbah          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME= ft_printf
+NAME= libftprintf.a
 
 SRC= 	ft_printf.c\
-	ft_convert.c\
-	ft_putsign.c\
-	print_fmt.c\
+		ft_convert.c\
+		ft_putsign.c\
+		print_fmt.c\
+		flags.c\
 
 OBJ= $(addprefix $(OBJDIR), $(SRC:.c=.o))
 
@@ -53,10 +54,13 @@ remlib:
 remoblib:
 	make fclean -C ./libft/
 
-clean: remoblib
-	rm -rf $(NAME)
+clean:
+	@echo "Deleting Objects"
+	rm -rf ./libft/*.o
+	rm -rf $(OBJDIR)
 
-fclean: clean remlib
+fclean: clean
+	rm -rf $(LIBFT)
 	rm -rf $(NAME)
 
 re: fclean all

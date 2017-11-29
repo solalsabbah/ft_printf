@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_strrev.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/28 17:06:02 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/11/29 14:25:09 by ssabbah          ###   ########.fr       */
+/*   Created: 2017/11/29 11:55:01 by ssabbah           #+#    #+#             */
+/*   Updated: 2017/11/29 11:55:05 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include "libft/libft.h"
+#include "libft.h"
 
-int		main(void)
+char *ft_strrev(char *str)
 {
-	printf("%-      d\n", 3);
-	printf("%12d\n", 3);
-	printf("%d\n", 3);
-	printf("%-f\n", 3.300);
-	printf("%-f\n", 3.3);
-	return(0);
+	char tmp;
+	int i;
+	int j;
+
+	i = 0;
+	j = ft_strlen(str) - 1;
+	while (i < j)
+	{
+		tmp = str[i];
+		str[i] = str[j];
+		str[j] = tmp;
+		j--;
+		i++;
+	}
+	return (str);
 }

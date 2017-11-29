@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 15:28:13 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/11/27 15:54:03 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/11/29 13:13:01 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,23 +40,6 @@ char	*append_char(char const *s1, char c)
 	return (NULL);
 }
 
-char	*str_rev(char *s1)
-{
-	int		i;
-	int		j;
-	char	*s2;
-
-	i = 0;
-	j = 0;
-	s2 = malloc(sizeof(char *) * ft_strlen(s1) + 1);
-	while (s1[i] != 0)
-		i++;
-	while (--i > -1)
-		s2[j++] = s1[i];
-	s2[j] = 0;
-	return (s2); 
-}
-
 char	convert(i)
 {
 	if (i > 9)
@@ -81,7 +64,7 @@ char	*ft_convert_hex(int n)
 		str = append_char(str, convert(r));
 		n = q;
 	}
-	str = str_rev(str);
+	ft_strrev(str);
 	return (str);
 }
 

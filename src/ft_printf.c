@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_minprintf.c                                     :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/09 15:04:17 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/11/28 17:05:56 by ssabbah          ###   ########.fr       */
+/*   Created: 2017/11/29 14:34:50 by ssabbah           #+#    #+#             */
+/*   Updated: 2017/11/29 15:52:34 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,6 @@
 #include <stdarg.h>
 #include "../includes/header.h"
 #include "../libft/libft.h"
-
-/*void            my_put_padress(va_list *ap)
-{
-	unsigned int  adr;
-	char          *base;
-	char          res[9];
-	int           i;
-
-	base = "0123456789abcdef";
-	i = 8;
-	while ((adr / 16) > 0 || i >= 8)
-	{
-		res[i] = base[(adr % 16)];
-		adr /= 16;
-		i--;
-	}
-	res[i] = base[(adr % 16)];
-	write(1, "0x", 2);
-	while (i < 9)
-		write(1, &res[i++], 1);
-	return ;
-}*/
 
 int	ft_printf(const char *format, ...)
 {
@@ -49,7 +27,7 @@ int	ft_printf(const char *format, ...)
 	{
 		{'S', &print_str},
 		{'s', &print_str},
-	//	{'p', &print_ptr},
+	//	{'p', &print_ptr}, NOT MANAGED YET
 		{'d', &print_int},
 		{'D', &print_int},
 		{'i', &print_int},
@@ -62,12 +40,12 @@ int	ft_printf(const char *format, ...)
 		{'n', &print_blank}, 
 		{'u', &print_uns_int},
 		{'U', &print_uns_int}, 
-		/*		{'b', &print_bin},
-				{'B', &print_bin}, */
+		{'b', &print_bin},
+		{'B', &print_bin},
 		{0, NULL}
 	};
 	va_start(ap, format);
-	p = format;
+	p = format; // p est un pointeur sur l adresse ? ca veut dire je modifie le contenu de format ?
 	flag = 0;
 	while (*p != 0) 
 	{
@@ -76,6 +54,7 @@ int	ft_printf(const char *format, ...)
 		else if (*p == '%')
 		{
 			p++;
+			flags(&p);
 			nb = ft_atoi(p);
 			while (*p >= '0' && *p <= '9')
 			{
@@ -101,9 +80,11 @@ int	ft_printf(const char *format, ...)
 
 int main(void)
 {
-	unsigned int a = 2147483648;
+	int a = -213648;
 
-	ft_printf("%u\n", a);
+	ft_printf("%d\n test", a);
+	ft_printf("%b\n", a);
+	printf("%d\n", a);
 	//a = 0;	
 	//printf("%i\n", 'c');
 	//ft_printf("%i\n", 'c');
@@ -117,7 +98,7 @@ int main(void)
 	//ft_printf("%p\n", age);
 	//printf("---------\n");	
 	//printf("%p\n", &c);
-	/*printf("---------\n");
+/*	printf("---------\n");
 	ft_printf("hexa %x\n", &age);
 	printf("---------\n");
 	printf("vrai adresse %p\n", &age);

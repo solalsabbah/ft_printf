@@ -1,5 +1,6 @@
 #include "../includes/header.h"
 #include "../libft/libft.h"
+#include <stdio.h>
 
 int		print_width(int nb, int len, int flag)
 {
@@ -18,8 +19,8 @@ int		print_width(int nb, int len, int flag)
 
 void	print_blank(va_list ap, int nb)
 {
-	 ap = 0;
-	 nb = 0;
+	ap = 0;
+	nb = 0;
 }
 
 void	print_ptr(va_list ap, int nb)
@@ -51,20 +52,20 @@ void	ft_putnbr_uns(long int n)
 
 void	print_uns_int(va_list ap, int nb)
 {
-		int len;
-		unsigned int ival;
+	int len;
+	unsigned int ival;
 
-		ival = va_arg(ap, unsigned int);
-		len = int_len(ival);
-		print_width(nb, len, 0);
-		ft_putnbr_uns(ival);
+	ival = va_arg(ap, unsigned int);
+	len = int_len(ival);
+	print_width(nb, len, 0);
+	ft_putnbr_uns(ival);
 }
 
 void	print_str(va_list ap, int nb)
 {
 	int	len;
 	const char	*sval;
-	
+
 	sval = va_arg(ap, char *);
 	len = ft_strlen(sval);
 	while (nb > len)
@@ -111,6 +112,40 @@ void	print_hex(va_list ap, int nb)
 	str = ft_convert_hex(ival);
 	len = ft_strlen(str);
 	print_width(nb, len, flag);
+	ft_putstr(str);
+}
+
+void	print_bin(va_list ap, int nb)
+{
+	int			q;
+	int			r;
+	int			i;
+	char		*str;
+	int			nbr;
+	int			p;
+
+	q = 1;
+	i = 0;
+	p = 0;
+	nb = 0;
+	nbr = va_arg(ap, int);
+	str = malloc(sizeof(str) * 32 + 1);
+	if (nbr < 0)
+	{
+		nbr = -nbr;
+		p = 1;
+	}
+	while (q != 0)
+	{
+		q = nbr / 2;
+		r = nbr % 2;
+		str[i] = r + '0';
+		nbr = q;
+		i++;
+	}
+	if (p == 1)
+		str[i] = '-';
+	ft_strrev(str);
 	ft_putstr(str);
 }
 
