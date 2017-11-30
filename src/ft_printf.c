@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 14:34:50 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/11/29 15:52:34 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/11/30 17:11:47 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,60 +19,23 @@ int	ft_printf(const char *format, ...)
 {
 	va_list		ap;
 	const char	*p;
-	int		nb;
 	int		flag;
-	int		i;
+	int		j;
 
-	t_fct        g_fct_tab[] =
-	{
-		{'S', &print_str},
-		{'s', &print_str},
-	//	{'p', &print_ptr}, NOT MANAGED YET
-		{'d', &print_int},
-		{'D', &print_int},
-		{'i', &print_int},
-		{'o', &print_oct},
-		{'O', &print_oct},
-		{'x', &print_hex},
-		{'X', &print_hex},
-		{'c', &print_char},
-		{'C', &print_char},
-		{'n', &print_blank}, 
-		{'u', &print_uns_int},
-		{'U', &print_uns_int}, 
-		{'b', &print_bin},
-		{'B', &print_bin},
-		{0, NULL}
-	};
 	va_start(ap, format);
+	j = 0;
 	p = format; // p est un pointeur sur l adresse ? ca veut dire je modifie le contenu de format ?
 	flag = 0;
-	while (*p != 0) 
+	while (p[j] != 0) 
 	{
-		if (*p != '%')
-			ft_putchar(*p);
-		else if (*p == '%')
+		if (p[j] != '%')
+			ft_putchar(p[j]);
+		else if (p[j] == '%')
 		{
-			p++;
-			flags(&p);
-			nb = ft_atoi(p);
-			while (*p >= '0' && *p <= '9')
-			{
-				if (*p == '0') /// attention ca ne marche pas si 20 par exemple
-					flag = 1;	
-				p++;
-			}
-			i = 0;
-			while (g_fct_tab[i].c != 0)
-			{
-				if (g_fct_tab[i].c == '0')
-					break;
-				if (g_fct_tab[i].c == *p)
-					g_fct_tab[i].f(ap, nb);
-				i++;
-			}
-		}
-		p++;
+			j++;
+			j = j + ft_fmt(&p[j], ap); // continuer le curseur a la suite du format
+		} 
+		j++;
 	}
 	va_end(ap);
 	return (0);
@@ -80,11 +43,11 @@ int	ft_printf(const char *format, ...)
 
 int main(void)
 {
-	int a = -213648;
+	int a = 43;
 
-	ft_printf("%d\n test", a);
-	ft_printf("%b\n", a);
-	printf("%d\n", a);
+	ft_printf("ceci et le test n: %+30x, apres c est fini %s \n", a, "ok");
+//	ft_printf("%b\n", a);
+//	printf("real : %d\n", a);
 	//a = 0;	
 	//printf("%i\n", 'c');
 	//ft_printf("%i\n", 'c');
