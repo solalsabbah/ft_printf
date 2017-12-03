@@ -40,10 +40,10 @@ char	*append_char(char const *s1, char c)
 	return (NULL);
 }
 
-char	convert(i)
+char	convert(int i)
 {
 	if (i > 9)
-		return (i + 55);
+		return (i + 87);
 	else
 		return (i + 48);
 	return (0);
@@ -52,16 +52,44 @@ char	convert(i)
 char	*ft_convert_hex(int n)
 {
 	int	r;
-	int q;
+	int 	q;
 	char *str;
+	char *c;
 
 	q = 1;
-	str = malloc(sizeof(char *) * 1);
+	str = malloc(sizeof(char) * 1);
 	while (q != 0)
 	{
 		q = n / 16;
 		r = n % 16;
-		str = append_char(str, convert(r));
+		c = malloc(sizeof(char) * 2);
+		c[0] = convert(r);
+		c[1] = 0;
+		str = ft_strcat(str, c);
+		n = q;
+	}
+	ft_strrev(str);
+	return (str);
+}
+
+char const	*ft_convert_long_hex(long int n)
+{
+	int		r;
+	long int	q;
+	char		*str;
+	char		*c;
+	
+	q = 1;
+	str = ft_strnew(2);
+	while (q != 0)
+	{
+		q = n / 16;
+		r = n % 16;
+		c = ft_strnew(2);
+		c[0] = convert(r);
+		c[1] = 0;
+		str = ft_strcat(str, c);
+		free(c);
 		n = q;
 	}
 	ft_strrev(str);

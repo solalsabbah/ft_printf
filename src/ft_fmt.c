@@ -1,25 +1,13 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   flags.c                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ssabbah <marvin@&2.fr>                     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/29 1&:12:18 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/11/30 17:37:04 by ssabbah          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "../includes/header.h"
 #include "../libft/libft.h"
 #include <stdio.h>
 
-
-
 t_fct	g_fct_tab[] = // is it ok to leave this like this ?
 {
 	{'S', &print_str},
 	{'s', &print_str},
+	{'p', &print_ptr},
 	{'d', &print_int},
 	{'D', &print_int},
 	{'i', &print_int},
@@ -37,13 +25,20 @@ t_fct	g_fct_tab[] = // is it ok to leave this like this ?
 	{0, NULL}
 };
 
-int			flags(const char *str)
+char			**flags(const char *str)
 {
-	int f;
 	int j;
-	char tab[5][1];
-
-	while (str[i])
+	char **tab;
+	
+	j = 0;
+	tab = malloc(sizeof(char *) * 5);
+	while (j < 5)
+	{
+		tab[j] = ft_strnew(2);
+		j++;
+	}
+	tab[j] = 0;
+	while (str[j])
 	{
 		if (str[j] == '#')
 			tab[0][0] = 1;	
@@ -54,7 +49,8 @@ int			flags(const char *str)
 		if (str[j] == '0')
 			tab[3][0] = 1;	
 		if (str[j] == ' ')
-			tab[4][0] == '+';
+			tab[4][0] = '+';
+	j++;
 	}
 	return (tab);
 	// possible de faire avancer dans le pointeur pour ne pas reprendre la lecture du debut ?
@@ -64,7 +60,6 @@ int			ft_fmt(const char *str, va_list ap)
 {
 	int i;
 	int j;
-	int f;
 	int nb;
 
 	i = 0;
@@ -74,7 +69,7 @@ int			ft_fmt(const char *str, va_list ap)
 		ft_putchar('%');
 		return (0);
 	}
-	f = flags(str);
+	//flags(str);
 	nb = ft_atoi(str);
 	while (g_fct_tab[i].c != str[j])
 	{

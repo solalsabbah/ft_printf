@@ -16,7 +16,7 @@ SRC= 	ft_printf.c\
 		ft_convert.c\
 		ft_putsign.c\
 		print_fmt.c\
-		flags.c\
+		ft_fmt.c\
 
 OBJ= $(addprefix $(OBJDIR), $(SRC:.c=.o))
 

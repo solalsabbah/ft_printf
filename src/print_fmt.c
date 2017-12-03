@@ -17,13 +17,16 @@ int		print_width(int nb, int len, int flag)
 	return (0);
 }
 
-void	print_blank(va_list ap, int nb)
+void	print_ptr(va_list ap, int nb)
 {
-	ap = 0;
+	void *adr;
 	nb = 0;
+
+	adr = va_arg(ap, void*);
+	ft_putstr(ft_convert_long_hex((long int)adr));
 }
 
-void	print_ptr(va_list ap, int nb)
+void	print_blank(va_list ap, int nb)
 {
 	nb = 0;
 	ap = 0;

@@ -24,7 +24,7 @@ int	ft_printf(const char *format, ...)
 
 	va_start(ap, format);
 	j = 0;
-	p = format; // p est un pointeur sur l adresse ? ca veut dire je modifie le contenu de format ?
+	p = format;
 	flag = 0;
 	while (p[j] != 0) 
 	{
@@ -33,8 +33,8 @@ int	ft_printf(const char *format, ...)
 		else if (p[j] == '%')
 		{
 			j++;
-			j = j + ft_fmt(&p[j], ap); // continuer le curseur a la suite du format
-		} 
+			j = j + ft_fmt(&p[j], ap);
+		}
 		j++;
 	}
 	va_end(ap);
@@ -43,11 +43,15 @@ int	ft_printf(const char *format, ...)
 
 int main(void)
 {
-	int a = 43;
+	char *ptr;
 
-	ft_printf("ceci et le test n: %+30x, apres c est fini %s \n", a, "ok");
-//	ft_printf("%b\n", a);
-//	printf("real : %d\n", a);
+	ptr = malloc(100);
+	ptr = ft_strcpy(ptr, "salut");
+
+	printf("real : %p\n", ptr);
+	ft_printf("%p\n", ptr);
+	ft_printf("%x\n", 32000000);
+	printf("real : %x\n", 32000000);
 	//a = 0;	
 	//printf("%i\n", 'c');
 	//ft_printf("%i\n", 'c');
@@ -61,23 +65,23 @@ int main(void)
 	//ft_printf("%p\n", age);
 	//printf("---------\n");	
 	//printf("%p\n", &c);
-/*	printf("---------\n");
-	ft_printf("hexa %x\n", &age);
-	printf("---------\n");
-	printf("vrai adresse %p\n", &age);
-	printf("---------\n");
-	ft_printf("%d\n", 511390);
-	printf("%d\n", 511390);
-	printf("===============\n");
-	ft_printf("%23s\n", "511390");
-	printf("%23s\n", "511390");
-	printf("===============\n");
-	ft_printf("%X\n", 1385261640);
-	printf("%0X\n", 1385261640);
-	printf("===============\n");
-	ft_printf("%0023o\n", 511390);
-	printf("%023o\n", 511390);
-	printf("===============\n"); 
+	/*	printf("---------\n");
+		ft_printf("hexa %x\n", &age);
+		printf("---------\n");
+		printf("vrai adresse %p\n", &age);
+		printf("---------\n");
+		ft_printf("%d\n", 511390);
+		printf("%d\n", 511390);
+		printf("===============\n");
+		ft_printf("%23s\n", "511390");
+		printf("%23s\n", "511390");
+		printf("===============\n");
+		ft_printf("%X\n", 1385261640);
+		printf("%0X\n", 1385261640);
+		printf("===============\n");
+		ft_printf("%0023o\n", 511390);
+		printf("%023o\n", 511390);
+		printf("===============\n"); 
 
 	//ft_printf(" Je m'apelle %12s, j'ai %11o ans\n", "Solal", 23);
 	//printf(" Je m'apelle %12s, j'ai %11o ans\n", "Solal", 23);

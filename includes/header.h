@@ -24,8 +24,9 @@ typedef	struct		s_fct
 
 int		ft_convert_oct(int nn);
 int		ft_printf(const char *restrict format, ...);
-char	*ft_putsign(int	nb);
-char	*ft_convert_hex(int n);
+char		*ft_putsign(int	nb);
+char		*ft_convert_hex(int n);
+char const	*ft_convert_long_hex(long int n);
 int		ft_width(int ival, int nb);
 void	print_char(va_list ap, int nb);
 void	print_hex(va_list ap, int nb);
