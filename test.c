@@ -18,8 +18,8 @@ int		main(void)
 
 	int a = 3;
 //	printf("< ca rentre %#S>\n", "salut");
-	printf("<%#p>\n", &a);
-	printf("<%p>\n", &a);
+	printf("<%32d>\n", &a);
+	printf("<%#32x>\n", &a);
 //	printf("<%#p>\n", &a);
 //	printf("<%i>\n", 43);
 //	printf("<%x>\n", 43);

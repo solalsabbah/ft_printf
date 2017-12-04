@@ -48,8 +48,8 @@ int main(void)
 	ptr = malloc(100);
 	ptr = ft_strcpy(ptr, "salut");
 
-	printf("%#23o\n", 3543);
-	ft_printf("%#23o\n", 3543);
+	printf("%+23d\n", 3543);
+	ft_printf("%+23d\n", 3543);
 	printf("real %o\n", 3543);
 	ft_printf("mine %o\n", 3543);
 	//a = 0;	

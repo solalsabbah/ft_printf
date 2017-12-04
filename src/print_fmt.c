@@ -2,6 +2,7 @@
 #include "../libft/libft.h"
 #include <stdio.h>
 
+
 int		print_width(int nb, int len, int flag)
 {
 	char c;
@@ -87,11 +88,18 @@ void	print_int(va_list ap, int nb, char **flags)
 {
 	int len;
 	int ival;
-
-	flags[0][0] = 1; // to change
+	if (flags[2][0] == '1')
+		nb = nb - 1;
 	ival = va_arg(ap, int);
 	len = int_len(ival);
 	print_width(nb, len, 0); // to change
+	if (flags[2][0] == '1')
+	{
+		if (ival < 0)
+			ft_putchar('-');
+		else
+			ft_putchar('+');
+	}
 	ft_putnbr(ival);
 }
 
@@ -101,13 +109,12 @@ void	print_oct(va_list ap, int nb, char **flags)
 	int ival;
 
 	if (flags[0][0] == '1')
-	{
-		ft_putchar('0');
 		nb = nb - 1;
-	}
 	ival = va_arg(ap, int);
 	len = int_len(ft_convert_oct(ival));
 	print_width(nb, len, 0); // to change
+	if (flags[0][0] == '1')
+		ft_putchar('0');
 	ft_putnbr(ft_convert_oct(ival));
 }
 
