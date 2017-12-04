@@ -1,4 +1,3 @@
- ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   test.c                                             :+:      :+:    :+:   */
@@ -18,9 +17,14 @@ int		main(void)
 {
 
 	int a = 3;
-//	printf("ceci et le test n: %%x, apres c est fini %s \n", a, "ok");
-	printf("<%#x>\n", 43);
-	printf("<%023x>\n", 43);
+//	printf("< ca rentre %#S>\n", "salut");
+	printf("<%#p>\n", &a);
+	printf("<%p>\n", &a);
+//	printf("<%#p>\n", &a);
+//	printf("<%i>\n", 43);
+//	printf("<%x>\n", 43);
+//	printf("<%u>\n", 43);
+//	printf("<%#c>\n", 'A');
 //	printf("%d\n", atoi("  -43"));
 //	printf("<%%0005d>\n", 3);
 //	printf("<%d>\n", 3);

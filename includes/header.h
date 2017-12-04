@@ -19,7 +19,7 @@
 typedef	struct		s_fct
 {
 	char		c;
-	void		(*f) (va_list ap, int nb);
+	void		(*f) (va_list ap, int nb, char **flags);
 }			t_fct;
 
 int		ft_convert_oct(int nn);
@@ -28,15 +28,15 @@ char		*ft_putsign(int	nb);
 char		*ft_convert_hex(int n);
 char const	*ft_convert_long_hex(long int n);
 int		ft_width(int ival, int nb);
-void	print_char(va_list ap, int nb);
-void	print_hex(va_list ap, int nb);
-void	print_oct(va_list ap, int nb);
-void	print_int(va_list ap, int nb);
-void	print_str(va_list ap, int nb);
-void	print_ptr(va_list ap, int nb);
-void	print_blank(va_list ap, int nb);
-void	print_bin(va_list ap, int nb);
-void	print_uns_int(va_list ap, int nb);
+void		print_char(va_list ap, int nb, char **flags);
+void		print_hex(va_list ap, int nb, char **flags);
+void		print_oct(va_list ap, int nb, char **flags);
+void		print_int(va_list ap, int nb, char **flags);
+void		print_str(va_list ap, int nb, char **flags);
+void		print_ptr(va_list ap, int nb, char **flags);
+void		print_blank(va_list ap, int nb, char **flags);
+void		print_bin(va_list ap, int nb, char **flags);
+void		print_uns_int(va_list ap, int nb, char **flags);
 int		ft_fmt(const char *str, va_list ap);
 
 #endif

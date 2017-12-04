@@ -17,19 +17,21 @@ int		print_width(int nb, int len, int flag)
 	return (0);
 }
 
-void	print_ptr(va_list ap, int nb)
+void	print_ptr(va_list ap, int nb, char **flags)
 {
 	void *adr;
 	nb = 0;
-
+	flags[0][0] = 1;
 	adr = va_arg(ap, void*);
+	ft_putstr("0x");
 	ft_putstr(ft_convert_long_hex((long int)adr));
 }
 
-void	print_blank(va_list ap, int nb)
+void	print_blank(va_list ap, int nb, char **flags)
 {
 	nb = 0;
 	ap = 0;
+	flags = 0;
 }
 
 void	ft_putnbr_uns(long int n)
@@ -53,22 +55,24 @@ void	ft_putnbr_uns(long int n)
 		ft_putchar(nb + '0');
 }
 
-void	print_uns_int(va_list ap, int nb)
+void	print_uns_int(va_list ap, int nb, char **flags)
 {
 	int len;
 	unsigned int ival;
 
+	flags[0][0] = 1; // to change
 	ival = va_arg(ap, unsigned int);
 	len = int_len(ival);
-	print_width(nb, len, 0);
+	print_width(nb, len, 0); // to change
 	ft_putnbr_uns(ival);
 }
 
-void	print_str(va_list ap, int nb)
+void	print_str(va_list ap, int nb, char **flags)
 {
 	int	len;
 	const char	*sval;
 
+	flags[0][0] = 1; // to change
 	sval = va_arg(ap, char *);
 	len = ft_strlen(sval);
 	while (nb > len)
@@ -79,51 +83,58 @@ void	print_str(va_list ap, int nb)
 	ft_putstr(sval);
 }
 
-void	print_int(va_list ap, int nb)
+void	print_int(va_list ap, int nb, char **flags)
 {
 	int len;
 	int ival;
 
+	flags[0][0] = 1; // to change
 	ival = va_arg(ap, int);
 	len = int_len(ival);
-	print_width(nb, len, 0);
+	print_width(nb, len, 0); // to change
 	ft_putnbr(ival);
 }
 
-void	print_oct(va_list ap, int nb)
+void	print_oct(va_list ap, int nb, char **flags)
 {
 	int len;
 	int ival;
-	int flag;
 
-	flag = 0;
+	if (flags[0][0] == '1')
+	{
+		ft_putchar('0');
+		nb = nb - 1;
+	}
 	ival = va_arg(ap, int);
 	len = int_len(ft_convert_oct(ival));
-	print_width(nb, len, flag);
+	print_width(nb, len, 0); // to change
 	ft_putnbr(ft_convert_oct(ival));
 }
 
-void	print_hex(va_list ap, int nb)
+void	print_hex(va_list ap, int nb, char **flags)
 {
 	int	len;
 	char	*str;
-	int	flag;
 	int	ival;
 
-	flag = 0;
+	if (flags[0][0] == '1')
+	{
+		ft_putstr("0x");
+		nb = nb - 2;
+	}
 	ival = va_arg(ap, int);
 	str = ft_convert_hex(ival);
 	len = ft_strlen(str);
-	print_width(nb, len, flag);
+	print_width(nb, len, 0); // to change
 	ft_putstr(str);
 }
 
-void	print_bin(va_list ap, int nb)
+void	print_bin(va_list ap, int nb, char **flags)
 {
 	int			q;
 	int			r;
 	int			i;
-	char		*str;
+	char			*str;
 	int			nbr;
 	int			p;
 
@@ -133,6 +144,7 @@ void	print_bin(va_list ap, int nb)
 	nb = 0;
 	nbr = va_arg(ap, int);
 	str = malloc(sizeof(str) * 32 + 1);
+	flags[0][0] = 1;
 	if (nbr < 0)
 	{
 		nbr = -nbr;
@@ -148,14 +160,14 @@ void	print_bin(va_list ap, int nb)
 	}
 	if (p == 1)
 		str[i] = '-';
-	ft_strrev(str);
-	ft_putstr(str);
+	ft_putstr(ft_strrev(str));
 }
 
-void	print_char(va_list ap, int nb)
+void	print_char(va_list ap, int nb, char **flags)
 {
 	char cval;
 
+	flags[0][0] = 1;
 	while (nb - 1 > 0)
 	{
 		ft_putchar(' ');

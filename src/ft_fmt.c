@@ -25,35 +25,39 @@ t_fct	g_fct_tab[] = // is it ok to leave this like this ?
 	{0, NULL}
 };
 
-char			**flags(const char *str)
+char			**ft_flags(const char *str)
 {
 	int j;
 	char **tab;
 	
 	j = 0;
-	tab = malloc(sizeof(char *) * 5);
+	tab = malloc(sizeof(char *) * 6);
 	while (j < 5)
 	{
 		tab[j] = ft_strnew(2);
 		j++;
 	}
 	tab[j] = 0;
-	while (str[j])
+	j = 0;
+	while (str[j] != 0)
 	{
 		if (str[j] == '#')
-			tab[0][0] = 1;	
+			ft_strcpy(tab[0], "1"); 	
 		if (str[j] == '-')
-			tab[1][0] = 1;	
+			ft_strcpy(tab[1], "1"); 	
 		if (str[j] == '+')
-			tab[2][0] = 1;	
+			ft_strcpy(tab[2], "1"); 	
 		if (str[j] == '0')
-			tab[3][0] = 1;	
+			ft_strcpy(tab[3], "1"); 	
+		 if (str[j] == ' ')
+			ft_strcpy(tab[4], "1");	
 		if (str[j] == ' ')
-			tab[4][0] = '+';
-	j++;
+			ft_strcpy(tab[4], "1");
+		if (str[j] == ' ')
+			ft_strcpy(tab[4], "1");
+j++;
 	}
 	return (tab);
-	// possible de faire avancer dans le pointeur pour ne pas reprendre la lecture du debut ?
 }
 
 int			ft_fmt(const char *str, va_list ap)
@@ -61,6 +65,7 @@ int			ft_fmt(const char *str, va_list ap)
 	int i;
 	int j;
 	int nb;
+	char **flags;
 
 	i = 0;
 	j = 0;
@@ -69,8 +74,9 @@ int			ft_fmt(const char *str, va_list ap)
 		ft_putchar('%');
 		return (0);
 	}
-	//flags(str);
+	flags = ft_flags(str);
 	nb = ft_atoi(str);
+	str = ft_strpbrk(str, "sSpdDioOuUxXcCBb"); // Natan est ce que j'ai le droit de faire ca ou je perds mon pointeur ? // je veux avancer dans mon pointeur // un peu redondant avec ce qu'il y a après. // Attention ca cause un pbm avec mon curseur j
 	while (g_fct_tab[i].c != str[j])
 	{
 		i = 0;
@@ -78,12 +84,12 @@ int			ft_fmt(const char *str, va_list ap)
 		{
 			if (g_fct_tab[i].c == str[j])
 			{
-				g_fct_tab[i].f(ap, nb);
-				return (j);
+				g_fct_tab[i].f(ap, nb, flags);
+				return (j + 1);
 			}
 			i++;
 		}
 		j++;
 	}
-	return (j);
+	return (j + 1);
 }

@@ -24,6 +24,7 @@ typedef	struct		s_list
 	struct s_list	*next;
 }					t_list;
 
+char				*ft_strpbrk(const char *s1, const char *s2);
 void				*ft_memmove(void *dst, const void *src, size_t len);
 int					ft_strlen_int(const char *s);
 char				*ft_strdup(const char *s1);
