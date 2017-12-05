@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:18:22 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/11/30 17:11:12 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/12/05 15:45:11 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,24 +19,25 @@
 typedef	struct		s_fct
 {
 	char		c;
-	void		(*f) (va_list ap, int nb, char **flags);
+	int			(*f) (va_list ap, int nb, int *flags);
 }			t_fct;
 
-int		ft_convert_oct(int nn);
-int		ft_printf(const char *restrict format, ...);
+int			ft_convert_oct(int nn);
+int			ft_printf(const char *restrict format, ...);
 char		*ft_putsign(int	nb);
 char		*ft_convert_hex(int n);
 char const	*ft_convert_long_hex(long int n);
-int		ft_width(int ival, int nb);
-void		print_char(va_list ap, int nb, char **flags);
-void		print_hex(va_list ap, int nb, char **flags);
-void		print_oct(va_list ap, int nb, char **flags);
-void		print_int(va_list ap, int nb, char **flags);
-void		print_str(va_list ap, int nb, char **flags);
-void		print_ptr(va_list ap, int nb, char **flags);
-void		print_blank(va_list ap, int nb, char **flags);
-void		print_bin(va_list ap, int nb, char **flags);
-void		print_uns_int(va_list ap, int nb, char **flags);
-int		ft_fmt(const char *str, va_list ap);
+int			ft_width(int ival, int nb);
+int			print_char(va_list ap, int nb, int *flags);
+int			print_hex(va_list ap, int nb, int *flags);
+int			print_oct(va_list ap, int nb, int *flags);
+int			print_int(va_list ap, int nb, int *flags);
+int			print_str(va_list ap, int nb, int *flags);
+int			print_ptr(va_list ap, int nb, int *flags);
+int			print_blank(va_list ap, int nb, int *flags);
+int			print_bin(va_list ap, int nb, int *flags);
+int			print_uns_int(va_list ap, int nb, int *flags);
+int			ft_fmt(const char *str, va_list ap);
+int			print_width(int nb, int len, int flag);
 
 #endif

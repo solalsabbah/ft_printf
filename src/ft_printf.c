@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 14:34:50 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/11/30 17:11:47 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/12/05 15:28:33 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ int	ft_printf(const char *format, ...)
 	const char	*p;
 	int		flag;
 	int		j;
-
+	int		ret;
+	
+	ret = 0;
 	va_start(ap, format);
 	j = 0;
 	p = format;
@@ -38,7 +40,8 @@ int	ft_printf(const char *format, ...)
 		j++;
 	}
 	va_end(ap);
-	return (0);
+	ret = ret + j;
+	return (ret);
 }
 
 int main(void)
@@ -48,8 +51,9 @@ int main(void)
 	ptr = malloc(100);
 	ptr = ft_strcpy(ptr, "salut");
 
-	printf("%+23d\n", 3543);
-	ft_printf("%+23d\n", 3543);
+	ft_printf("%wefjex30\n", 3543);
+	printf("%#600.30X\n", 3543);
+//	ft_printf("%+23d\n", 3543);
 	printf("real %o\n", 3543);
 	ft_printf("mine %o\n", 3543);
 	//a = 0;	

@@ -15,11 +15,27 @@
 
 int		main(void)
 {
-
-	int a = 3;
+	int *tab;
+	int i;
+	i = 0;	
+	tab = malloc(sizeof(int) * 5);
+	while (i < 5)
+	{
+		tab[i] = 1 + i;
+		i++;
+	}
+	i = 0;
+	while (i < 5)
+	{
+		printf("tab %d\n", (tab[i]));
+		i++;
+	}
+//	int a = 3;
+//	char c = 'A';
 //	printf("< ca rentre %#S>\n", "salut");
-	printf("<%32d>\n", &a);
-	printf("<%#32x>\n", &a);
+//	printf("<%d>\n", printf("%p", &a));
+//	printf("<%d>\n", printf("%p", &c));
+//	printf("<%32d>\n", 3);
 //	printf("<%#p>\n", &a);
 //	printf("<%i>\n", 43);
 //	printf("<%x>\n", 43);

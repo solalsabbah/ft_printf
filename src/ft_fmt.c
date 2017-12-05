@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_fmt.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/12/05 10:27:49 by ssabbah           #+#    #+#             */
+/*   Updated: 2017/12/05 15:45:14 by ssabbah          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../includes/header.h"
 #include "../libft/libft.h"
@@ -25,37 +36,32 @@ t_fct	g_fct_tab[] = // is it ok to leave this like this ?
 	{0, NULL}
 };
 
-char			**ft_flags(const char *str)
+int				*ft_flags(const char *str)
 {
-	int j;
-	char **tab;
-	
-	j = 0;
-	tab = malloc(sizeof(char *) * 6);
+	int 	i;
+	int		*tab;
+
+	i = 0;
+	tab = malloc(sizeof(int) * 6);
 	while (j < 5)
 	{
-		tab[j] = ft_strnew(2);
-		j++;
+		tab[i] = 0;
+		i++;
 	}
-	tab[j] = 0;
-	j = 0;
-	while (str[j] != 0)
+	i = 0;
+	while (str[i] != 0)
 	{
-		if (str[j] == '#')
-			ft_strcpy(tab[0], "1"); 	
-		if (str[j] == '-')
-			ft_strcpy(tab[1], "1"); 	
-		if (str[j] == '+')
-			ft_strcpy(tab[2], "1"); 	
-		if (str[j] == '0')
-			ft_strcpy(tab[3], "1"); 	
-		 if (str[j] == ' ')
-			ft_strcpy(tab[4], "1");	
-		if (str[j] == ' ')
-			ft_strcpy(tab[4], "1");
-		if (str[j] == ' ')
-			ft_strcpy(tab[4], "1");
-j++;
+		if (str[i] == '#')
+			tab[0] = 1;
+		if (str[i] == '-')
+			tab[1] = 1;
+		if (str[i] == '+')
+			tab[2] = 1;
+		if (((str[i] == '#' || str[i] == '-' || str[i] == '+' || str[i] == ' ') && str[i + 1] == '0') || str[0] == '0')
+			tab[3] = 1;
+		if (str[i] == ' ')
+			tab[4] = 1;
+		i++;
 	}
 	return (tab);
 }
@@ -66,7 +72,7 @@ int		find_numb(const char *str)
 	i = 0;
 	while (*str)
 	{
-		if (*str >= '0' && *str <= '9')
+		if (*str > '0' && *str <= '9')
 			return (ft_atoi(str));
 		str++;
 	}
@@ -76,33 +82,30 @@ int		find_numb(const char *str)
 int			ft_fmt(const char *str, va_list ap)
 {
 	int i;
-	int j;
+	int len;
 	int nb;
-	char **flags;
+	int *flags;
+	char *fmt;
 
 	i = 0;
-	j = 0;
-	if (str[j] == '%')
+	if (str[0] == '%')
 	{
 		ft_putchar('%');
 		return (0);
 	}
-	flags = ft_flags(str);
-	nb = find_numb(str);
-	//str = ft_strpbrk(str, "sSpdDioOuUxXcCBb"); // Natan est ce que j'ai le droit de faire ca ou je perds mon pointeur ? // je veux avancer dans mon pointeur // un peu redondant avec ce qu'il y a après. // Attention ca cause un pbm avec mon curseur j
-	while (g_fct_tab[i].c != str[j])
+	len  = ft_strpbrk(str,"sSpdDioOuUxXcCBb") - str;
+	fmt = ft_strsub(str, 0, len);
+	flags = ft_flags(fmt);
+	nb = find_numb(fmt);
+	str = ft_strpbrk(str,"sSpdDioOuUxXcCBb");
+	while (g_fct_tab[i].c != str[0])
 	{
-		i = 0;
-		while (g_fct_tab[i].c != 0)
-		{
-			if (g_fct_tab[i].c == str[j])
+			if (g_fct_tab[i].c == str[0])
 			{
 				g_fct_tab[i].f(ap, nb, flags);
-				return (j);
+				return (len);
 			}
-			i++;
-		}
-		j++;
+		i++;
 	}
-	return (j);
+	return (len);
 }
