@@ -34,11 +34,18 @@ int		print_int(va_list ap, int nb, int *flags)
 			ft_putchar('-');
 			nb--;
 		}
+		if (flags[4] == 1)
+		{
+			ft_putchar(' ');
+			nb--;
+		}
 		nb = print_width(nb, len, 1);
 	}
 	if (flags[2] == 1)
 	{
 		nb--;
+		if (flags[1] != 1 && flags[3] != 1)
+			nb = print_width(nb, len, 0);
 		if (ival < 0)
 			ft_putchar('-');
 		else
@@ -46,7 +53,7 @@ int		print_int(va_list ap, int nb, int *flags)
 		if (flags[1] != 1 && flags[3] == 1)
 			nb = print_width(nb, len, 1);
 	}
-	if (flags[3] == 1 && nb > len && flags[1] != 1)
+	if (flags[4] == 1  && nb == 0 && flags[1] != 1)
 	{
 		ft_putchar(' ');
 		nb--;
@@ -60,4 +67,4 @@ int		print_int(va_list ap, int nb, int *flags)
 	if (flags[1] == 1 && nb > len)
 		print_width(nb,len, 0);
 	return (len);
-}
+
