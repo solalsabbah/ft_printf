@@ -14,36 +14,14 @@
 #include "../libft/libft.h"
 #include <stdio.h>
 
-t_fct	g_fct_tab[] = // is it ok to leave this like this ?
-{
-	{'S', &print_str},
-	{'s', &print_str},
-	{'p', &print_ptr},
-	{'d', &print_int},
-	{'D', &print_int},
-	{'i', &print_int},
-	{'o', &print_oct},
-	{'O', &print_oct},
-	{'x', &print_hex},
-	{'X', &print_hex},
-	{'c', &print_char},
-	{'C', &print_char},
-	{'n', &print_blank},
-	{'u', &print_uns_int},
-	{'U', &print_uns_int},
-	{'b', &print_bin},
-	{'B', &print_bin},
-	{0, NULL}
-};
-
 int				*ft_flags(const char *str)
 {
 	int 	i;
-	int		*tab;
+	int	*tab;
 
 	i = 0;
 	tab = malloc(sizeof(int) * 6);
-	while (j < 5)
+	while (i < 5)
 	{
 		tab[i] = 0;
 		i++;
@@ -65,6 +43,29 @@ int				*ft_flags(const char *str)
 	}
 	return (tab);
 }
+
+
+t_fct	g_fct_tab[] = // is it ok to leave this like this ?
+{
+	{'S', &print_str},
+	{'s', &print_str},
+	{'p', &print_ptr},
+	{'d', &print_int},
+	{'D', &print_int},
+	{'i', &print_int},
+	{'o', &print_oct},
+	{'O', &print_oct},
+	{'x', &print_hex},
+	{'X', &print_hex},
+	{'c', &print_char},
+	{'C', &print_char},
+	{'n', &print_blank},
+	{'u', &print_uns_int},
+	{'U', &print_uns_int},
+	{'b', &print_bin},
+	{'B', &print_bin},
+	{0, NULL}
+};
 
 int		find_numb(const char *str)
 {
@@ -98,7 +99,7 @@ int			ft_fmt(const char *str, va_list ap)
 	flags = ft_flags(fmt);
 	nb = find_numb(fmt);
 	str = ft_strpbrk(str,"sSpdDioOuUxXcCBb");
-	while (g_fct_tab[i].c != str[0])
+	while (g_fct_tab[i].c != '0')
 	{
 			if (g_fct_tab[i].c == str[0])
 			{

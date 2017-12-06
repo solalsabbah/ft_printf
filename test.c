@@ -15,22 +15,18 @@
 
 int		main(void)
 {
-	int *tab;
-	int i;
-	i = 0;	
-	tab = malloc(sizeof(int) * 5);
-	while (i < 5)
-	{
-		tab[i] = 1 + i;
-		i++;
-	}
-	i = 0;
-	while (i < 5)
-	{
-		printf("tab %d\n", (tab[i]));
-		i++;
-	}
-//	int a = 3;
+	
+	int a = 23;
+	printf("%d\n", printf("%    d\n", 23));
+	printf("===========\n");
+	printf("%d\n", printf("%#d\n", 23));
+	printf("===========\n");
+	printf("%d\n", printf("%-d\n", 23));
+	printf("===========\n");
+	printf("%d\n", printf("%+d\n", 23));
+	printf("===========\n");
+	printf("%d\n", printf("<% 04d>\n", 23));
+	printf("%d\n", printf("<%+-5d>\n", 23));
 //	char c = 'A';
 //	printf("< ca rentre %#S>\n", "salut");
 //	printf("<%d>\n", printf("%p", &a));
@@ -41,7 +37,6 @@ int		main(void)
 //	printf("<%x>\n", 43);
 //	printf("<%u>\n", 43);
 //	printf("<%#c>\n", 'A');
-//	printf("%d\n", atoi("  -43"));
 //	printf("<%%0005d>\n", 3);
 //	printf("<%d>\n", 3);
 //	printf("%d\n", 3);

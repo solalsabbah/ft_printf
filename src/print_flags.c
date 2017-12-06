@@ -13,24 +13,10 @@
 #include "../includes/header.h"
 #include "../libft/libft.h"
 
-int		print_width(int nb, int len, int flag)
-{
-	char c;
-
-	c = ' ';
-	if (flag == 1)
-		c = '0';
-	while (nb > len)
-	{
-		ft_putchar(c);
-		nb--;
-	}
-	return (0);
-}
-
-void	print_blank(va_list ap, int nb, char **flags)
+int	print_blank(va_list ap, int nb, int *flags)
 {
 	nb = 0;
 	ap = 0;
 	flags = 0;
+	return (0);
 }

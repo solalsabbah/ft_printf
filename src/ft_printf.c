@@ -46,52 +46,36 @@ int	ft_printf(const char *format, ...)
 
 int main(void)
 {
-	char *ptr;
+		
+	printf("A <%0+12d>\n",35);
+	ft_printf("B <%0+12d>\n", 35);
+	printf("=== ligne 1 ====\n");
+	printf("A <%+-d>\n",35);
+	ft_printf("B <%+-d>\n", 35);
+	printf("=== ligne 2 ====\n");
+	printf("A <%-23d>\n",35);
+	ft_printf("B <%-23d>\n", 35);
+	printf("=== ligne 3 ====\n");
+	printf("A <%d>\n",35);
+	ft_printf("B <%d>\n", 35);
+	printf("=== ligne 4 ====\n");
+	printf("A <%01d>\n",-35);
+	ft_printf("B <%01d>\n", -35);
+	printf("=== ligne 5 ====\n");
+	printf("A <%0032d>\n",-35);
+	ft_printf("B <%0032d>\n", -35);
+	printf("=== ligne 6 ====\n");
+	printf("A <%0032d>\n",-35);
+	ft_printf("B <%0032d>\n", -35);
+	printf("=== ligne 7 ====\n");
+	printf("A <%0032d>\n",35);
+	ft_printf("B <%0032d>\n", 35);
+	printf("=== ligne 8 ====\n");
+	printf("A <%0032d>\n",35);
+	ft_printf("B <%0032d>\n", 35);
+	printf("A <%32d>\n",35);
+	ft_printf("B <%32d>\n", 35);
 
-	ptr = malloc(100);
-	ptr = ft_strcpy(ptr, "salut");
-
-	ft_printf("%wefjex30\n", 3543);
-	printf("%#600.30X\n", 3543);
-//	ft_printf("%+23d\n", 3543);
-	printf("real %o\n", 3543);
-	ft_printf("mine %o\n", 3543);
-	//a = 0;	
-	//printf("%i\n", 'c');
-	//ft_printf("%i\n", 'c');
-	//ft_printf("salut %n toi\n", &a);
-	//printf("salut %n toi\n", &a);
-	//int age = 33;
-	//int *ptrage = &age;
-	//char c = 's';
-	//char *ptrc = &c;	
-	//printf("---------\n");
-	//ft_printf("%p\n", age);
-	//printf("---------\n");	
-	//printf("%p\n", &c);
-	/*	printf("---------\n");
-		ft_printf("hexa %x\n", &age);
-		printf("---------\n");
-		printf("vrai adresse %p\n", &age);
-		printf("---------\n");
-		ft_printf("%d\n", 511390);
-		printf("%d\n", 511390);
-		printf("===============\n");
-		ft_printf("%23s\n", "511390");
-		printf("%23s\n", "511390");
-		printf("===============\n");
-		ft_printf("%X\n", 1385261640);
-		printf("%0X\n", 1385261640);
-		printf("===============\n");
-		ft_printf("%0023o\n", 511390);
-		printf("%023o\n", 511390);
-		printf("===============\n"); 
-
-	//ft_printf(" Je m'apelle %12s, j'ai %11o ans\n", "Solal", 23);
-	//printf(" Je m'apelle %12s, j'ai %11o ans\n", "Solal", 23);
-	//ft_printf("Je m'appelle %s, j'ai %42d ans\n", "Solal", 23);
-	//ft_printf("J'ai %x ans en hexadecimal\n", 23);
-	//printf("%6s\n", "chien");
-	//printf("%d\n", ft_atoi("005d\n"));*/
+//printf("",);
 	return (0);
 }

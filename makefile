@@ -15,10 +15,14 @@ NAME= libftprintf.a
 SRC= 	ft_printf.c\
 		ft_convert.c\
 		ft_putsign.c\
-		print_fmt.c\
 		ft_fmt.c\
+		print_fmt.c\
 		print_flags.c\
-
+		print_bin.c\
+		print_conv.c\
+		print_ptr.c\
+		print_int.c\
+	
 OBJ= $(addprefix $(OBJDIR), $(SRC:.c=.o))
 
 CC= gcc
