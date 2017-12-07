@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_flags.c                                      :+:      :+:    :+:   */
+/*   abs_val.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/05 11:45:24 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/07 10:27:29 by ssabbah          ###   ########.fr       */
+/*   Created: 2017/12/07 17:31:51 by ssabbah           #+#    #+#             */
+/*   Updated: 2017/12/07 17:33:15 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/header.h"
-#include "../libft/libft.h"
+#include "libft.h"
 
-int	print_blank(va_list ap, int nb, int *flags)
+int		abs_val(int nb)
 {
-	nb = 0;
-	ap = 0;
-	flags = 0;
-	return (0);
+	if (nb < 0)
+		return (-nb);
+	else
+		return (nb);
 }

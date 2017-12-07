@@ -6,7 +6,7 @@
 #    By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/29 10:48:28 by ssabbah           #+#    #+#              #
-#    Updated: 2017/12/05 11:45:47 by ssabbah          ###   ########.fr        #
+#    Updated: 2017/12/07 17:49:48 by ssabbah          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRC= 	ft_printf.c\
 		ft_fmt.c\
 		print_fmt.c\
 		print_flags.c\
+		print_width.c\
 		print_bin.c\
 		print_conv.c\
 		print_ptr.c\

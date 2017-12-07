@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:18:22 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/05 15:45:11 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/12/07 10:56:06 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef	struct		s_fct
 
 int			ft_convert_oct(int nn);
 int			ft_printf(const char *restrict format, ...);
-char		*ft_putsign(int	nb);
+int			ft_putsign(int	nb);
 char		*ft_convert_hex(int n);
 char const	*ft_convert_long_hex(long int n);
 int			ft_width(int ival, int nb);

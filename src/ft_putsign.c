@@ -6,20 +6,19 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 16:31:52 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/11/13 12:53:18 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/12/07 11:31:13 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
+#include "../includes/header.h"
 #include <stdio.h>
 
-char	*ft_putsign(int	nb)
+int			ft_putsign(int	nb)
 {
-	char	*str;
-	
-	if (nb > 0) 
-		str = ft_strcat("+", ft_itoa(nb));
+	if (nb <  0) 
+		ft_putchar('-');
 	else 
-		str = ft_strcat("-", ft_itoa(nb));
-	return (str);
+		ft_putchar('+');
+	return (0);
 }

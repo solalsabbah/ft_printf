@@ -19,13 +19,13 @@ int		main(void)
 	int a = 23;
 	printf("%d\n", printf("%    d\n", 23));
 	printf("===========\n");
-	printf("%d\n", printf("%#d\n", 23));
+	printf("%d\n", printf("%d\n", 23));
 	printf("===========\n");
 	printf("%d\n", printf("%-d\n", 23));
 	printf("===========\n");
 	printf("%d\n", printf("%+d\n", 23));
-	printf("===========\n");
-	printf("%d\n", printf("<% 04d>\n", 23));
+	printf("==== test 4  ======\n");
+	printf("%d\n", printf("%10d", 230000000));
 	printf("%d\n", printf("<%+-5d>\n", 23));
 //	char c = 'A';
 //	printf("< ca rentre %#S>\n", "salut");

@@ -1,70 +1,131 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_int.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/12/07 17:45:39 by ssabbah           #+#    #+#             */
+/*   Updated: 2017/12/07 17:51:46 by ssabbah          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/header.h"
 #include "../libft/libft.h"
 #include <stdio.h>
 
-int		print_width(int nb, int len, int flag)
+int		first_case(int nb, int len, int ival, int *flags)
 {
-	char c;
-
-	c = ' ';
-	if (flag == 1)
-		c = '0';
-	while (nb > len)
+	if (flags[3] == 1 && flags[2] != 1 && flags[1] != 1 && flags[4] != 1)
 	{
-		ft_putchar(c);
-		nb--;
+		if (ival < 0)
+			ft_putsign(ival);
+		print_width(nb, len, 1);
+		ft_putnbr(abs_val(ival));
+		return (1);
 	}
-	return (nb);
+	if (flags[2] == 1 && flags[1] != 1 && flags[3] != 1)
+	{
+		print_width(nb - 1, len, 0);
+		ft_putsign(ival);
+		ft_putnbr(abs_val(ival));
+		return (1);
+	}
+	if ((flags[1] == 1 && flags[2] != 1 && flags[3] != 1 && flags[4] != 1))
+	{
+		ft_putnbr(ival);
+		print_width(nb, len, 0);
+		return (1);
+	}
+	return (0);
+}
+
+int		second_case(int nb, int len, int ival, int *flags)
+{
+	if (flags[2] == 1 && flags[3] == 1 && flags[1] != 1)
+	{
+		ft_putsign(ival);
+		if (ival > 0)
+			nb--;
+		print_width(nb, len, 1);
+		ft_putnbr(abs_val(ival));
+		return (1);
+	}
+	if (flags[3] == 1 && flags[4] == 1 && flags[2] != 1 && flags[1] != 1)
+	{
+		ft_putchar(' ');
+		print_width(nb - 1, len, 1);
+		ft_putnbr(abs_val(ival));
+		return (1);
+	}
+	if (flags[4] == 1 && flags[1] != 1 && flags[2] != 1 && flags[3] != 1)
+	{
+		ft_putchar(' ');
+		ft_putnbr(ival);
+		return (1);
+	}
+	return (0);
+}
+
+int		third_case(int nb, int len, int ival, int *flags)
+{
+	if (flags[2] == 1 && flags[1] == 1)
+	{
+		ft_putsign(ival);
+		ft_putnbr(abs_val(ival));
+		print_width(nb - 1, len, 0);
+		return (1);
+	}
+	if (flags[1] == 1 && flags[4] == 1 && flags[3] != 1)
+	{
+		if (ival < 0)
+		{
+			ft_putnbr(ival);
+			print_width(nb, len, 0);
+			return (1);
+		}
+		else
+		{
+			ft_putchar(' ');
+			ft_putnbr(ival);
+			nb--;
+			print_width(nb, len, 0);
+			return (1);
+		}
+	}
+	return (0);
+}
+
+int		fourth_case(int nb, int len, int ival, int *flags)
+{
+	if (flags[1] != 1 && flags[2] != 1 && flags[3] != 1 & flags[4] != 1)
+	{
+		print_width(nb, len, 0);
+		ft_putnbr(ival);
+		return (1);
+	}
+	return (0);
 }
 
 int		print_int(va_list ap, int nb, int *flags)
 {
 	int len;
 	int ival;
+	int ret;
 
 	ival = va_arg(ap, int);
 	len = int_len(ival);
-	
-	if (flags[1] != 1 && flags[2] != 1 && flags[3] != 1)
-		nb =  print_width(nb, len, 0);
-	if (flags[3] == 1 && flags[2] != 1)
-	{
-		if (ival < 0)
-		{
-			ft_putchar('-');
-			nb--;
-		}
-		if (flags[4] == 1)
-		{
-			ft_putchar(' ');
-			nb--;
-		}
-		nb = print_width(nb, len, 1);
-	}
-	if (flags[2] == 1)
-	{
-		nb--;
-		if (flags[1] != 1 && flags[3] != 1)
-			nb = print_width(nb, len, 0);
-		if (ival < 0)
-			ft_putchar('-');
-		else
-			ft_putchar('+');
-		if (flags[1] != 1 && flags[3] == 1)
-			nb = print_width(nb, len, 1);
-	}
-	if (flags[4] == 1  && nb == 0 && flags[1] != 1)
-	{
-		ft_putchar(' ');
-		nb--;
-	}
-	if (flags[4] == 1 && nb > len)
-		nb = print_width(nb, len, 1);
-	if (ival < 0 && flags[3] == 1)
-		ft_putnbr(-ival);
+	if (len > nb)
+		ret = len;
 	else
-		ft_putnbr(ival);
-	if (flags[1] == 1 && nb > len)
-		print_width(nb,len, 0);
-	return (len);
-
+		ret = nb;
+	if (first_case(nb, len, ival, flags) == 1)
+		return (ret);
+	if (second_case(nb, len, ival, flags) == 1)
+		return (ret);
+	if (third_case(nb, len, ival, flags) == 1)
+		return (ret);
+	if (fourth_case(nb, len, ival, flags) == 1)
+		return (ret);
+	return (0);
+}

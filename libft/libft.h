@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/11 15:52:58 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/05 12:32:35 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/12/07 17:32:56 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,5 @@ void				ft_putnbr_fd(int n, int fd);
 char 				*ft_strrev(char *str);
 void				ft_putnbr_uns(long int n);
 char				*ft_strsub(char const *s, unsigned int start, size_t len);
-
+int					abs_val(int nb);
 #endif
