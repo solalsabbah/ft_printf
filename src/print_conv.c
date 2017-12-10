@@ -6,15 +6,26 @@ int		print_oct(va_list ap, int nb, int *flags)
 {
 	int len;
 	int ival;
+	int p;
+	int neg;
 
+	p = 0;
+	ival = va_arg(ap, int);
+	if (ival < 0)
+	{
+		p = 1;
+		neg = ft_convert_oct(-ival);
+	}
 	if (flags[0] == 1)
 		nb = nb - 1;
-	ival = va_arg(ap, int);
 	len = int_len(ft_convert_oct(ival));
 	print_width(nb, len, 0); // to change
 	if (flags[0] == 1)
 		ft_putchar('0');
-	ft_putnbr(ft_convert_oct(ival));
+	if (p == 0)
+		ft_putnbr(ft_convert_oct(ival));
+	else
+		ft_putnbr_uns(37777777778 - neg);
 	return(len);
 }
 

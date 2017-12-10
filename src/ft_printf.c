@@ -46,9 +46,31 @@ int	ft_printf(const char *format, ...)
 
 int main(void)
 {
+
+	printf("=== ligne 0 ====\n");
+	printf("A <%o>\n", -1);
+	ft_printf("B <%o>\n", -1);
+
+	printf("=== ligne 1 ====\n");
+	printf("A <%o>\n",-80);
+	ft_printf("B <%o>\n", -80);
+	
+	printf("=== ligne 2 ====\n");
+	printf("A <%#-23o>\n",35);
+	ft_printf("B <%#-23o>\n", 35);
+
+	printf("=== ligne 2 ====\n");
+	printf("A <%#-23o>\n",35);
+	ft_printf("B <%#-23o>\n", 35);
+
+	printf("=== ligne 3 ====\n");
+	printf("A <%o>\n",35);
+	ft_printf("B <%o>\n", 35);
+	
+
 //========== TEST  pour O  ==========//
 	
-	printf("A <%0#12o>\n",35);
+/*	printf("A <%0#12o>\n",35);
 	ft_printf("B <%0#12o>\n", 35);
 	
 	printf("=== ligne 0 ====\n");
@@ -76,7 +98,7 @@ int main(void)
 	ft_printf("B <%#01o>\n", -35);
 	
 	printf("=== ligne 5 ====\n");
-	printf("A <%03o>\n",-350);
+	printf("A <%03o>\n",-3500);
 	ft_printf("B <%03o>\n", -350);
 	
 	printf("=== ligne 6 ====\n");
@@ -84,7 +106,7 @@ int main(void)
 	ft_printf("B <%-32o>\n", -35);
 	
 	printf("=== ligne 7 ====\n");
-	printf("A <%0032o>\n",35);
+	printf("A <%0032o>\n",-12335);
 	ft_printf("B <%0032o>\n", 35);
 	
 	printf("=== ligne 7 bis ====\n");
@@ -119,7 +141,7 @@ int main(void)
 
  //========== TEST  pour D ==========//
 	
-/*	printf("A <%0+12d>\n",35);
+	printf("A <%0+12d>\n",35);
 	ft_printf("B <%0+12d>\n", 35);
 	
 	printf("=== ligne 0 ====\n");
