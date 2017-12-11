@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 14:34:50 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/11 16:22:34 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/12/11 16:39:06 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,14 @@ int	ft_printf(const char *format, ...)
 	return (ret);
 }
 
-int main(void)
+/*int main(void)
 {
 
 char *s = "salut";
 char *c = "cool";
-//===== C =======//
+
+
+//===== STR  =======//
 
 	printf("A <%5s>\n", s);
 	ft_printf("B <%5s>\n", s);
@@ -75,7 +77,7 @@ char *c = "cool";
 	ft_printf("B <%s>\n", s);
 	
 
-/*
+
 //========== TEST  pour Hex  ==========//
 	
 	printf("A <%#5x>\n",35);
@@ -285,8 +287,7 @@ char *c = "cool";
 	printf("A <%- 6d>\n", -35);
 	ft_printf("B <%- 6d>\n", -35);
 
-*/
 
 //printf("",);
 	return (0);
-}
+} */

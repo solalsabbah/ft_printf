@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 10:27:37 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/11 16:25:37 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/12/11 16:27:26 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,9 @@
 #include "../libft/libft.h"
 #include <stdio.h>
 
-/*int		print_result(char *str, int *flags, int nb);
-  {
-  return (0);				
-  } */
-
-int		print_str(va_list ap, int nb, int *flags)
+int				print_str(va_list ap, int nb, int *flags)
 {
-	int	len;
+	int			len;
 	const char	*sval;
 
 	sval = va_arg(ap, char *);
@@ -34,9 +29,9 @@ int		print_str(va_list ap, int nb, int *flags)
 	return (len);
 }
 
-int		print_char(va_list ap, int nb, int *flags)
+int			print_char(va_list ap, int nb, int *flags)
 {
-	char cval;
+	char	cval;
 
 	cval = va_arg(ap, int);
 	if (flags[1] == 1)
