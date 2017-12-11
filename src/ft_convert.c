@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 15:28:13 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/07 13:12:46 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/12/11 14:33:42 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,11 +96,37 @@ char const	*ft_convert_long_hex(long int n)
 	return (str);
 }
 
-int		ft_convert_oct(int n)
+long int		ft_convert_uns_oct(long int n)
 {
-	int o;
-	int nb;
-	int j;
+	long int o;
+	long int nb;
+	long int j;
+	int i;
+	o = 0;
+
+	nb = 0;
+	j = n;
+	i = 0;
+	while (j > 0)
+	{
+		nb = nb * 10 + (j % 8);
+		j = j / 8;
+		i++;
+	}
+	while (nb > 0 || i > 0)
+	{
+		o = o * 10 + (nb % 10);
+		nb = nb / 10;
+		i--;
+	}
+	return (o);
+}
+
+long int		ft_convert_oct(long int n)
+{
+	long int o;
+	long int nb;
+	long int j;
 
 	o = 0;
 

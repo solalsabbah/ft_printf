@@ -15,13 +15,13 @@
 
 int		main(void)
 {
-	
-	int a = 0;
-	while (a != -1000)
-	{
-	printf("%d\n", printf("%o\n", a));
-	a--;
-	}
+	int a = -1;
+
+	ft_putnbr_uns((unsigned int)a);
+	printf("\n%u\n", -1);
+	printf("%x\n", -1);
+	printf("%u\n", -2);
+	printf("%x\n", -2);
 	//printf("%d\n", printf("%#4o\n", -2));
 	
 	//printf("%d\n", printf("%#4o\n", -10));

@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 10:27:37 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/07 10:27:36 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/12/11 16:25:37 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,13 @@ int		print_str(va_list ap, int nb, int *flags)
 	int	len;
 	const char	*sval;
 
-	flags[0] = 1; // to change
 	sval = va_arg(ap, char *);
 	len = ft_strlen(sval);
-	while (nb > len)
-	{
-		ft_putchar(' ');
-		nb--;
-	}
+	if (flags[1] != 1)
+		print_width(nb, len, 0);
 	ft_putstr(sval);
+	if (flags[1] == 1)
+		print_width(nb, len, 0);
 	return (len);
 }
 
@@ -40,14 +38,17 @@ int		print_char(va_list ap, int nb, int *flags)
 {
 	char cval;
 
-	flags[0] = 1;
-	while (nb - 1 > 0)
-	{
-		ft_putchar(' ');
-		nb--;
-	}
 	cval = va_arg(ap, int);
-	ft_putchar(cval);
+	if (flags[1] == 1)
+	{
+		ft_putchar(cval);
+		print_width(nb, 1, 0);
+	}
+	else
+	{
+		print_width(nb, 1, 0);
+		ft_putchar(cval);
+	}
 	return (1);
 }
 
