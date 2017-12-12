@@ -41,6 +41,13 @@ typedef	struct		s_fct
 	int			(*f) (va_list ap, int nb, int *flags);
 }			t_fct;
 
+typedef	struct		s_list
+{
+	void		*content;
+	size_t		content_size;
+	struct s_list	*next;
+}					t_list;
+
 long int		ft_convert_oct(long int n);
 long int		ft_convert_uns_oct(long int n);
 int				ft_printf(const char *restrict format, ...);
