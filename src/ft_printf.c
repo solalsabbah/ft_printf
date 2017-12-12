@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 14:34:50 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/11 16:39:06 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/12/12 17:04:42 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	ft_printf(const char *format, ...)
 	return (ret);
 }
 
-/*int main(void)
+int main(void)
 {
 
 char *s = "salut";
@@ -53,8 +53,8 @@ char *c = "cool";
 
 //===== STR  =======//
 
-	printf("A <%5s>\n", s);
-	ft_printf("B <%5s>\n", s);
+	printf("A <%5s ca va ? j'a  %#x ans>\n", s, 32);
+	ft_printf(ANSI_COLOR_RED "A <%5s ca va ? j'a  %#x ans>\n"ANSI_COLOR_RESET, s, 32);
 	
 	printf("=== ligne 0 ====\n");
 	printf("A <%12s>\n", s);
@@ -77,7 +77,7 @@ char *c = "cool";
 	ft_printf("B <%s>\n", s);
 	
 
-
+/*
 //========== TEST  pour Hex  ==========//
 	
 	printf("A <%#5x>\n",35);
@@ -287,7 +287,7 @@ char *c = "cool";
 	printf("A <%- 6d>\n", -35);
 	ft_printf("B <%- 6d>\n", -35);
 
-
+*/
 //printf("",);
 	return (0);
-} */
+} 

@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:18:22 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/11 14:34:03 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/12/12 16:59:57 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,25 @@
 
 # include <stdarg.h>
 # include <unistd.h>
+
+#define ANSI_COLOR_RED     "\x1b[31m"
+#define ANSI_COLOR_GREEN   "\x1b[32m"
+#define ANSI_COLOR_YELLOW  "\x1b[33m"
+#define ANSI_COLOR_BLUE    "\x1b[34m"
+#define ANSI_COLOR_MAGENTA "\x1b[35m"
+#define ANSI_COLOR_CYAN    "\x1b[36m"
+#define ANSI_COLOR_RESET   "\x1b[0m"
+
+#define COLOR_NORMAL    "\033[m"
+#define COLOR_BLACK     "\033[30m"
+#define COLOR_RED       "\033[31m"
+#define COLOR_GREEN     "\033[32m"
+#define COLOR_YELLOW    "\033[33m"
+#define COLOR_BLUE      "\033[34m"
+#define COLOR_MAGENTA   "\033[35m"
+#define COLOR_CYAN      "\033[36m"
+#define COLOR_WHITE     "\033[37m"
+#define COLOR_RESET     "\033[0m"
 
 typedef	struct		s_fct
 {

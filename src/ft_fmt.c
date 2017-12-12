@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 10:27:49 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/11 16:04:04 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/12/12 16:57:15 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,27 @@
 #include "../libft/libft.h"
 #include <stdio.h>
 
-int				*ft_flags(const char *str)
+int			*init_tab(size_t n)
 {
-	int 	i;
+	size_t i;
 	int	*tab;
 
 	i = 0;
-	tab = malloc(sizeof(int) * 6);
-	while (i < 5)
+	tab = malloc(sizeof(int) * n + 1);
+	while (i < n)
 	{
 		tab[i] = 0;
 		i++;
 	}
+	return (tab);
+}
+
+int			*ft_flags(const char *str)
+{
+	int	i;
+	int	*tab;
+	
+	tab = init_tab(10);
 	i = 0;
 	while (str[i] != 0)
 	{
@@ -39,13 +48,25 @@ int				*ft_flags(const char *str)
 			tab[3] = 1;
 		if (str[i] == ' ')
 			tab[4] = 1;
+		if (str[i] == 'h' && str[i - 1] != 'h' && str[i + 1] != 'h')
+			tab[5] = 1;
+		if (str[i] == 'h' && str[i + 1] == 'h')
+			tab[6] = 1;
+		if (str[i] == 'l' && str[i - 1] != 'l' && str[i + 1] != 'l')
+			tab[7] = 1;
+		if (str[i] == 'l' && str[i + 1] == 'l')
+			tab[8] = 1;
+		if (str[i] == 'j')
+			tab[9] = 1;
+		if (str[i] == 'z')
+			tab[10] = 1;
 		i++;
 	}
 	return (tab);
 }
 
 
-t_fct	g_fct_tab[] = // is it ok to leave this like this ?
+t_fct	g_fct_tab[] =
 {
 	{'S', &print_str},
 	{'s', &print_str},
@@ -82,11 +103,11 @@ int		find_numb(const char *str)
 
 int			ft_fmt(const char *str, va_list ap)
 {
-	int i;
-	int len;
-	int nb;
-	int *flags;
-	char *fmt;
+	int		i;
+	int 	len;
+	int 	nb;
+	int 	*flags;
+	char	*fmt;
 
 	i = 0;
 	if (str[0] == '%')
@@ -94,18 +115,18 @@ int			ft_fmt(const char *str, va_list ap)
 		ft_putchar('%');
 		return (0);
 	}
-	len  = ft_strpbrk(str,"sSpdDioOuUxXcCBb") - str;
+	len = ft_strpbrk(str, "sSpdDioOuUxXcCBb") - str;
 	fmt = ft_strsub(str, 0, len);
 	flags = ft_flags(fmt);
 	nb = find_numb(fmt);
-	str = ft_strpbrk(str,"sSpdDioOuUxXcCBb");
+	str = ft_strpbrk(str, "sSpdDioOuUxXcCBb");
 	while (g_fct_tab[i].c != '0')
 	{
-			if (g_fct_tab[i].c == str[0])
-			{
-				g_fct_tab[i].f(ap, nb, flags);
-				return (len);
-			}
+		if (g_fct_tab[i].c == str[0])
+		{
+			g_fct_tab[i].f(ap, nb, flags);
+			return (len);
+		}
 		i++;
 	}
 	return (len);

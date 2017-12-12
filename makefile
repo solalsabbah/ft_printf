@@ -6,7 +6,7 @@
 #    By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/29 10:48:28 by ssabbah           #+#    #+#              #
-#    Updated: 2017/12/11 17:03:46 by ssabbah          ###   ########.fr        #
+#    Updated: 2017/12/12 15:32:04 by ssabbah          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,36 +24,50 @@ SRC= 	ft_printf.c\
 		print_oct.c\
 		print_hex.c\
 		print_int.c\
+	
+OBJ= $(addprefix $(OBJDIR), $(SRC:.c=.o))
 
-H_DIR = includes
-C_DIR = src
-O_DIR = objects
+CC= gcc
 
-LINKS = -I$(H_DIR)
+CFLAGS= -Wall -Wextra -Werror
 
-C_FILES = $(shell find $(C_DIR) -type f | grep "\.c")
+LIBFT= ./libft/libft.a
+LIBINC= -I ./libft
+LIBLINK= -L ./libft -lft
 
-O_FILES = $(C_FILES:$(C_DIR)/%.c=$(O_DIR)/%.o)
-
-FLAGS = -Werror -Wextra -Wall
+SRCDIR= ./src/
+INCDIR= ./includes/
+OBJDIR= ./obj/
 
 all: $(NAME)
 
-$(NAME): $(O_FILES)
-		@ar rcs $@ $^
+obj:
+	mkdir -p $(OBJDIR)
 
-$(O_DIR)/%.o: $(C_DIR)/%.c
-		@mkdir -p $(O_DIR)
-			@gcc $(FLAGS) $(LINKS) -o $@ -c $<
+$(OBJDIR)%.o:$(SRCDIR)%.c
+	$(CC) $(CFLAGS) $(LIBINC) -I $(INCDIR) -o $@ -c $<
+
+libft: $(LIBFT)
+
+$(LIBFT):
+	make -C ./libft
+
+$(NAME): obj libft $(OBJ)
+	$(CC) $(LIBLINK) -o $(NAME) $(OBJ)
+
+remlib:
+	rm -rf $(LIBFT)
+
+remoblib:
+	make fclean -C ./libft/
 
 clean:
-		@echo "Deleting Objects..."
-			rm -rf $(O_DIR)
-
+	@echo "Deleting Objects"
+	rm -rf ./libft/*.o
+	rm -rf $(OBJDIR)
 
 fclean: clean
-		@echo "Deleting libftprintf.a..."
-			@rm -f $(NAME)
+	rm -rf $(LIBFT)
+	rm -rf $(NAME)
 
-re : fclean all
-
+re: fclean all
