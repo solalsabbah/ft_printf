@@ -6,12 +6,11 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 14:53:57 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/11 15:57:23 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/12/13 13:58:42 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/header.h"
-#include "../libft/libft.h"
+#include "../includes/libft.h"
 #include <stdio.h>
 
 long int	negtounsigned(int nb)

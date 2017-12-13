@@ -6,11 +6,11 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 17:31:51 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/07 17:33:15 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/12/13 14:42:56 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
 int		abs_val(int nb)
 {

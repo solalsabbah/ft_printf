@@ -6,12 +6,11 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 10:27:49 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/12 16:57:15 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/12/13 17:53:13 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/header.h"
-#include "../libft/libft.h"
+#include "../includes/libft.h"
 #include <stdio.h>
 
 int			*init_tab(size_t n)
@@ -77,7 +76,7 @@ t_fct	g_fct_tab[] =
 	{'o', &print_oct},
 	{'O', &print_oct},
 	{'x', &print_hex},
-	{'X', &print_hex},
+	{'X', &print_maj_hex},
 	{'c', &print_char},
 	{'C', &print_char},
 	{'n', &print_blank},
@@ -106,6 +105,7 @@ int			ft_fmt(const char *str, va_list ap)
 	int		i;
 	int 	len;
 	int 	nb;
+	int		ret;
 	int 	*flags;
 	char	*fmt;
 
@@ -113,7 +113,7 @@ int			ft_fmt(const char *str, va_list ap)
 	if (str[0] == '%')
 	{
 		ft_putchar('%');
-		return (0);
+		return (1);
 	}
 	len = ft_strpbrk(str, "sSpdDioOuUxXcCBb") - str;
 	fmt = ft_strsub(str, 0, len);
@@ -124,8 +124,8 @@ int			ft_fmt(const char *str, va_list ap)
 	{
 		if (g_fct_tab[i].c == str[0])
 		{
-			g_fct_tab[i].f(ap, nb, flags);
-			return (len);
+		 	ret = g_fct_tab[i].f(ap, nb, flags);
+			return (ret);
 		}
 		i++;
 	}

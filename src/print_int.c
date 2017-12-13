@@ -6,12 +6,11 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 17:45:39 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/07 17:51:46 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/12/13 14:06:18 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/header.h"
-#include "../libft/libft.h"
+#include "../includes/libft.h"
 #include <stdio.h>
 
 int		first_case(int nb, int len, int ival, int *flags)

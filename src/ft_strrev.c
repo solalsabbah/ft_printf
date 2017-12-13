@@ -6,11 +6,11 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 11:55:01 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/11/29 11:55:05 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/12/13 15:41:54 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
 char *ft_strrev(char *str)
 {

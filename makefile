@@ -6,34 +6,20 @@
 #    By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/29 10:48:28 by ssabbah           #+#    #+#              #
-#    Updated: 2017/12/12 15:32:04 by ssabbah          ###   ########.fr        #
+#    Updated: 2017/12/13 17:33:55 by ssabbah          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME= libftprintf.a
 
-SRC= 	ft_printf.c\
-		ft_convert.c\
-		ft_putsign.c\
-		ft_fmt.c\
-		print_fmt.c\
-		print_flags.c\
-		print_width.c\
-		print_bin.c\
-		print_ptr.c\
-		print_oct.c\
-		print_hex.c\
-		print_int.c\
-	
-OBJ= $(addprefix $(OBJDIR), $(SRC:.c=.o))
+SRC= src/*.c 
 
-CC= gcc
+OBJ= $(addprefix $(OBJDIR), $(SRC:.c=o.))
 
-CFLAGS= -Wall -Wextra -Werror
+CC = gcc
 
-LIBFT= ./libft/libft.a
-LIBINC= -I ./libft
-LIBLINK= -L ./libft -lft
+HEADER= includes
+FLAGS=  -w -g -Wall -Wextra -Werror
 
 SRCDIR= ./src/
 INCDIR= ./includes/
@@ -42,32 +28,21 @@ OBJDIR= ./obj/
 all: $(NAME)
 
 obj:
-	mkdir -p $(OBJDIR)
+	@ mkdir -p $(OBJDIR)
 
-$(OBJDIR)%.o:$(SRCDIR)%.c
-	$(CC) $(CFLAGS) $(LIBINC) -I $(INCDIR) -o $@ -c $<
-
-libft: $(LIBFT)
-
-$(LIBFT):
-	make -C ./libft
-
-$(NAME): obj libft $(OBJ)
-	$(CC) $(LIBLINK) -o $(NAME) $(OBJ)
-
-remlib:
-	rm -rf $(LIBFT)
-
-remoblib:
-	make fclean -C ./libft/
-
+$(NAME): obj
+		@ $(CC) $(FLAGS) -I $(HEADER) -c $(SRC)
+		@ mv  *.o $(OBJDIR)
+		@ ar rc $(NAME) obj/*.o
+		@echo  '\x1b[42m' '\x1b[34m' " *================================*  " '\x1b[0m'
+		@echo  '\x1b[42m' '\x1b[34m' " *                                *  " '\x1b[0m'
+		@echo  '\x1b[42m' '\x1b[34m' " *  Compiling libftprintf.a... OK *  " '\x1b[0m'
+		@echo  '\x1b[42m' '\x1b[34m' " *                                *  " '\x1b[0m'
+		@echo  '\x1b[42m' '\x1b[34m' " *================================*  " '\x1b[0m'
 clean:
-	@echo "Deleting Objects"
-	rm -rf ./libft/*.o
-	rm -rf $(OBJDIR)
+		@ rm -rf $(OBJDIR)
 
 fclean: clean
-	rm -rf $(LIBFT)
-	rm -rf $(NAME)
+		@ rm -f $(NAME)
 
 re: fclean all

@@ -6,12 +6,11 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 10:27:37 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/12 15:57:52 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/12/13 14:06:02 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/header.h"
-#include "../libft/libft.h"
+#include "../includes/libft.h"
 #include <stdio.h>
 
 int				print_str(va_list ap, int nb, int *flags)

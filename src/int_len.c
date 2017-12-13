@@ -6,9 +6,11 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/27 15:04:31 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/07 13:42:38 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/12/13 13:56:03 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../includes/libft.h"
 
 size_t		int_len(long int n)
 {

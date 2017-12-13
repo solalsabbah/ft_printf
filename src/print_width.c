@@ -6,12 +6,11 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 17:49:23 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/07 17:51:40 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/12/13 14:06:46 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/header.h"
-#include "../libft/libft.h"
+#include "../includes/libft.h"
 
 int		print_width(int nb, int len, int flag)
 {

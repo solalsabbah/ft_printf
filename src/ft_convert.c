@@ -6,12 +6,11 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 15:28:13 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/12 15:57:25 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/12/13 17:23:40 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/header.h"
-#include "../libft/libft.h"
+#include "../includes/libft.h"
 #include <stdio.h>
 
 char	*append_char(char const *s1, char c)
@@ -40,21 +39,27 @@ char	*append_char(char const *s1, char c)
 	return (NULL);
 }
 
-char	convert(int i)
+char	convert(int i, int maj)
 {
+	int a;
+
+	if (maj == 1)
+		a = 0;
+	else
+		a = 32;
 	if (i > 9)
-		return (i + 87);
+		return (i + 55 + a);
 	else
 		return (i + 48);
 	return (0);
 }
 
-char	*ft_convert_hex(int n)
+char	*ft_convert_hex(int n, int maj)
 {
-	int	r;
+	int		r;
 	int 	q;
-	char *str;
-	char *c;
+	char 	*str;
+	char 	*c;
 
 	q = 1;
 	str = malloc(sizeof(char) * 1);
@@ -63,7 +68,7 @@ char	*ft_convert_hex(int n)
 		q = n / 16;
 		r = n % 16;
 		c = malloc(sizeof(char) * 2);
-		c[0] = convert(r);
+		c[0] = convert(r, maj);
 		c[1] = 0;
 		str = ft_strcat(str, c);
 		n = q;
@@ -72,13 +77,13 @@ char	*ft_convert_hex(int n)
 	return (str);
 }
 
-char const	*ft_convert_long_hex(long int n)
+char const	*ft_convert_long_hex(long int n, int i)
 {
-	int		r;
+	int			r;
 	long int	q;
 	char		*str;
 	char		*c;
-	
+
 	q = 1;
 	str = ft_strnew(2);
 	while (q != 0)
@@ -86,7 +91,7 @@ char const	*ft_convert_long_hex(long int n)
 		q = n / 16;
 		r = n % 16;
 		c = ft_strnew(2);
-		c[0] = convert(r);
+		c[0] = convert(r, i);
 		c[1] = 0;
 		str = ft_strcat(str, c);
 		free(c);

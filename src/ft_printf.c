@@ -6,51 +6,62 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 14:34:50 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/12 17:04:42 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/12/13 17:57:21 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdarg.h>
-#include "../includes/header.h"
-#include "../libft/libft.h"
+#include "../includes/libft.h"
 
-int	ft_printf(const char *format, ...)
+int				ft_printf(const char *format, ...)
 {
 	va_list		ap;
 	const char	*p;
-	int		flag;
-	int		j;
-	int		ret;
+	int			flag;
+	int			i;
+	int			ret;
 	
-	ret = 0;
 	va_start(ap, format);
-	j = 0;
 	p = format;
+	i = 0;
+	ret = 0;
 	flag = 0;
-	while (p[j] != 0) 
+	while (p[i] != 0) 
 	{
-		if (p[j] != '%')
-			ft_putchar(p[j]);
-		else if (p[j] == '%')
+		if (p[i] != '%')
+			ft_putchar(p[i]);
+		else if (p[i] == '%')
 		{
-			j++;
-			j = j + ft_fmt(&p[j], ap);
+			ret = ret + ft_fmt(&p[i + 1], ap);
+			flag = flag + ft_strpbrk(&p[i + 1], "sSpdDioOuUxXcCBb%") - &p[i] + 1; 
+			i = ft_strpbrk(&p[i + 1], "sSpdDioOuUxXcCBb%") - &p[0];
 		}
-		j++;
+		i++;
 	}
 	va_end(ap);
-	ret = ret + j;
+//	printf("\n|<%d>|\n", flag);
+//	printf("\n<|%d|>\n", ret);
+//	printf("\n<%d>\n", i);
+	ret = i - flag + ret;
 	return (ret);
 }
 
+/*
 int main(void)
 {
 
-char *s = "salut";
-char *c = "cool";
-
-
+	printf("\n<%d>\n", printf("%%"));
+	printf("\n<%d>\n", ft_printf("%%"));
+	printf("#############\n");	
+	printf("\n<%d>\n", printf("%10x", 42));
+	printf("\n<%d>\n", ft_printf("%10x", 42));
+	printf("\n<%d>\n", ft_printf("%10X", 42));
+	printf("\n<|%d|>\n", printf("%X", 23454));
+	printf("\n<%d>\n", ft_printf("%X", 23454));
+	printf("\n<%d>\n", ft_printf("%x", 23454));
+	return (0);
+}
 //===== STR  =======//
 
 	printf("A <%5s ca va ? j'a  %#x ans>\n", s, 32);
@@ -77,7 +88,7 @@ char *c = "cool";
 	ft_printf("B <%s>\n", s);
 	
 
-/*
+
 //========== TEST  pour Hex  ==========//
 	
 	printf("A <%#5x>\n",35);
@@ -287,7 +298,7 @@ char *c = "cool";
 	printf("A <%- 6d>\n", -35);
 	ft_printf("B <%- 6d>\n", -35);
 
-*/
+
 //printf("",);
 	return (0);
-} 
+} */
