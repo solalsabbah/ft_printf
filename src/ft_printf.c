@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 14:34:50 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/13 17:57:21 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/12/14 16:13:19 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,15 +51,22 @@ int				ft_printf(const char *format, ...)
 int main(void)
 {
 
-	printf("\n<%d>\n", printf("%%"));
-	printf("\n<%d>\n", ft_printf("%%"));
-	printf("#############\n");	
-	printf("\n<%d>\n", printf("%10x", 42));
-	printf("\n<%d>\n", ft_printf("%10x", 42));
-	printf("\n<%d>\n", ft_printf("%10X", 42));
-	printf("\n<|%d|>\n", printf("%X", 23454));
-	printf("\n<%d>\n", ft_printf("%X", 23454));
-	printf("\n<%d>\n", ft_printf("%x", 23454));
+//	printf("\n<%d>\n", printf("%%"));
+//	printf("\n<%d>\n", ft_printf("%%"));
+//	printf("#############\n");	
+//	printf("\n<%d>\n", printf("%10x", 42));
+//	printf("\n<%d>\n", ft_printf("%10X", 42));
+//	printf("\n<|%d|>\n", printf("%X", 23454));
+//
+	ft_printf("%o <<= \n", -44332);
+	printf("=======\n");
+	printf("%o\n", -44332);
+	printf("=======\n");
+	ft_printf("|%o|\n", -32);
+	printf("|%o|\n", -32);
+//	ft_printf("%#X\n", 0);
+//	printf("\n<%d>\n", ft_printf("%X", 23454));
+//	printf("\n<%d>\n", ft_printf("%x", 23454));
 	return (0);
 }
 //===== STR  =======//

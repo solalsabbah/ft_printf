@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 17:45:39 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/13 14:06:18 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/12/14 14:25:25 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,9 +115,14 @@ int		print_int(va_list ap, int nb, int *flags)
 	ival = va_arg(ap, int);
 	len = int_len(ival);
 	if (len > nb)
-		ret = len;
+	{
+		if (flags[2] == 1 && ival > 0)
+			ret = len + 1;
+		else
+			ret = len;
+	}
 	else
-		ret = nb;
+			ret = nb;
 	if (first_case(nb, len, ival, flags) == 1)
 		return (ret);
 	if (second_case(nb, len, ival, flags) == 1)

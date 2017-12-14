@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/11 15:52:58 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/13 17:22:27 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/12/14 16:12:13 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,11 @@ typedef	struct		s_fct
 	int			(*f) (va_list ap, int nb, int *flags);
 }			t_fct;
 
-long int		ft_convert_oct(long int n);
-long int		ft_convert_uns_oct(long int n);
+long int		ft_convert_oct(unsigned int n);
+unsigned int	ft_convert_uns_oct(unsigned int n);
 int				ft_printf(const char *restrict format, ...);
 int				ft_putsign(int	nb);
-char			*ft_convert_hex(int n, int maj);
+char			*ft_convert_hex(unsigned int n, int maj);
 char			*ft_convert_maj_hex(int n);
 char const		*ft_convert_long_hex(long int n, int maj);
 int				ft_width(int ival, int nb);

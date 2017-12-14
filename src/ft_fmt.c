@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 10:27:49 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/13 17:53:13 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/12/14 14:31:45 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int			*ft_flags(const char *str)
 {
 	int	i;
 	int	*tab;
-	
+
 	tab = init_tab(10);
 	i = 0;
 	while (str[i] != 0)
@@ -100,6 +100,27 @@ int		find_numb(const char *str)
 	return (0);
 }
 
+int			print_percent(int nb, int *flags)
+{
+			if (flags[1] == 1)
+			{
+				ft_putchar('%');
+				if (flags[3] == 0)
+					print_width(nb, 1, 1);
+				else 
+					print_width(nb, 1, 0);
+			}
+			else
+			{
+					print_width(nb, 1, 1);
+					ft_putchar('%');
+			}
+			if (nb != 0)
+				return (nb);
+			else 
+				return (1);
+}
+
 int			ft_fmt(const char *str, va_list ap)
 {
 	int		i;
@@ -110,21 +131,21 @@ int			ft_fmt(const char *str, va_list ap)
 	char	*fmt;
 
 	i = 0;
-	if (str[0] == '%')
-	{
-		ft_putchar('%');
-		return (1);
-	}
 	len = ft_strpbrk(str, "sSpdDioOuUxXcCBb") - str;
 	fmt = ft_strsub(str, 0, len);
 	flags = ft_flags(fmt);
 	nb = find_numb(fmt);
+	if (ft_strpbrk(str, "sSpdDioOuUxXcCBb%") == '%')
+	{
+		ret = print_percent(nb, flags);
+		return (ret);
+	}
 	str = ft_strpbrk(str, "sSpdDioOuUxXcCBb");
 	while (g_fct_tab[i].c != '0')
 	{
 		if (g_fct_tab[i].c == str[0])
 		{
-		 	ret = g_fct_tab[i].f(ap, nb, flags);
+			ret = g_fct_tab[i].f(ap, nb, flags);
 			return (ret);
 		}
 		i++;

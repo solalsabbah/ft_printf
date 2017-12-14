@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 15:28:13 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/13 17:23:40 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/12/14 16:09:00 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ char	convert(int i, int maj)
 	return (0);
 }
 
-char	*ft_convert_hex(int n, int maj)
+char	*ft_convert_hex(unsigned int n, int maj)
 {
 	int		r;
 	int 	q;
@@ -77,75 +77,23 @@ char	*ft_convert_hex(int n, int maj)
 	return (str);
 }
 
-char const	*ft_convert_long_hex(long int n, int i)
+long int		ft_convert_oct(unsigned int n)
 {
-	int			r;
-	long int	q;
-	char		*str;
-	char		*c;
+	long int	res;
+	long int 	nb;
+	long int 	j;
+	long int 	base;
 
-	q = 1;
-	str = ft_strnew(2);
-	while (q != 0)
-	{
-		q = n / 16;
-		r = n % 16;
-		c = ft_strnew(2);
-		c[0] = convert(r, i);
-		c[1] = 0;
-		str = ft_strcat(str, c);
-		free(c);
-		n = q;
-	}
-	ft_strrev(str);
-	return (str);
-}
-
-long int		ft_convert_uns_oct(long int n)
-{
-	long int o;
-	long int nb;
-	long int j;
-	int i;
-	o = 0;
-
+	res = 0;
 	nb = 0;
-	j = n;
-	i = 0;
+	j = (long int)n;
+	base = 1;
 	while (j > 0)
-	{
+	{	
 		nb = nb * 10 + (j % 8);
+		res = res + (j % 8) * base;
 		j = j / 8;
-		i++;
+		base = base * 10;
 	}
-	while (nb > 0 || i > 0)
-	{
-		o = o * 10 + (nb % 10);
-		nb = nb / 10;
-		i--;
-	}
-	return (o);
-}
-
-long int		ft_convert_oct(long int n)
-{
-	long int o;
-	long int nb;
-	long int j;
-
-	o = 0;
-
-	nb = 0;
-	j = n;
-	while (j > 0)
-	{
-		nb = nb * 10 + (j % 8);
-		j = j / 8;
-	}
-	while (nb > 0)
-	{
-		o = o * 10 + (nb % 10);
-		nb = nb / 10;
-	}
-	return (o);
+	return (res);
 }
