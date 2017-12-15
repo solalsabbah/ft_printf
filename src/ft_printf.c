@@ -50,7 +50,7 @@ int				ft_printf(const char *format, ...)
 /*
 int main(void)
 {
-
+	int a;
 //	printf("\n<%d>\n", printf("%%"));
 //	printf("\n<%d>\n", ft_printf("%%"));
 //	printf("#############\n");	
@@ -58,7 +58,13 @@ int main(void)
 //	printf("\n<%d>\n", ft_printf("%10X", 42));
 //	printf("\n<|%d|>\n", printf("%X", 23454));
 //
-	ft_printf("%o <<= \n", -44332);
+	a = ft_printf("<%5.43d>", 42);
+	printf("\n%d\n", a);
+	printf("=======\n");
+	a = ft_printf("<%.43d>", 42);
+	printf("\n%d\n", a);
+	a = ft_printf("%%");
+	printf("\n%d\n", a);
 	printf("=======\n");
 	printf("%o\n", -44332);
 	printf("=======\n");

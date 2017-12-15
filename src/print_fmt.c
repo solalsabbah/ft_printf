@@ -25,6 +25,8 @@ int				print_str(va_list ap, int nb, int *flags)
 	ft_putstr(sval);
 	if (flags[1] == 1)
 		print_width(nb, len, 0);
+	if (nb > len) 
+		return (nb);
 	return (len);
 }
 
@@ -43,6 +45,8 @@ int			print_char(va_list ap, int nb, int *flags)
 		print_width(nb, 1, 0);
 		ft_putchar(cval);
 	}
+	if (nb > 1)
+		return (nb);
 	return (1);
 }
 

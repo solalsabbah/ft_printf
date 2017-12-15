@@ -84,63 +84,49 @@ t_fct	g_fct_tab[] =
 	{'U', &print_uns_int},
 	{'b', &print_bin},
 	{'B', &print_bin},
+	{'%', &print_percent},
 	{0, NULL}
 };
 
-int		find_numb(const char *str)
+int			print_percent(va_list  ap, int nb, int *flags)
 {
-	int i;
-	i = 0;
-	while (*str)
+	ap = 0;
+	if (flags[1] == 1)
 	{
-		if (*str > '0' && *str <= '9')
-			return (ft_atoi(str));
-		str++;
+		ft_putchar('%');
+		if (flags[3] == 1)
+			print_width(nb, 1, 1);
+		else 
+			print_width(nb, 1, 0);
 	}
-	return (0);
-}
-
-int			print_percent(int nb, int *flags)
-{
-			if (flags[1] == 1)
-			{
-				ft_putchar('%');
-				if (flags[3] == 0)
-					print_width(nb, 1, 1);
-				else 
-					print_width(nb, 1, 0);
-			}
-			else
-			{
-					print_width(nb, 1, 1);
-					ft_putchar('%');
-			}
-			if (nb != 0)
-				return (nb);
-			else 
-				return (1);
+	else
+	{
+		print_width(nb, 1, 0);
+		ft_putchar('%');
+	}
+	if (nb != 0)
+		return (nb);
+	else 
+		return (1);
 }
 
 int			ft_fmt(const char *str, va_list ap)
 {
-	int		i;
+	int	i;
 	int 	len;
 	int 	nb;
-	int		ret;
+	int	ret;
 	int 	*flags;
+	int	prec;
 	char	*fmt;
-
+	
 	i = 0;
-	len = ft_strpbrk(str, "sSpdDioOuUxXcCBb") - str;
+	len = ft_strpbrk(str, "sSpdDioOuUxXcCBb%") - str;
 	fmt = ft_strsub(str, 0, len);
 	flags = ft_flags(fmt);
-	nb = find_numb(fmt);
-	if (ft_strpbrk(str, "sSpdDioOuUxXcCBb%") == '%')
-	{
-		ret = print_percent(nb, flags);
-		return (ret);
-	}
-	str = ft_strpbrk(str, "sSpdDioOuUxXcCBb");
+	nb = find_width(fmt);
+	prec = find_precision(fmt);
+	str = ft_strpbrk(str, "sSpdDioOuUxXcCBb%");
 	while (g_fct_tab[i].c != '0')
 	{
 		if (g_fct_tab[i].c == str[0])

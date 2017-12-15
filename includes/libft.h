@@ -51,16 +51,17 @@ typedef	struct		s_fct
 	int			(*f) (va_list ap, int nb, int *flags);
 }			t_fct;
 
-long int		ft_convert_oct(unsigned int n);
-unsigned int	ft_convert_uns_oct(unsigned int n);
+long int			ft_convert_oct(unsigned int n);
+unsigned int			ft_convert_uns_oct(unsigned int n);
 int				ft_printf(const char *restrict format, ...);
 int				ft_putsign(int	nb);
-char			*ft_convert_hex(unsigned int n, int maj);
-char			*ft_convert_maj_hex(int n);
-char const		*ft_convert_long_hex(long int n, int maj);
+char				*ft_convert_hex(unsigned int n, int maj);
+char				*ft_convert_maj_hex(int n);
+char const			*ft_convert_long_hex(long int n, int maj);
 int				ft_width(int ival, int nb);
-int				print_char(va_list ap, int nb, int *flags);
 int				print_hex(va_list ap, int nb, int *flags);
+int				print_char(va_list ap, int nb, int *flags);
+int				print_percent(va_list ap, int nb, int *flags);
 int				print_maj_hex(va_list ap, int nb, int *flags);
 int				print_oct(va_list ap, int nb, int *flags);
 int				print_int(va_list ap, int nb, int *flags);
@@ -71,7 +72,9 @@ int				print_bin(va_list ap, int nb, int *flags);
 int				print_uns_int(va_list ap, int nb, int *flags);
 int				ft_fmt(const char *str, va_list ap);
 int				print_width(int nb, int len, int flag);
-long int		negtounsigned(int nb);
+int				find_width(const char *str);
+int				find_precision(const char *str);
+long int			negtounsigned(int nb);
 
 
 

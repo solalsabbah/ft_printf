@@ -24,15 +24,19 @@ int			print_flags_maj_hex(const char *str, int len, int nb, int *flags)
 			print_width(nb, len, 0);
 		if (str[0] != '0')
 			ft_putstr("0X");
+		else
+			nb = nb + 2;
 		ft_putstr(str);
 	}
 	if (flags[1] == 1)
 	{
 		if (flags[0] == 1)
 		{
-			nb = nb - 2;
 			if (str[0] != '0')
+			{
 				ft_putstr("0X");
+				nb = nb - 2;
+			}
 		}
 		ft_putstr(str);
 		print_width(nb, len, 0);
@@ -59,15 +63,19 @@ int			print_flags_hex(const char *str, int len, int nb, int *flags)
 			print_width(nb, len, 0);
 		if (str[0] != '0')
 			ft_putstr("0x");
+		else
+			nb = nb + 2;
 		ft_putstr(str);
 	}
 	if (flags[1] == 1)
 	{
 		if (flags[0] == 1)
 		{
-			nb = nb - 2;
 			if (str[0] != '0')
+			{
 				ft_putstr("0x");
+				nb = nb - 2;
+			}
 		}
 		ft_putstr(str);
 		print_width(nb, len, 0);
@@ -118,5 +126,7 @@ int			print_hex(va_list ap, int nb, int *flags)
 		len = nb;
 	if (nb == 0 && flags[0] == 1)
 		len = len + 2;
+	if (ival == 0 && flags[0] == 1)
+		len = len - 2;
 	return (len);
 }

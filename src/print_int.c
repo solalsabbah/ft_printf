@@ -59,7 +59,8 @@ int		second_case(int nb, int len, int ival, int *flags)
 	}
 	if (flags[4] == 1 && flags[1] != 1 && flags[2] != 1 && flags[3] != 1)
 	{
-		ft_putchar(' ');
+		if (ival > 0 && nb == 0)
+			ft_putchar(' ');
 		ft_putnbr(ival);
 		return (1);
 	}
@@ -103,26 +104,36 @@ int		fourth_case(int nb, int len, int ival, int *flags)
 		ft_putnbr(ival);
 		return (1);
 	}
+	if (flags[1] == 1 && flags[3] == 1)
+	{
+		ft_putnbr(ival);
+		print_width(nb, len, 0);
+		return (1);
+	}
 	return (0);
 }
 
 int		print_int(va_list ap, int nb, int *flags)
 {
-	int len;
-	int ival;
-	int ret;
+	int 		len;
+	int 		ival;
+	int 		ret;
+	long int	lval;
 
 	ival = va_arg(ap, int);
 	len = int_len(ival);
 	if (len > nb)
 	{
-		if (flags[2] == 1 && ival > 0)
+		if ((flags[2] == 1 && ival >= 0) || (flags[4] == 1 && ival >= 0))
 			ret = len + 1;
 		else
 			ret = len;
 	}
 	else
+	{
+	
 			ret = nb;
+	}
 	if (first_case(nb, len, ival, flags) == 1)
 		return (ret);
 	if (second_case(nb, len, ival, flags) == 1)
