@@ -33,32 +33,21 @@ int			*ft_flags(const char *str)
 	int	i;
 	int	*tab;
 
-	tab = init_tab(10);
 	i = 0;
+	tab = init_tab(10);
 	while (str[i] != 0)
 	{
-		if (str[i] == '#')
-			tab[0] = 1;
-		if (str[i] == '-')
-			tab[1] = 1;
-		if (str[i] == '+')
-			tab[2] = 1;
-		if (((str[i] == '#' || str[i] == '-' || str[i] == '+' || str[i] == ' ') && str[i + 1] == '0') || str[0] == '0')
-			tab[3] = 1;
-		if (str[i] == ' ')
-			tab[4] = 1;
-		if (str[i] == 'h' && str[i - 1] != 'h' && str[i + 1] != 'h')
-			tab[5] = 1;
-		if (str[i] == 'h' && str[i + 1] == 'h')
-			tab[6] = 1;
-		if (str[i] == 'l' && str[i - 1] != 'l' && str[i + 1] != 'l')
-			tab[7] = 1;
-		if (str[i] == 'l' && str[i + 1] == 'l')
-			tab[8] = 1;
-		if (str[i] == 'j')
-			tab[9] = 1;
-		if (str[i] == 'z')
-			tab[10] = 1;
+		str[i] == '#' ? tab[0] = 1 : 0;
+		str[i] == '-' ? tab[1] = 1 : 0;
+		str[i] == '+' ? tab[2] = 1 : 0;
+		((str[i] == '#' || str[i] == '-' || str[i] == '+' || str[i] == ' ') && str[i + 1] == '0') || str[0] == '0' ? tab[3] = 1 : 0;
+		str[i] == ' ' ? tab[4] = 1 : 0;
+		str[i] == 'h' && str[i - 1] != 'h' && str[i + 1] != 'h' ? tab[5] = 1 : 0;
+		str[i] == 'h' && str[i + 1] == 'h' ? tab[6] = 1 : 0;
+		str[i] == 'l' && str[i - 1] != 'l' && str[i + 1] != 'l' ? tab[7] = 1 : 0;
+		str[i] == 'l' && str[i + 1] == 'l' ? tab[8] = 1 : 0;
+		str[i] == 'j' ? tab[9] = 1 : 0;
+		str[i] == 'z' ?	tab[10] = 1 : 0;
 		i++;
 	}
 	return (tab);
@@ -88,50 +77,28 @@ t_fct	g_fct_tab[] =
 	{0, NULL}
 };
 
-int			print_percent(va_list  ap, int nb, int *flags)
-{
-	ap = 0;
-	if (flags[1] == 1)
-	{
-		ft_putchar('%');
-		if (flags[3] == 1)
-			print_width(nb, 1, 1);
-		else 
-			print_width(nb, 1, 0);
-	}
-	else
-	{
-		print_width(nb, 1, 0);
-		ft_putchar('%');
-	}
-	if (nb != 0)
-		return (nb);
-	else 
-		return (1);
-}
-
 int			ft_fmt(const char *str, va_list ap)
 {
 	int	i;
 	int 	len;
-	int 	nb;
 	int	ret;
-	int 	*flags;
 	int	prec;
-	char	*fmt;
+	int 	width;
+	int 	*flags;
+//	char	*fmt;
 	
 	i = 0;
 	len = ft_strpbrk(str, "sSpdDioOuUxXcCBb%") - str;
-	fmt = ft_strsub(str, 0, len);
-	flags = ft_flags(fmt);
-	nb = find_width(fmt);
-	prec = find_precision(fmt);
+	str = ft_strsub(str, 0, len + 1);
+	flags = ft_flags(str);
+	width = find_width(str);
+	prec = find_precision(str);
 	str = ft_strpbrk(str, "sSpdDioOuUxXcCBb%");
 	while (g_fct_tab[i].c != '0')
 	{
 		if (g_fct_tab[i].c == str[0])
 		{
-			ret = g_fct_tab[i].f(ap, nb, flags);
+			ret = g_fct_tab[i].f(ap, width, flags);
 			return (ret);
 		}
 		i++;

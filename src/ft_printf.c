@@ -16,17 +16,15 @@
 
 int				ft_printf(const char *format, ...)
 {
+	int		i;
+	int		ret;
 	va_list		ap;
 	const char	*p;
-	int			flag;
-	int			i;
-	int			ret;
-	
-	va_start(ap, format);
-	p = format;
+
 	i = 0;
 	ret = 0;
-	flag = 0;
+	va_start(ap, format);
+	p = format;
 	while (p[i] != 0) 
 	{
 		if (p[i] != '%')
@@ -34,23 +32,19 @@ int				ft_printf(const char *format, ...)
 		else if (p[i] == '%')
 		{
 			ret = ret + ft_fmt(&p[i + 1], ap);
-			flag = flag + ft_strpbrk(&p[i + 1], "sSpdDioOuUxXcCBb%") - &p[i] + 1; 
 			i = ft_strpbrk(&p[i + 1], "sSpdDioOuUxXcCBb%") - &p[0];
 		}
+		ret++;
 		i++;
 	}
 	va_end(ap);
-//	printf("\n|<%d>|\n", flag);
-//	printf("\n<|%d|>\n", ret);
-//	printf("\n<%d>\n", i);
-	ret = i - flag + ret;
-	return (ret);
+	return (ret - 1);
 }
 
-/*
 int main(void)
 {
-	int a;
+	int a;	
+	int b;
 //	printf("\n<%d>\n", printf("%%"));
 //	printf("\n<%d>\n", ft_printf("%%"));
 //	printf("#############\n");	
@@ -58,23 +52,22 @@ int main(void)
 //	printf("\n<%d>\n", ft_printf("%10X", 42));
 //	printf("\n<|%d|>\n", printf("%X", 23454));
 //
-	a = ft_printf("<%5.43d>", 42);
-	printf("\n%d\n", a);
+	a = ft_printf("12345%5d", 42);
+	b = printf("12345%5d", 42);
+	printf("\nreturn value :%d\n", a);
+	printf("\nreturn value :%d\n", b);
 	printf("=======\n");
-	a = ft_printf("<%.43d>", 42);
-	printf("\n%d\n", a);
-	a = ft_printf("%%");
-	printf("\n%d\n", a);
+	a = ft_printf("123a5%12d", 42);
+	b = printf("123a5%12d", 42);
+	printf("\nreturn value :%d\n", a);
+	printf("\nreturn value :%d\n", b);
 	printf("=======\n");
-	printf("%o\n", -44332);
-	printf("=======\n");
-	ft_printf("|%o|\n", -32);
-	printf("|%o|\n", -32);
 //	ft_printf("%#X\n", 0);
 //	printf("\n<%d>\n", ft_printf("%X", 23454));
 //	printf("\n<%d>\n", ft_printf("%x", 23454));
 	return (0);
 }
+/*
 //===== STR  =======//
 
 	printf("A <%5s ca va ? j'a  %#x ans>\n", s, 32);
