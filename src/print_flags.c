@@ -12,10 +12,11 @@
 
 #include "../includes/libft.h"
 
-int	print_blank(va_list ap, int nb, int *flags)
+int	print_blank(va_list ap, int nb, int prec, int *flags)
 {
 	nb = 0;
 	ap = 0;
+	prec = 0;
 	flags = 0;
 	return (0);
 }

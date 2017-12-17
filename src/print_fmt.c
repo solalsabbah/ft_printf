@@ -13,7 +13,7 @@
 #include "../includes/libft.h"
 #include <stdio.h>
 
-int				print_str(va_list ap, int nb, int *flags)
+int				print_str(va_list ap, int nb, int prec, int *flags)
 {
 	int			len;
 	const char	*sval;
@@ -30,7 +30,7 @@ int				print_str(va_list ap, int nb, int *flags)
 	return (len);
 }
 
-int			print_char(va_list ap, int nb, int *flags)
+int			print_char(va_list ap, int nb, int prec, int *flags)
 {
 	char	cval;
 
@@ -50,7 +50,7 @@ int			print_char(va_list ap, int nb, int *flags)
 	return (1);
 }
 
-int		print_uns_int(va_list ap, int nb, int *flags)
+int		print_uns_int(va_list ap, int nb, int prec, int *flags)
 {
 	int len;
 	unsigned int ival;

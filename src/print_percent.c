@@ -1,6 +1,6 @@
 #include "../includes/libft.h"
 
-int			print_percent(va_list  ap, int nb, int *flags)
+int			print_percent(va_list  ap, int nb, int prec, int *flags)
 {
 	ap = 0;
 	if (flags[1] == 1)

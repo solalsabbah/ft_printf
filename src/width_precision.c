@@ -4,11 +4,13 @@ int		find_width(const char *str)
 {
 	int i;
 	i = 0;
-	while (*str)
+	while (str[i])
 	{
-		if (*str > '0' && *str <= '9')
-			return (ft_atoi(str));
-		str++;
+		if (str[i] == '.')
+			return (0);
+		if (str[i] > '0' && str[i] <= '9' )
+			return (ft_atoi(&str[i]));
+		i++;
 	}
 	return (0);
 }

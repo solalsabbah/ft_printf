@@ -80,16 +80,12 @@ t_fct	g_fct_tab[] =
 int			ft_fmt(const char *str, va_list ap)
 {
 	int	i;
-	int 	len;
 	int	ret;
 	int	prec;
 	int 	width;
 	int 	*flags;
-//	char	*fmt;
 	
 	i = 0;
-	len = ft_strpbrk(str, "sSpdDioOuUxXcCBb%") - str;
-	str = ft_strsub(str, 0, len + 1);
 	flags = ft_flags(str);
 	width = find_width(str);
 	prec = find_precision(str);
@@ -98,10 +94,10 @@ int			ft_fmt(const char *str, va_list ap)
 	{
 		if (g_fct_tab[i].c == str[0])
 		{
-			ret = g_fct_tab[i].f(ap, width, flags);
+			ret = g_fct_tab[i].f(ap, width, prec, flags);
 			return (ret);
 		}
 		i++;
 	}
-	return (len);
+	return (0);
 }

@@ -45,7 +45,7 @@ int			print_flags_oct(long int ival, int len, int nb, int *flags)
 	return (len);
 }
 
-int			print_oct(va_list ap, int nb, int *flags)
+int			print_oct(va_list ap, int nb, int prec, int *flags)
 {
 	int 			len;
 	unsigned int	ival;

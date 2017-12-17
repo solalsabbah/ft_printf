@@ -36,7 +36,7 @@ char		*calc_bin(long int nbr, int p)
 	return (str);
 }
 
-int		print_bin(va_list ap, int nb, int *flags)
+int		print_bin(va_list ap, int nb, int prec, int *flags)
 {
 	long int		nbr;
 	int			p;

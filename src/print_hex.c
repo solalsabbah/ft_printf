@@ -91,7 +91,7 @@ int			print_flags_hex(const char *str, int len, int nb, int *flags)
 	return (len);
 }
 
-int			print_maj_hex(va_list ap, int nb, int *flags)
+int			print_maj_hex(va_list ap, int nb, int prec, int *flags)
 {
 	int				len;
 	unsigned int	ival;
@@ -110,7 +110,7 @@ int			print_maj_hex(va_list ap, int nb, int *flags)
 	return (len);
 }
 
-int			print_hex(va_list ap, int nb, int *flags)
+int			print_hex(va_list ap, int nb, int prec, int *flags)
 {
 	int					len;
 	unsigned int		ival;

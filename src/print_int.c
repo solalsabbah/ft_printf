@@ -113,7 +113,7 @@ int		fourth_case(int nb, int len, int ival, int *flags)
 	return (0);
 }
 
-int		print_int(va_list ap, int nb, int *flags)
+int		print_int(va_list ap, int nb, int prec, int *flags)
 {
 	int 		len;
 	int 		ival;

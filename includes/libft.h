@@ -48,7 +48,7 @@ typedef	struct		s_list
 typedef	struct		s_fct
 {
 	char		c;
-	int			(*f) (va_list ap, int nb, int *flags);
+	int			(*f) (va_list ap, int nb, int prec, int *flags);
 }			t_fct;
 
 long int			ft_convert_oct(unsigned int n);
@@ -59,24 +59,22 @@ char				*ft_convert_hex(unsigned int n, int maj);
 char				*ft_convert_maj_hex(int n);
 char const			*ft_convert_long_hex(long int n, int maj);
 int				ft_width(int ival, int nb);
-int				print_hex(va_list ap, int nb, int *flags);
-int				print_char(va_list ap, int nb, int *flags);
-int				print_percent(va_list ap, int nb, int *flags);
-int				print_maj_hex(va_list ap, int nb, int *flags);
-int				print_oct(va_list ap, int nb, int *flags);
-int				print_int(va_list ap, int nb, int *flags);
-int				print_str(va_list ap, int nb, int *flags);
-int				print_ptr(va_list ap, int nb, int *flags);
-int				print_blank(va_list ap, int nb, int *flags);
-int				print_bin(va_list ap, int nb, int *flags);
-int				print_uns_int(va_list ap, int nb, int *flags);
+int				print_hex(va_list ap, int nb, int prec, int *flags);
+int				print_char(va_list ap, int nb, int prec, int *flags);
+int				print_percent(va_list ap, int nb, int prec, int *flags);
+int				print_maj_hex(va_list ap, int nb, int prec, int *flags);
+int				print_oct(va_list ap, int nb, int prec, int *flags);
+int				print_int(va_list ap, int nb, int prec, int *flags);
+int				print_str(va_list ap, int nb, int prec, int *flags);
+int				print_ptr(va_list ap, int nb, int prec, int *flags);
+int				print_bin(va_list ap, int nb, int prec, int *flags);
+int				print_uns_int(va_list ap, int nb, int prec, int *flags);
+int				print_percent(va_list ap, int nb, int prec, int *flags);
 int				ft_fmt(const char *str, va_list ap);
 int				print_width(int nb, int len, int flag);
+int				print_blank(va_list ap, int nb, int prec, int *flags);
 int				find_width(const char *str);
 int				find_precision(const char *str);
-long int			negtounsigned(int nb);
-
-
 
 
 char				*ft_strpbrk(const char *s1, const char *s2);

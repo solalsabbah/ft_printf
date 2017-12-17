@@ -13,7 +13,7 @@
 #include "../includes/libft.h"
 #include <stdio.h>
 
-int		print_ptr(va_list ap, int nb, int *flags)
+int		print_ptr(va_list ap, int nb, int prec, int *flags)
 {
 	void *adr;
 	char *str;
