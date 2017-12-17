@@ -13,6 +13,25 @@
 #include "../includes/libft.h"
 #include <stdio.h>
 
+int	ft_putstr_prec(char const *s, int prec)
+{
+	int i;
+
+	i = 0;
+	if (prec == -1)
+	{
+		ft_putstr(s);
+		return (0);
+	};
+	while (s[i] != 0 && prec != 0)
+	{
+		ft_putchar(s[i]);
+		prec--;
+		i++;
+	}
+	return (0);
+}
+
 int				print_str(va_list ap, int nb, int prec, int *flags)
 {
 	int			len;
@@ -22,7 +41,7 @@ int				print_str(va_list ap, int nb, int prec, int *flags)
 	len = ft_strlen(sval);
 	if (flags[1] != 1)
 		print_width(nb, len, 0);
-	ft_putstr(sval);
+	ft_putstr_prec(sval, prec);
 	if (flags[1] == 1)
 		print_width(nb, len, 0);
 	if (nb > len) 

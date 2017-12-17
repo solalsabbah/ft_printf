@@ -30,5 +30,5 @@ int		find_precision(const char *str)
 		}
 		str++;
 	}
-	return (0);
+	return (-1);
 }
