@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 14:34:50 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/14 16:13:19 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/12/19 16:39:26 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,29 +43,32 @@ int				ft_printf(const char *format, ...)
 	va_end(ap);
 	return (ret);
 }
-
 /*
+
 int main(void)
 {
 	int a;	
 	int b;
-//	printf("\n<%d>\n", printf("%%"));
-//	printf("\n<%d>\n", ft_printf("%%"));
-//	printf("#############\n");	
-//	printf("\n<%d>\n", printf("%10x", 42));
-//	printf("\n<%d>\n", ft_printf("%10X", 42));
-//	printf("\n<|%d|>\n", printf("%X", 23454));
-//
-	a = ft_printf("%-5%");
-	b = printf("<%5.2d>\n", 42);
-	printf("\nreturn value :%d\n", a);
-	printf("\nreturn value :%d\n", b);
-	printf("=======\n");
-//	a = ft_printf("123a5%.12x\n", 42);
-	b = printf("<%0.12x>\n", 42);
-//	printf("\nreturn value :%d\n", a);
-	printf("\nreturn value :%d\n", b);
-	printf("=======\n");
+
+	printf("prec : 10 wdth : 0\n");
+ 	ft_printf("[%.10o]\n", 42);
+	printf("[%.10o]\n", 42);	
+ 	printf("=========\n");
+ 	printf("prec : 10 wdth : 11 0 flag\n");
+ 	ft_printf("[%011.10o]\n", 42);	
+	printf("[%011.10o]\n", 42);	
+ 	printf("=========\n");
+ 	printf("prec : 3 wdth : 10\n");
+	ft_printf("[%10.3o]\n", 32);	
+	printf("[%10.3o]\n", 32);	
+ 	printf("=========\n");
+ 	printf("=========\n");
+ 	printf("prec : 3 wdth : 2\n");
+ 	ft_printf("[%03.2d]\n", -3);	
+	printf("[%03.2d]\n", -3);	
+ 	printf("=========\n");
+	a = ft_printf("<%4.15d\n>", 42);
+	b = printf("<%5.0s>\n", "this");
 //	ft_printf("%#X\n", 0);
 //	printf("\n<%d>\n", ft_printf("%X", 23454));
 //	printf("\n<%d>\n", ft_printf("%x", 23454));

@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 14:52:22 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/14 15:03:45 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/12/19 13:37:22 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,14 @@ int			print_flags_maj_hex(const char *str, int len, int nb, int *flags)
 {
 	if (flags[0] == 1 && flags[1] != 1)
 	{
-		nb = nb - 2;
-		if (flags[3] == 1)
-			print_width(nb, len, 1);
-		else
+		if (str[0] != '0')
+			nb = nb - 2;
+		if (flags[3] != 1)
 			print_width(nb, len, 0);
 		if (str[0] != '0')
 			ft_putstr("0X");
-		else
-			nb = nb + 2;
+		if (flags[3] == 1)
+			print_width(nb, len, 1);
 		ft_putstr(str);
 	}
 	if (flags[1] == 1)
@@ -56,15 +55,14 @@ int			print_flags_hex(const char *str, int len, int nb, int *flags)
 {
 	if (flags[0] == 1 && flags[1] != 1)
 	{
-		nb = nb - 2;
-		if (flags[3] == 1)
-			print_width(nb, len, 1);
-		else
+		if (str[0] != '0')
+			nb = nb - 2;
+		if (flags[3] != 1)
 			print_width(nb, len, 0);
 		if (str[0] != '0')
 			ft_putstr("0x");
-		else
-			nb = nb + 2;
+		if (flags[3] == 1)
+			print_width(nb, len, 1);
 		ft_putstr(str);
 	}
 	if (flags[1] == 1)
@@ -118,8 +116,10 @@ int			print_hex(va_list ap, int nb, int prec, int *flags)
 
 	ival = va_arg(ap, unsigned int);
 	str = ft_convert_hex(ival, 0);
-	if (flags[2] == 1 || flags[4] == 1 || (flags[1] == 1 && flags[3] == 1))
+	if (flags[2] == 1 || flags[4] == 1)
 		return (-1);
+	if (flags[1] == 1 && flags[3] == 1)
+		flags[3] = 0;
 	len = ft_strlen(str);
 	print_flags_hex(str, len, nb, flags);
 	if (len < nb)

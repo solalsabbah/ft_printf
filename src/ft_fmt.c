@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 10:27:49 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/14 14:31:45 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/12/19 13:33:19 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,9 @@ t_fct	g_fct_tab[] =
 
 int			ft_fmt(const char *str, va_list ap)
 {
-	int	i;
-	int	ret;
-	int	prec;
+	int		i;
+	int		ret;
+	int		prec;
 	int 	width;
 	int 	*flags;
 	
