@@ -28,12 +28,12 @@ int				ft_printf(const char *format, ...)
 	p = format;
 	while (p[i] != 0) 
 	{
-		if (p[i] != '%')
-			ft_putchar(p[i]);
-		else if (p[i] == '%')
+		p[i] != '%' ? ft_putchar(p[i]) : 0;
+		if (p[i] == '%')
 		{
-			if ((len = ft_strpbrk(&p[i + 1], "sSpdDioOuUxXcCBb%") - &p[i + 1]) == -1)
+			if (ft_strpbrk(&p[i + 1], "sSpdDioOuUxXcCBb%") == NULL)
 				return (-1);
+			len = ft_strpbrk(&p[i + 1], "sSpdDioOuUxXcCBb%") - &p[i + 1];
 			ret = ret + ft_fmt(ft_strsub(&p[i + 1], 0, len + 1), ap) - 1;
 			i = ft_strpbrk(&p[i + 1], "sSpdDioOuUxXcCBb%") - &p[0];
 		}
@@ -43,14 +43,16 @@ int				ft_printf(const char *format, ...)
 	va_end(ap);
 	return (ret);
 }
+
 /*
 int main(void)
 {
 	int a;	
 	int b;
 		
-	a = ft_printf("@moulitest: %.d %.0d\n", 0, 0);	
-	printf("%d\n", a);
+	a = ft_printf("[%d]\n", 3);	
+	a = ft_printf("%");	
+	printf("%");
 	a = printf("@moulitest: %.d %.0d\n", 0, 0);	
 	printf("%d\n", a);
 	a = ft_printf("<@moulitest: %.10d>\n", -42);

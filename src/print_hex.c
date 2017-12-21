@@ -60,7 +60,8 @@ int			print_hex(va_list ap, int nb, int prec, int *flags)
 
 	ival = va_arg(ap, unsigned int);
 	str = ft_convert_hex(ival, 0);
-	flags[2] == 1 || flags[4] == 1 ? return (-1) : 0;
+	if (flags[2] == 1 || flags[4] == 1)
+		 return (-1);
 	flags[1] == 1 && flags[3] == 1 ? flags[3] = 0 : 0;
 	len = ft_strlen(str);
 	hex_one(str, len, nb, prec, flags);

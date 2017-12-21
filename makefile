@@ -40,9 +40,9 @@ $(NAME): obj
 		@echo  '\x1b[42m' '\x1b[34m' " *                                *  " '\x1b[0m'
 		@echo  '\x1b[42m' '\x1b[34m' " *================================*  " '\x1b[0m'
 clean:
-		@ rm -rf $(OBJDIR)
-
+		@ rm -rf obj/*.o
 fclean: clean
 		@ rm -f $(NAME)
+		@ rm -rf $(OBJDIR)
 
 re: fclean all
