@@ -137,11 +137,19 @@ int		fourth_case(int nb, int prec, int len, int ival, int *flags)
 	if (flags[1] != 1 && flags[2] != 1 && flags[3] != 1 & flags[4] != 1)
 	{
 		if (prec > len)
+		{
+			if (ival < 0) 
+			{
+				ft_putchar('-');
+				ival = -ival; // attention valeux extrem	
+				len--;
+			}
 			print_width(nb, prec, 0);
+		}
 		else
-			print_width(nb, len, 0);
+		prec == 0  && ival == 0 ? print_width(nb, 0, 0) : print_width(nb, len, 0);
 		print_prec(prec, len, 1);
-		ft_putnbr(ival);
+		prec == 0 && ival == 0 ? 0 : ft_putnbr(ival);
 		return (1);
 	}
 	if (flags[1] == 1 && flags[3] == 1)
@@ -171,9 +179,12 @@ int		print_int(va_list ap, int nb, int prec, int *flags)
 	}
 	else
 		ret = nb;
+	if (prec == 0 && ival == 0) 
+		ret = nb;
 	if (prec > ret)
 		ret = prec;
-	
+	if (prec > len && ival < 0) 
+		ret++;	
 	if (first_case(nb, prec, len, ival, flags) == 1)
 		return (ret);
 	if (second_case(nb, prec, len, ival, flags) == 1)

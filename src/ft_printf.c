@@ -44,18 +44,24 @@ int				ft_printf(const char *format, ...)
 	return (ret);
 }
 /*
-
 int main(void)
 {
 	int a;	
 	int b;
-
+		
+	a = ft_printf("@moulitest: %.d %.0d\n", 0, 0);	
+	printf("%d\n", a);
+	a = printf("@moulitest: %.d %.0d\n", 0, 0);	
+	printf("%d\n", a);
+	a = ft_printf("<@moulitest: %.10d>\n", -42);
+	printf("%d\n", a);
+	b = printf("<@moulitest: %.10d>\n", -42);
+	printf("%d\n", b);
+	b = printf("<@moulitest: %#.x %#.0x>\n", 0, 0);
+	ft_printf("@moulitest: %.10d\n", -42);
 	ft_printf("@moulitest: %.o %.0o", 0, 0);
 	ft_printf("@moulitest: %o\n", 0);
 	ft_printf("%5o\n", 41);	
-	a = ft_printf("<@moulitest: %#.x %#.0x>\n", 0, 0);
-	printf("%d\n", a);
-	b = printf("<@moulitest: %#.x %#.0x>\n", 0, 0);
 	printf("%d\n", b);
 	printf("prec : 10 wdth : 0\n");
  	ft_printf("[%05o]\n", 42);
@@ -81,6 +87,7 @@ int main(void)
 //	printf("\n<%d>\n", ft_printf("%x", 23454));
 	return (0);
 }
+
 //===== STR  =======//
 
 	printf("A <%5s ca va ? j'a  %#x ans>\n", s, 32);
