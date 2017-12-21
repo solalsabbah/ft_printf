@@ -22,7 +22,7 @@ int			print_flags_oct(long int ival, int len, int nb, int prec, int *flags)
 		else
 			print_width(--nb, len, 0);
 		ft_putchar('0');
-		ft_putnbr_uns(ival);
+		prec == 0 && ival == 0 ? 0 : ft_putnbr_uns(ival);
 	}
 	if (flags[1] == 1)
 	{
@@ -31,25 +31,32 @@ int			print_flags_oct(long int ival, int len, int nb, int prec, int *flags)
 			nb--;
 			ft_putchar('0');
 		}
+		print_prec(prec, len, 1);	
 		ft_putnbr_uns(ival);
-		print_width(nb, len, 0);
+		prec > len ? print_width(nb, prec, 0) : print_width(nb, len, 0);
 	}
 	else if (flags[1] != 1 && flags[0] != 1)
 	{
-		if (flags[3] == 1 || prec > nb)
+		if (flags[3] == 1 && prec == -1)
+			print_width(nb, len, 1);	
+		else if (prec > nb)
 		{	
 			print_width(nb, prec, 0);	
 			print_prec(prec, len, 1);
 		}
 		else if (flags[3] != 1)
-		{
+		{	
 			if (prec > len)
 			{
 				print_width(nb, prec, 0);
 				print_width(prec, len, 1);
 			}
-		}	
-		ft_putnbr_uns(ival);
+			if (prec == -1)
+				flags[3] == 1 ? print_width(nb, len, 1) : print_width(nb, len, 0);
+			prec == 0 && ival != 0 ? print_width(nb, len, 1) : 0;
+			prec == 0 && ival == 0 ? print_width(nb, 0, 0) : 0;
+		}
+		ival == 0 && prec == 0 ? 0 : ft_putnbr_uns(ival);
 	}
 	return (len);
 }
@@ -66,6 +73,11 @@ int			print_oct(va_list ap, int nb, int prec, int *flags)
 		return (-1);
 	len = int_len(val);
 	print_flags_oct(val, len, nb, prec, flags);
+	val == 0 && prec == 0 ?  len = 0 : 0;
+	if (prec > len)
+		len = prec;
+	if (flags[0] == 1 && val == 0)
+		len = len + 1;
 	if (nb > len)
 		return (nb);
 	return (len);

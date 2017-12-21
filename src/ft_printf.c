@@ -50,13 +50,20 @@ int main(void)
 	int a;	
 	int b;
 
+	ft_printf("@moulitest: %.o %.0o", 0, 0);
+	ft_printf("@moulitest: %o\n", 0);
+	ft_printf("%5o\n", 41);	
+	a = ft_printf("<@moulitest: %#.x %#.0x>\n", 0, 0);
+	printf("%d\n", a);
+	b = printf("<@moulitest: %#.x %#.0x>\n", 0, 0);
+	printf("%d\n", b);
 	printf("prec : 10 wdth : 0\n");
- 	ft_printf("[%.10o]\n", 42);
-	printf("[%.10o]\n", 42);	
+ 	ft_printf("[%05o]\n", 42);
+	printf("[%05o]\n", 42);	
  	printf("=========\n");
  	printf("prec : 10 wdth : 11 0 flag\n");
- 	ft_printf("[%011.10o]\n", 42);	
-	printf("[%011.10o]\n", 42);	
+ 	ft_printf("[%-10.5o]\n", 2500);	
+	printf("[%-10.5o]\n", 2500);	
  	printf("=========\n");
  	printf("prec : 3 wdth : 10\n");
 	ft_printf("[%10.3o]\n", 32);	
