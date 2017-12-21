@@ -27,10 +27,8 @@ OBJDIR= ./obj/
 
 all: $(NAME)
 
-obj:
-	@ mkdir -p $(OBJDIR)
 
-$(NAME): obj
+$(NAME):
 		@ $(CC) $(FLAGS) -I $(HEADER) -c $(SRC)
 		@ mv  *.o $(OBJDIR)
 		@ ar rc $(NAME) obj/*.o
@@ -43,6 +41,5 @@ clean:
 		@ rm -rf obj/*.o
 fclean: clean
 		@ rm -f $(NAME)
-		@ rm -rf $(OBJDIR)
 
 re: fclean all
