@@ -6,7 +6,7 @@
 #    By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/29 10:48:28 by ssabbah           #+#    #+#              #
-#    Updated: 2017/12/13 17:33:55 by ssabbah          ###   ########.fr        #
+#    Updated: 2017/12/22 12:39:44 by ssabbah          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,19 +27,24 @@ OBJDIR= ./obj/
 
 all: $(NAME)
 
+obj:
+	@ mkdir -p $(OBJDIR)
 
-$(NAME):
-		@ $(CC) $(FLAGS) -I $(HEADER) -c $(SRC)
-		@ mv  *.o $(OBJDIR)
-		@ ar rc $(NAME) obj/*.o
-		@echo  '\x1b[42m' '\x1b[34m' " *================================*  " '\x1b[0m'
-		@echo  '\x1b[42m' '\x1b[34m' " *                                *  " '\x1b[0m'
-		@echo  '\x1b[42m' '\x1b[34m' " *  Compiling libftprintf.a... OK *  " '\x1b[0m'
-		@echo  '\x1b[42m' '\x1b[34m' " *                                *  " '\x1b[0m'
-		@echo  '\x1b[42m' '\x1b[34m' " *================================*  " '\x1b[0m'
+$(NAME): obj
+	@ $(CC) $(FLAGS) -I $(HEADER) -c $(SRC)
+	@ mv  *.o $(OBJDIR)
+	@ ar rc $(NAME) obj/*.o
+	@echo  '\x1b[42m' '\x1b[34m' " *================================*  " '\x1b[0m'
+	@echo  '\x1b[42m' '\x1b[34m' " *                                *  " '\x1b[0m'
+	@echo  '\x1b[42m' '\x1b[34m' " *  Compiling libftprintf.a... OK *  " '\x1b[0m'
+	@echo  '\x1b[42m' '\x1b[34m' " *                                *  " '\x1b[0m'
+	@echo  '\x1b[42m' '\x1b[34m' " *================================*  " '\x1b[0m'
+
 clean:
-		@ rm -rf obj/*.o
+	@ rm -rf obj/*.o
+
 fclean: clean
-		@ rm -f $(NAME)
+	@ rm -f $(NAME)
+	@ rm -rf $(OBJDIR)
 
 re: fclean all

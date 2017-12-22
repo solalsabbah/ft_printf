@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 17:45:39 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/19 16:43:38 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/12/22 14:41:20 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int		print_prec(int prec, int len, int type)
 	return (prec);
 }
 
-int		first_case(int nb, int prec, int len, int ival, int *flags)
+int		first_case(int nb, int prec, int len, long long ival, int *flags)
 {
 	if (flags[3] == 1 && flags[2] != 1 && flags[1] != 1 && flags[4] != 1)
 	{
@@ -70,7 +70,7 @@ int		first_case(int nb, int prec, int len, int ival, int *flags)
 	return (0);
 }
 
-int		second_case(int nb, int prec, int len, int ival, int *flags)
+int		second_case(int nb, int prec, int len, long long ival, int *flags)
 {
 	if (flags[2] == 1 && flags[3] == 1 && flags[1] != 1)
 	{
@@ -101,7 +101,7 @@ int		second_case(int nb, int prec, int len, int ival, int *flags)
 	return (0);
 }
 
-int		third_case(int nb, int prec, int len, int ival, int *flags)
+int		third_case(int nb, int prec, int len, long long ival, int *flags)
 {
 	if (flags[2] == 1 && flags[1] == 1)
 	{
@@ -132,7 +132,7 @@ int		third_case(int nb, int prec, int len, int ival, int *flags)
 	return (0);
 }
 
-int		fourth_case(int nb, int prec, int len, int ival, int *flags)
+int		fourth_case(int nb, int prec, int len, long long ival, int *flags)
 {
 	if (flags[1] != 1 && flags[2] != 1 && flags[3] != 1 & flags[4] != 1)
 	{
@@ -168,7 +168,7 @@ int		print_int(va_list ap, int nb, int prec, int *flags)
 	int 		ret;
 	long int	lval;
 
-	ival = va_arg(ap, int);
+	ival = va_arg(ap, long long);
 	len = int_len(ival);
 	if (len > nb)
 	{

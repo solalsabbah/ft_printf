@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 14:34:50 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/19 16:39:26 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/12/22 15:38:06 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int				ft_printf(const char *format, ...)
 		if (p[i] == '%')
 		{
 			if (ft_strpbrk(&p[i + 1], "sSpdDioOuUxXcCBb%") == NULL)
-				return (-1);
+				return (1);
 			len = ft_strpbrk(&p[i + 1], "sSpdDioOuUxXcCBb%") - &p[i + 1];
 			ret = ret + ft_fmt(ft_strsub(&p[i + 1], 0, len + 1), ap) - 1;
 			i = ft_strpbrk(&p[i + 1], "sSpdDioOuUxXcCBb%") - &p[0];

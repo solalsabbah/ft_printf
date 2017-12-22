@@ -6,12 +6,28 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 10:27:49 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/19 13:33:19 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/12/22 16:03:59 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 #include <stdio.h>
+
+int		length(char **str, t_form *form)
+{
+	if (**str != 'j' && **str != 'h' && **str != 'l' && **str != 'z')
+		return (0);
+	form->length = (**str == 'h' && form->length < H) ? H : form->length;
+	form->length = !ft_strncmp(*str, "hh", 2) ? HH : form->length;
+	form->length = !ft_strncmp(*str, "l", 1) ? L : form->length;
+	form->length = !ft_strncmp(*str, "ll", 2) ? LL : form->length;
+	form->length = !ft_strncmp(*str, "z", 1) ? Z : form->length;
+	form->length = !ft_strncmp(*str, "j", 1) ? J : form->length;
+	if (form->length != -1)
+		*str += form->length > 3 ? 2 : 1;
+	return (0);
+}
+
 
 int			*init_tab(size_t n)
 {
@@ -84,11 +100,12 @@ int			ft_fmt(const char *str, va_list ap)
 	int		prec;
 	int 	width;
 	int 	*flags;
-	
+
 	i = 0;
 	flags = ft_flags(str);
 	width = find_width(str);
 	prec = find_precision(str);
+	length(str, form);
 	str = ft_strpbrk(str, "sSpdDioOuUxXcCBb%");
 	while (g_fct_tab[i].c != '0')
 	{

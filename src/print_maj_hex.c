@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 14:52:22 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/19 13:37:22 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/12/22 15:37:09 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int			maj_hex_one(const char *str, int len, int nb, int prec, int *flags)
 		ft_putstr(str);
 		print_width(nb, len, 0);
 	}
+	return (0);
 }
 
 int			maj_hex_two(const char *str, int len, int nb, int prec, int *flags)
@@ -55,10 +56,10 @@ int			maj_hex_two(const char *str, int len, int nb, int prec, int *flags)
 int			print_maj_hex(va_list ap, int nb, int prec, int *flags)
 {
 	int					len;
-	unsigned int		ival;
+	unsigned long long	ival;
 	const char			*str;
 
-	ival = va_arg(ap, unsigned int);
+	ival = va_arg(ap, unsigned long long);
 	str = ft_convert_hex(ival, 1);
 	if (flags[2] == 1 || flags[4] == 1)
 		return (-1);

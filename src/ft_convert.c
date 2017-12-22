@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 15:28:13 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/14 16:09:00 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/12/22 15:37:53 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,12 +77,12 @@ char	*ft_convert_hex(unsigned int n, int maj)
 	return (str);
 }
 
-long int		ft_convert_oct(unsigned int n)
+long int		ft_convert_oct(unsigned long long n)
 {
-	long int	res;
-	long int 	nb;
-	long int 	j;
-	long int 	base;
+	long long	res;
+	long long 	nb;
+	long long	j;
+	long long	base;
 
 	res = 0;
 	nb = 0;
