@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_ptr.c                                        :+:      :+:    :+:   */
+/*   int_len.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/13 14:06:27 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/23 15:04:00 by ssabbah          ###   ########.fr       */
+/*   Created: 2017/04/27 15:04:31 by ssabbah           #+#    #+#             */
+/*   Updated: 2017/12/13 13:56:03 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
-#include <stdio.h>
 
-int		print_ptr(va_list ap, t_form *form, int *flags)
+size_t		int_len(long int n)
 {
-	void *adr;
-	char *str;
+	int i;
 
-	flags[0] = 1;
-	form->width = form->width;
-	adr = va_arg(ap, void*);
-	str = ft_strjoin("0x", ft_convert_hex((long int)adr, 0));
-	ft_putstr(str);
-	return (14);
+	i = 1;
+	if (n == 0)
+		return (1);
+	if (n < 0)
+	{
+		n = -n;
+		i++;
+	}
+	while ((n / 10) > 0)
+	{
+		n = n / 10;
+		i++;
+	}
+	return (i);
 }

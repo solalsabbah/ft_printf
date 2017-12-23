@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 14:52:22 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/23 14:12:50 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/12/23 16:57:24 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int			print_hex(va_list ap, t_form *form, int *flags)
 	if (form->prec == 0 && str[0] == '0')
 		len = 0;
 	len < form->width ? len = form->width : 0;
-	if (form == 0 && flags[0] == 1)
+	if (form->width == 0 && flags[0] == 1)
 		len = len + 2;
 	if (ival == 0 && flags[0] == 1)
 		len = len - 2;

@@ -1,27 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_ptr.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/13 14:06:27 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/23 15:04:00 by ssabbah          ###   ########.fr       */
+/*   Created: 2016/11/19 17:26:00 by ssabbah           #+#    #+#             */
+/*   Updated: 2017/12/13 15:41:04 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
-#include <stdio.h>
 
-int		print_ptr(va_list ap, t_form *form, int *flags)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	void *adr;
-	char *str;
+	char	*str;
+	int		i;
+	int		j;
 
-	flags[0] = 1;
-	form->width = form->width;
-	adr = va_arg(ap, void*);
-	str = ft_strjoin("0x", ft_convert_hex((long int)adr, 0));
-	ft_putstr(str);
-	return (14);
+	if (s1 && s2)
+	{
+		str = malloc(sizeof(*str) * (ft_strlen(s1) + ft_strlen(s2)));
+		i = 0;
+		j = 0;
+		if (str == NULL)
+			return (NULL);
+		while (s1[i] != 0)
+		{
+			str[i] = s1[i];
+			i++;
+		}
+		while (s2[j] != 0)
+		{
+			str[i + j] = s2[j];
+			j++;
+		}
+		str[i + j] = '\0';
+		return (str);
+	}
+	return (NULL);
 }

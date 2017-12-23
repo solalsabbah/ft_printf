@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 15:28:13 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/23 15:52:59 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/12/23 16:44:58 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,12 @@ char	convert(int i, int maj)
 	return (0);
 }
 
-char	*ft_convert_hex(unsigned int n, int maj)
+char	*ft_convert_hex(unsigned long long n, int maj)
 {
-	int		r;
-	int 	q;
-	char 	*str;
-	char 	*c;
+	long long	r;
+	long long 	q;
+	char 		*str;
+	char 		*c;
 
 	q = 1;
 	str = malloc(sizeof(char) * 1);

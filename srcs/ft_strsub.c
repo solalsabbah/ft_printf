@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_ptr.c                                        :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/13 14:06:27 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/23 15:04:00 by ssabbah          ###   ########.fr       */
+/*   Created: 2016/11/19 17:07:04 by ssabbah           #+#    #+#             */
+/*   Updated: 2017/12/13 15:41:39 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
-#include <stdio.h>
 
-int		print_ptr(va_list ap, t_form *form, int *flags)
+char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	void *adr;
-	char *str;
+	size_t	i;
+	char	*str;
 
-	flags[0] = 1;
-	form->width = form->width;
-	adr = va_arg(ap, void*);
-	str = ft_strjoin("0x", ft_convert_hex((long int)adr, 0));
-	ft_putstr(str);
-	return (14);
+	i = 0;
+	if (s == NULL)
+		return (NULL);
+	str = (char *)malloc(sizeof(*str) * (len + 1));
+	if (str == NULL)
+		return (NULL);
+	while (i < len)
+	{
+		str[i] = s[start + i];
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
 }

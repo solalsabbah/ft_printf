@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_ptr.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/13 14:06:27 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/23 15:04:00 by ssabbah          ###   ########.fr       */
+/*   Created: 2016/12/03 13:31:38 by ssabbah           #+#    #+#             */
+/*   Updated: 2017/12/23 15:49:58 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
-#include <stdio.h>
 
-int		print_ptr(va_list ap, t_form *form, int *flags)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	void *adr;
-	char *str;
+	size_t			i;
+	unsigned char	*s1b;
+	unsigned char	*s2b;
 
-	flags[0] = 1;
-	form->width = form->width;
-	adr = va_arg(ap, void*);
-	str = ft_strjoin("0x", ft_convert_hex((long int)adr, 0));
-	ft_putstr(str);
-	return (14);
+	i = 0;
+	s1b = (unsigned char*)s1;
+	s2b = (unsigned char*)s2;
+	if (n == 0)
+		return (0);
+	while (s1b[i] == s2b[i] && s1b[i] != '\0' && i < n - 1)
+		i++;
+	return (s1b[i] - s2b[i]);
 }

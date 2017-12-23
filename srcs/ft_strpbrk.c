@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_ptr.c                                        :+:      :+:    :+:   */
+/*   ft_strpbrk.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/13 14:06:27 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/23 15:04:00 by ssabbah          ###   ########.fr       */
+/*   Created: 2017/12/14 13:59:03 by ssabbah           #+#    #+#             */
+/*   Updated: 2017/12/14 13:59:07 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
-#include <stdio.h>
+#include <stdlib.h>
 
-int		print_ptr(va_list ap, t_form *form, int *flags)
+char	*ft_strpbrk(const char *s1, const char *s2)
 {
-	void *adr;
-	char *str;
-
-	flags[0] = 1;
-	form->width = form->width;
-	adr = va_arg(ap, void*);
-	str = ft_strjoin("0x", ft_convert_hex((long int)adr, 0));
-	ft_putstr(str);
-	return (14);
+	int j;
+	
+	while(*s1 != 0)
+	{	
+		j = 0;
+		while (s2[j] != 0)
+		{
+			if (s2[j] == *s1)
+				return ((char *)s1);
+			j++;
+		}
+		s1++;
+	}
+	return (NULL);
 }

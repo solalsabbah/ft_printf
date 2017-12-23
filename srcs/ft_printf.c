@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 14:34:50 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/23 16:32:08 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/12/23 16:57:38 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,13 @@ int				ft_printf(const char *format, ...)
 	return (ret);
 }
 
-/*
 int main(void)
 {
 	int a;	
 	int b;
-
+ 
+	ft_printf("%x\n", -42);
+	ft_printf("%lx\n", 4294967296);
 	printf("=== ligne 11 ====\n");
 	printf("A <%- 6d>\n", -35);
 	ft_printf("B <%- 6d>\n", -35);
@@ -66,11 +67,11 @@ int main(void)
 
 	a = ft_printf("[%zd]\n", 3);	
 	a = ft_printf("%");	
-	printf("%");
 	b = printf("@moulitest: %.d %.0d\n", 0, 0);	
 	printf("%d\n", a);
-
-
+	return (0);
+}
+/*
 //===== STR  =======//
 
 	char s[] ="salut";
