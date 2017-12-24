@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 14:34:50 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/24 18:12:27 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/12/24 19:36:35 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,22 @@ int				ft_printf(const char *format, ...)
 	return (ret);
 }
 
-/*
 int		main(void)
 {
 	int a;	
 	int b;
+	  ft_printf("<%-15u>\n", 4294967295);
+	  printf("<%015u>\n", 4294967295);
+	  ft_printf("<%-15u>\n", 4294967295);
+	  printf("<%015u>\n", 4294967295);
+	ft_printf("[%lld] wefw\n", -9223372036854775808);
+	ft_printf("%hd wefw\n", -9);
+	ft_printf("%jd wefw\n", -9);
+	ft_printf("%zd wefw\n", -9);
+	ft_printf("%hhd wefw\n", -9);
+	ft_printf("%ld wefw\n", -9223372036854775808);
+	ft_printf("%jd\n", -9223372036854775808);
+
 	ft_printf("<%10.5d>\n", 4242);
 	printf("<%10.5d>\n", 4242);
    	
@@ -74,6 +85,19 @@ int		main(void)
 	printf("=== ligne 0 ====\n");
 	printf("A <%0+12d>\n", -35);
 	ft_printf("B <%0+12d>\n", -35);
+
+	printf("%d\n", a);
+	return (0);
+}
+
+/*
+
+
+
+
+
+
+
 
 	printf("=== ligne 1 ====\n");
 	printf("A <%+-d>\n",35);
@@ -103,10 +127,6 @@ int		main(void)
 	a = ft_printf("[%zd]\n", 3);	
 	a = ft_printf("%");	
 	b = printf("@moulitest: %.d %.0d\n", 0, 0);	
-	printf("%d\n", a);
-	return (0);
-}
-int main(void)
 //===== STR  =======//
 
 	char s[] ="salut";

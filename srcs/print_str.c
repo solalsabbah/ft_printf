@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 10:27:37 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/23 14:23:58 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/12/24 19:38:32 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int			print_char(va_list ap, t_form *form, int *flags)
 	return (1);
 }
 
-int		print_uns_int(va_list ap, t_form *form, int *flags)
+/*int		print_uns_int(va_list ap, t_form *form, int *flags)
 {
 	int len;
 	unsigned int ival;
@@ -79,7 +79,7 @@ int		print_uns_int(va_list ap, t_form *form, int *flags)
 	flags[0] = 1; // to change
 	ival = va_arg(ap, unsigned int);
 	len = int_len(ival);
-	print_width(form->width, len, 0); // to change
+	flags[3] == print_width(form->width, len, 0);
 	ft_putnbr_uns(ival);
 	return (len);
-}
+}*/

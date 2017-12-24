@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 11:36:47 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/24 18:31:00 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/12/24 19:27:38 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,6 @@ void	ft_putnbr_uns(unsigned long long n)
 
 	p = 0;
 	nb = n;
-	if (nb < 0 && p == 0)
-	{	
-		write(1, "-1", 2);
-		p = 1;
-	}
 	if (nb > 9)
 	{
 		ft_putnbr_uns(nb / 10);

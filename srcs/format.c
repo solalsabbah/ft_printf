@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/24 16:15:00 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/24 18:01:12 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/12/24 19:02:06 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int             length(const char *str, t_form *form)
 	{
 		form->length = (str[i] == 'h' && form->length < H) ? H : form->length;
 		form->length = !ft_strncmp(&str[i], "hh", 2) ? HH : form->length;
-		form->length = !ft_strncmp(&str[i], "l", 1) ? L : form->length;
+		form->length = (str[i] == 'l' && form->length < LL) ? L : form->length;
 		form->length = !ft_strncmp(&str[i], "ll", 2) ? LL : form->length;
 		form->length = !ft_strncmp(&str[i], "z", 1) ? Z : form->length;
 		form->length = !ft_strncmp(&str[i], "j", 1) ? J : form->length;
