@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/11 15:52:58 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/22 15:54:32 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/12/23 16:45:29 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,14 @@
 # include <unistd.h>
 # include <stdarg.h>
 
+# define H	0
+# define L	1
+# define Z	2
+# define J	3
+# define LL	4
+# define HH	5
 
+#define ANSI_COLOR_BLACK   "\033[30m"
 #define ANSI_COLOR_RED     "\x1b[31m"
 #define ANSI_COLOR_GREEN   "\x1b[32m"
 #define ANSI_COLOR_YELLOW  "\x1b[33m"
@@ -27,17 +34,6 @@
 #define ANSI_COLOR_CYAN    "\x1b[36m"
 #define ANSI_COLOR_RESET   "\x1b[0m"
 
-#define COLOR_NORMAL    "\033[m"
-#define COLOR_BLACK     "\033[30m"
-#define COLOR_RED       "\033[31m"
-#define COLOR_GREEN     "\033[32m"
-#define COLOR_YELLOW    "\033[33m"
-#define COLOR_BLUE      "\033[34m"
-#define COLOR_MAGENTA   "\033[35m"
-#define COLOR_CYAN      "\033[36m"
-#define COLOR_WHITE     "\033[37m"
-#define COLOR_RESET     "\033[0m"
-
 typedef	struct		s_list
 {
 	void			*content;
@@ -45,55 +41,47 @@ typedef	struct		s_list
 	struct s_list	*next;
 }					t_list;
 
+typedef struct	s_form
+{
+	int			width;
+	int			prec;
+	int			length;
+}				t_form;
+
 typedef	struct		s_fct
 {
 	char		c;
-	int			(*f) (va_list ap, int nb, int prec, int *flags);
+	int			(*f) (va_list ap, t_form *form, int *flags);
 }			t_fct;
 
-typedef struct	s_form
-{
-	char		minus;
-	char		plus;
-	char		space;
-	char		zero;
-	char		hash;
-	int			width;
-	int			pre;
-	int			preflag;
-	int			length;
-	int			nul;
-	int			apo;
-	int			dolls;
-}				t_form;
 
 
-
-long int			ft_convert_oct(unsigned long long n);
-unsigned int			ft_convert_uns_oct(unsigned long long n);
+long long		ft_convert_oct(unsigned long long n);
+unsigned int	ft_convert_uns_oct(unsigned long long n);
 int				ft_printf(const char *restrict format, ...);
 int				ft_putsign(int	nb);
-char				*ft_convert_hex(unsigned int n, int maj);
-char				*ft_convert_maj_hex(int n);
-char const			*ft_convert_long_hex(long int n, int maj);
-int				ft_width(int ival, int nb);
-int				print_hex(va_list ap, int nb, int prec, int *flags);
-int				print_char(va_list ap, int nb, int prec, int *flags);
-int				print_percent(va_list ap, int nb, int prec, int *flags);
-int				print_maj_hex(va_list ap, int nb, int prec, int *flags);
-int				print_oct(va_list ap, int nb, int prec, int *flags);
-int				print_int(va_list ap, int nb, int prec, int *flags);
-int				print_str(va_list ap, int nb, int prec, int *flags);
-int				print_ptr(va_list ap, int nb, int prec, int *flags);
-int				print_bin(va_list ap, int nb, int prec, int *flags);
-int				print_uns_int(va_list ap, int nb, int prec, int *flags);
-int				print_percent(va_list ap, int nb, int prec, int *flags);
-int				ft_fmt(const char *str, va_list ap);
-int				print_width(int nb, int len, int flag);
-int				print_blank(va_list ap, int nb, int prec, int *flags);
-int				find_width(const char *str);
-int				find_precision(const char *str);
+char			*ft_convert_hex(unsigned long long n, int maj);
+char			*ft_convert_maj_hex(int n);
+char const		*ft_convert_long_hex(long int n, int maj);
 
+int				print_int(va_list ap, t_form *form, int *flags);
+int				print_hex(va_list ap, t_form *form, int *flags);
+int				print_char(va_list ap, t_form *form, int *flags);
+int				print_percent(va_list ap, t_form *form, int *flags);
+int				print_maj_hex(va_list ap, t_form *form, int *flags);
+int				print_oct(va_list ap, t_form *form, int *flags);
+int				print_str(va_list ap, t_form *form, int *flags);
+int				print_ptr(va_list ap, t_form *form, int *flags);
+int				print_bin(va_list ap, t_form *form, int *flags);
+int				print_uns_int(va_list ap, t_form *form, int *flags);
+
+int				ft_fmt(const char *str, va_list ap, t_form *form);
+int				print_width(int width, int len, int flag);
+int				print_prec(int prec, int len, int type);
+int				print_blank(va_list ap, int nb, int prec, int *flags);
+int				width(const char *str, t_form *form);
+int				precision(const char *str, t_form *form);
+int				length(const char *str, t_form *form);
 
 char				*ft_strpbrk(const char *s1, const char *s2);
 void				*ft_memmove(void *dst, const void *src, size_t len);

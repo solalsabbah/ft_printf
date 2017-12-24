@@ -6,13 +6,13 @@
 #    By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/29 10:48:28 by ssabbah           #+#    #+#              #
-#    Updated: 2017/12/22 12:39:44 by ssabbah          ###   ########.fr        #
+#    Updated: 2017/12/23 16:34:36 by ssabbah          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME= libftprintf.a
 
-SRC= src/*.c 
+SRC= srcs/*.c 
 
 OBJ= $(addprefix $(OBJDIR), $(SRC:.c=o.))
 
@@ -21,7 +21,7 @@ CC = gcc
 HEADER= includes
 FLAGS=  -w -g -Wall -Wextra -Werror
 
-SRCDIR= ./src/
+SRCDIR= ./srcs/
 INCDIR= ./includes/
 OBJDIR= ./obj/
 
