@@ -6,11 +6,11 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/23 16:57:30 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/23 16:57:35 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/12/24 18:25:03 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/libft.h"
 
 long long	signed_cast(long long val, int mod)
 {
@@ -31,7 +31,7 @@ long long	signed_cast(long long val, int mod)
 	return (val);
 }
 
-long long	unsigned_cast(long long val, int mod)
+long long	unsigned_cast(unsigned long long val, int mod)
 {
 	if (mod == LL)
 		val = (unsigned long long)val;

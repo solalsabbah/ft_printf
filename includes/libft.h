@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/11 15:52:58 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/23 16:45:29 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/12/24 18:26:08 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,9 @@ char			*ft_convert_hex(unsigned long long n, int maj);
 char			*ft_convert_maj_hex(int n);
 char const		*ft_convert_long_hex(long int n, int maj);
 
+long long		signed_cast(long long val, int mod);
+long long		unsigned_cast(unsigned long long val, int mod);
+
 int				print_int(va_list ap, t_form *form, int *flags);
 int				print_hex(va_list ap, t_form *form, int *flags);
 int				print_char(va_list ap, t_form *form, int *flags);
@@ -82,6 +85,7 @@ int				print_blank(va_list ap, int nb, int prec, int *flags);
 int				width(const char *str, t_form *form);
 int				precision(const char *str, t_form *form);
 int				length(const char *str, t_form *form);
+int				*ft_flags(const char *str);
 
 char				*ft_strpbrk(const char *s1, const char *s2);
 void				*ft_memmove(void *dst, const void *src, size_t len);
@@ -119,7 +123,7 @@ t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 t_list				*ft_lstnew(void const *content, size_t content_size);
 size_t				count_before(char const *s);
 size_t				count_after(char const *s);
-size_t				int_len(long int n);
+int					int_len(long long n);
 void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void				ft_strdel(char **as);
@@ -142,7 +146,7 @@ char				*ft_itoa(int n);
 void				ft_putchar(char c);
 void				ft_putstr(char const *s);
 void				ft_putendl(char const *s);
-void				ft_putnbr(int n);
+void				ft_putnbr(long long n);
 void				ft_putchar_fd(char c, int fd);
 void				ft_putstr_fd(char const *s, int fd);
 void				ft_putendl_fd(char const *s, int fd);

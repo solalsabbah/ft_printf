@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 14:34:50 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/23 16:57:38 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/12/24 18:12:27 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,33 +45,68 @@ int				ft_printf(const char *format, ...)
 	return (ret);
 }
 
-int main(void)
+/*
+int		main(void)
 {
 	int a;	
 	int b;
- 
-	ft_printf("%x\n", -42);
-	ft_printf("%lx\n", 4294967296);
+	ft_printf("<%10.5d>\n", 4242);
+	printf("<%10.5d>\n", 4242);
+   	
+	ft_printf("<%-5.10o>\n", 2500);	
+   	printf("<%-5.10o>\n", 2500);	
+	a = ft_printf("%#x\n", -42);
+	b = ft_printf("%#X\n", 42);
+	printf("%d\n", a);
+	printf("%d\n", b);
 	printf("=== ligne 11 ====\n");
-	printf("A <%- 6d>\n", -35);
-	ft_printf("B <%- 6d>\n", -35);
+	printf("A <%-6o>\n", 35);
+	ft_printf("B <%-6o>\n", 35);
 	
 	printf("=== ligne 12 ====\n");
 	printf("A <%- 1d>\n", -35);
 	ft_printf("B <%- 1d>\n", -35);
 
 	printf("=== ligne 13 ====\n");
-	printf("A <%- 6d>\n", -35);
-	ft_printf("B <%- 6d>\n", -35);
+	printf("A <%-6llo>\n", 123333599999912);
+	ft_printf("B <%-6llo>\n", 123333599999912);
 
+	printf("=== ligne 0 ====\n");
+	printf("A <%0+12d>\n", -35);
+	ft_printf("B <%0+12d>\n", -35);
 
+	printf("=== ligne 1 ====\n");
+	printf("A <%+-d>\n",35);
+	ft_printf("B <%+-d>\n", 35);
+	
+	printf("=== ligne 2 ====\n");
+	printf("A <%+-23d>\n",35);
+	ft_printf("B <%+-23d>\n", 35);
+
+	printf("=== ligne 2 ====\n");
+	printf("A <%+-23d>\n",35);
+	ft_printf("B <%+-23d>\n", 35);
+
+	printf("=== ligne 3 ====\n");
+	printf("A <%d>\n",35);
+	ft_printf("B <%d>\n", 35);
+	
+	printf("=== ligne 4 ====\n");
+	printf("A <%+01d>\n",-35);
+	ft_printf("B <%+01d>\n", -35);
+	
+	printf("=== ligne 5 ====\n");
+	printf("A <% 03d>\n",-350);
+	ft_printf("B <% 03d>\n", -350);
+
+	printf("=== ligne 14 ====\n");
 	a = ft_printf("[%zd]\n", 3);	
 	a = ft_printf("%");	
 	b = printf("@moulitest: %.d %.0d\n", 0, 0);	
 	printf("%d\n", a);
 	return (0);
 }
-/*
+int main(void)
 //===== STR  =======//
 
 	char s[] ="salut";
@@ -277,34 +312,7 @@ int main(void)
 	printf("A <%0+12d>\n",35);
 	ft_printf("B <%0+12d>\n", 35);
 	
-	printf("=== ligne 0 ====\n");
-	printf("A <%0+12d>\n", -35);
-	ft_printf("B <%0+12d>\n", -35);
-
-	printf("=== ligne 1 ====\n");
-	printf("A <%+-d>\n",35);
-	ft_printf("B <%+-d>\n", 35);
-	
-	printf("=== ligne 2 ====\n");
-	printf("A <%+-23d>\n",35);
-	ft_printf("B <%+-23d>\n", 35);
-
-	printf("=== ligne 2 ====\n");
-	printf("A <%+-23d>\n",35);
-	ft_printf("B <%+-23d>\n", 35);
-
-	printf("=== ligne 3 ====\n");
-	printf("A <%d>\n",35);
-	ft_printf("B <%d>\n", 35);
-	
-	printf("=== ligne 4 ====\n");
-	printf("A <%+01d>\n",-35);
-	ft_printf("B <%+01d>\n", -35);
-	
-	printf("=== ligne 5 ====\n");
-	printf("A <% 03d>\n",-350);
-	ft_printf("B <% 03d>\n", -350);
-	
+		
 	printf("=== ligne 6 ====\n");
 	printf("A <%-32d>\n",-35);
 	ft_printf("B <%-32d>\n", -35);

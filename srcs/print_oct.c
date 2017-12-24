@@ -6,14 +6,14 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 14:53:57 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/23 15:56:13 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/12/24 18:23:53 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 #include <stdio.h>
 
-int			print_second_case(long int ival, int len, t_form *form, int *flags)
+int			print_second_case(long long ival, int len, t_form *form, int *flags)
 {
 	if (flags[1] != 1 && flags[0] != 1)
 	{
@@ -40,7 +40,7 @@ int			print_second_case(long int ival, int len, t_form *form, int *flags)
 	}
 	return (len);
 }
-int			print_first_case(long int ival, int len, t_form *form, int *flags)
+int			print_first_case(long long ival, int len, t_form *form, int *flags)
 {
 	if (flags[0] == 1 && flags[1] != 1)
 	{
@@ -58,30 +58,32 @@ int			print_first_case(long int ival, int len, t_form *form, int *flags)
 		}
 		print_prec(form->prec, len, 1);	
 		ft_putnbr_uns(ival);
-		form->prec > len ? print_width(form->width, form->length, 0) : print_width(form->width, len, 0);
+		form->prec > len ? print_width(form->width, form->prec, 0) : print_width(form->width, len, 0);
 	}
 	return (len);
 }
 
 int			print_oct(va_list ap, t_form *form, int *flags)
 {
-	int 			len;
-	unsigned long	ival;
-	long long		val;
+	int 				len;
+	int					ret;
+	unsigned long long	ival;
 
-	ival = va_arg(ap, unsigned int);
-	val = ft_convert_oct(ival);
+	ival = va_arg(ap, unsigned long long);
+	ival = ft_convert_oct(ival);
+	ival = unsigned_cast(ival, form->length);
+	len = int_len(ival);
+	ret = len;
 	if (flags[2] == 1 || flags[4] == 1)
 		return (-1);
-	len = int_len(val);
-	print_first_case(val, len, form, flags);
-	print_second_case(val, len, form, flags);
-	val == 0 && form->prec == 0 ? len = 0 : 0;
-	if (form->prec > len)
-		len = form->prec;
-	if (flags[0] == 1 && val == 0)
-		len = len + 1;
-	if (form->width > len)
-		return (form->width);
-	return (len);
+	ival == 0 && form->prec == 0 ? ret = 0 : 0;
+	if (form->prec > ret)
+		ret = form->prec;
+	if (flags[0] == 1 && ival == 0)
+		ret = ret + 1;
+	if (form->width > ret)
+		ret = form->width;
+	print_first_case(ival, len, form, flags);
+	print_second_case(ival, len, form, flags);
+	return (ret);
 }

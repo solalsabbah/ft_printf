@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 14:05:29 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/23 15:05:26 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/12/24 17:08:42 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,15 @@ char		*calc_bin(long int nbr, int p)
 
 int		print_bin(va_list ap, t_form *form, int *flags)
 {
-	long int		nbr;
+	long int	nbr;
 	int			p;
 	int			len;
-	char			*str;
+	char		*str;
 
 	p = 0;
 	form->width = form->width;
-	nbr = va_arg(ap, long int);
+	nbr = va_arg(ap, long long);
+	nbr = signed_cast(nbr, form->length);
 	flags[0] = 1;
 	if (nbr < 0)
 	{

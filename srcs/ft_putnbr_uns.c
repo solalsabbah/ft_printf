@@ -6,16 +6,16 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 11:36:47 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/14 16:12:32 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/12/24 18:31:00 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 #include "unistd.h"
 
-void	ft_putnbr_uns(long int n)
+void	ft_putnbr_uns(unsigned long long n)
 {
-	long int nb;
+	unsigned long long nb;
 	int p;
 
 	p = 0;

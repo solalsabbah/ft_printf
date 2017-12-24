@@ -6,16 +6,16 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/27 15:04:31 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/13 13:56:03 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/12/24 16:25:09 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-size_t		int_len(long int n)
+int		int_len(long long n)
 {
 	int i;
-
+		
 	i = 1;
 	if (n == 0)
 		return (1);
@@ -24,7 +24,7 @@ size_t		int_len(long int n)
 		n = -n;
 		i++;
 	}
-	while ((n / 10) > 0)
+	while (n > 10)
 	{
 		n = n / 10;
 		i++;

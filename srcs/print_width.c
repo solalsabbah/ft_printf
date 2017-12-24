@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 17:49:23 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/23 13:40:32 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/12/24 18:24:03 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int		print_width(int width, int len, int flag)
 	c = ' ';
 	if (flag == 1)
 		c = '0';
+	if (len == -1)
+		len = 0;
 	while (width > len)
 	{
 		ft_putchar(c);

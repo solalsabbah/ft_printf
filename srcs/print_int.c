@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 17:45:39 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/23 16:17:38 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/12/24 18:23:34 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ int		first_case(t_form *form, int len, long long ival, int *flags)
 	{
 		if (ival < 0)
 			ft_putsign(ival);
-		form->prec >= form->width ?  print_prec(form->prec, len, 1) : 0;
+		form->prec >= form->width ?  print_prec(form->prec, len, 1) : 0;	
 		if (form->prec < form->width)
 		{
 			len > form->prec && form->prec != -1 ? print_width(form->width, len, 0) : 0;
 			len > form->prec && form->prec == -1 ? print_width(form->width, len, 1) : 0;
 			if (form->prec >= len)
 			{
-				ival < 0 ? print_width(form->width, len, 1) : print_width(form->width, len, 0);
+				ival < 0 ? print_width(form->width, len, 1) : print_width(form->width, form->prec, 0);
 				print_prec(form->prec, len, 1);
 			}
 		}
@@ -128,7 +128,7 @@ int				fourth_case(t_form *form, int len, long long ival, int *flags)
 				ival = -ival;
 				len--;
 			}
-			print_width(form->width, len, 0);
+			print_width(form->width, form->prec, 0);
 		}
 		else
 			form->prec == 0 && ival == 0 ? print_width(form->width, 0, 0) : print_width(form->width, len, 0);
@@ -152,6 +152,7 @@ int				print_int(va_list ap, t_form *form, int *flags)
 	long long	ival;
 
 	ival = va_arg(ap, long long);
+	ival = signed_cast(ival, form->length);
 	len = int_len(ival);
 	if (len > form->width)
 		if ((flags[2] == 1 && ival >= 0) || (flags[4] == 1 && ival >= 0))
