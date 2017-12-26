@@ -46,6 +46,7 @@ typedef struct	s_form
 	int			width;
 	int			prec;
 	int			length;
+	int			field;
 }				t_form;
 
 typedef	struct		s_fct
@@ -68,6 +69,7 @@ long long		signed_cast(long long val, int mod);
 long long		unsigned_cast(unsigned long long val, int mod);
 
 int				print_int(va_list ap, t_form *form, int *flags);
+int				print_uns_int(va_list ap, t_form *form, int *flags);
 int				print_hex(va_list ap, t_form *form, int *flags);
 int				print_char(va_list ap, t_form *form, int *flags);
 int				print_percent(va_list ap, t_form *form, int *flags);
@@ -76,7 +78,6 @@ int				print_oct(va_list ap, t_form *form, int *flags);
 int				print_str(va_list ap, t_form *form, int *flags);
 int				print_ptr(va_list ap, t_form *form, int *flags);
 int				print_bin(va_list ap, t_form *form, int *flags);
-int				print_uns_int(va_list ap, t_form *form, int *flags);
 
 int				ft_fmt(const char *str, va_list ap, t_form *form);
 int				print_width(int width, int len, int flag);
@@ -85,8 +86,10 @@ int				print_blank(va_list ap, int nb, int prec, int *flags);
 int				width(const char *str, t_form *form);
 int				precision(const char *str, t_form *form);
 int				length(const char *str, t_form *form);
+void				field(const char *str, t_form *form);
 int				*ft_flags(const char *str);
 
+char				find_char(const char *s1, const char *s2);
 char				*ft_strpbrk(const char *s1, const char *s2);
 void				*ft_memmove(void *dst, const void *src, size_t len);
 int					ft_strlen_int(const char *s);

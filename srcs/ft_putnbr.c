@@ -13,11 +13,11 @@
 #include "../includes/libft.h"
 #include <unistd.h>
 
-void	ft_putnbr(long long n)
+void	ft_putnbr(long long nb)
 {
-	long long nb;
+//	long long nb;
 
-	nb = n;
+//	nb = n;
 	if (nb == -9223372036854775808)
 	{
 		write(1, "-9223372036854775808", 20);

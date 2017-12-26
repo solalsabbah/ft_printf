@@ -45,12 +45,28 @@ int				ft_printf(const char *format, ...)
 	return (ret);
 }
 
+/*
+int		main()
+{
+   	ft_printf("<%2.11u>\n", -1);
+	printf("<%2.11u>\n", -1);
+   	ft_printf("<%+11u>\n", 34);
+	printf("<%+11u>\n", 34);
+   	ft_printf("<%012u>\n", 1);
+	printf("<%012u>\n", 1);
+   	ft_printf("<%012u>\n", -1);
+	printf("<%012u>\n", -1);
+   	ft_printf("<%+-12u>\n", 1);
+	printf("<%+-12u>\n", 1);
+   	ft_printf("<%+-12u>\n", -1);
+	printf("<%+-12u>\n", -1);
+}
 int		main(void)
 {
 	int a;	
 	int b;
-	  ft_printf("<%-15u>\n", 4294967295);
-	  printf("<%015u>\n", 4294967295);
+	  ft_printf("<%6.7u>\n", 295);
+	  printf("<%6.7u>\n", 295);
 	  ft_printf("<%-15u>\n", 4294967295);
 	  printf("<%015u>\n", 4294967295);
 	ft_printf("[%lld] wefw\n", -9223372036854775808);
@@ -89,8 +105,6 @@ int		main(void)
 	printf("%d\n", a);
 	return (0);
 }
-
-/*
 
 
 

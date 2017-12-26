@@ -70,16 +70,3 @@ int			print_char(va_list ap, t_form *form, int *flags)
 		return (form->width);
 	return (1);
 }
-
-/*int		print_uns_int(va_list ap, t_form *form, int *flags)
-{
-	int len;
-	unsigned int ival;
-
-	flags[0] = 1; // to change
-	ival = va_arg(ap, unsigned int);
-	len = int_len(ival);
-	flags[3] == print_width(form->width, len, 0);
-	ft_putnbr_uns(ival);
-	return (len);
-}*/

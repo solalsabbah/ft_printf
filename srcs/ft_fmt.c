@@ -40,6 +40,7 @@ void		init_format(t_form *form)
 	form->width = 0;
 	form->prec = -1;
 	form->length = -1;
+	form->field = 0;
 }
 
 int			ft_fmt(const char *str, va_list ap, t_form *form)
@@ -54,6 +55,7 @@ int			ft_fmt(const char *str, va_list ap, t_form *form)
 	width(str, form);
 	precision(str, form);
 	length(str, form);
+	field(str, form);
 	str = ft_strpbrk(str, "sSpdDioOuUxXcCBb%");
 	while (g_fct_tab[i].c != '0')
 	{
