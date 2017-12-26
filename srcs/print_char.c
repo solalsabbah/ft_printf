@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_width.c                                      :+:      :+:    :+:   */
+/*   print_char.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/07 17:49:23 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/26 14:24:16 by ssabbah          ###   ########.fr       */
+/*   Created: 2017/12/26 12:16:58 by ssabbah           #+#    #+#             */
+/*   Updated: 2017/12/26 15:23:45 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-int		print_width(int width, int len, int flag)
+int			print_char(va_list ap, t_form *form, int *flags)
 {
-	char c;
+	char	cval;
 
-	c = ' ';
-	if (flag == 1)
-		c = '0';
-	if (len == -1)
-		len = 0;
-	while (width > len)
+	cval = va_arg(ap, int);
+	if (flags[1] == 1)
 	{
-		ft_putchar(c);
-		width--;
+		ft_putchar(cval);
+		print_width(form->width, 1, 0);
 	}
-	return (width);
+	else
+	{
+		flags[3] == 1 ? print_width(form->width, 1, 1) : print_width(form->width, 1, 0);
+		ft_putchar(cval);
+	}
+	if (form->width > 1)
+		return (form->width);
+	return (1);
 }

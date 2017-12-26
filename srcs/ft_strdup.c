@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_width.c                                      :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/07 17:49:23 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/26 14:24:16 by ssabbah          ###   ########.fr       */
+/*   Created: 2016/12/03 16:18:08 by ssabbah           #+#    #+#             */
+/*   Updated: 2017/12/26 12:41:09 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-int		print_width(int width, int len, int flag)
+char	*ft_strdup(const char *s1)
 {
-	char c;
+	char	*cpy;
+	int		i;
 
-	c = ' ';
-	if (flag == 1)
-		c = '0';
-	if (len == -1)
-		len = 0;
-	while (width > len)
+	i = 0;
+	if (!(cpy = (char*)malloc(sizeof(char) * (ft_strlen(s1) + 1))))
+		return (0);
+	while (s1[i] != 0)
 	{
-		ft_putchar(c);
-		width--;
+		cpy[i] = s1[i];
+		i++;
 	}
-	return (width);
+	cpy[i] = '\0';
+	return (cpy);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_fmt.c                                        :+:      :+:    :+:   */
+/*   print_str.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/05 10:27:37 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/24 19:38:32 by ssabbah          ###   ########.fr       */
+/*   Created: 2017/12/26 12:20:41 by ssabbah           #+#    #+#             */
+/*   Updated: 2017/12/26 16:41:42 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_putstr_prec(char const *s, int prec)
 	{
 		ft_putstr(s);
 		return (0);
-	};
+	}
 	while (s[i] != 0 && prec > 0)
 	{
 		ft_putchar(s[i]);
@@ -35,38 +35,24 @@ int	ft_putstr_prec(char const *s, int prec)
 int				print_str(va_list ap, t_form *form, int *flags)
 {
 	int			len;
+	int			ret;
 	const char	*sval;
 	
 	sval = va_arg(ap, char *);
-	len = ft_strlen(sval);
-	if (form->prec != -1 && len != 0)
-		len = len - form->prec;
+	if (sval == NULL)
+	{
+		sval = ft_strdup("(null)");
+		len = 6;
+	}
+	else
+		len = ft_strlen(sval);	
+	if (form->prec < len && form->prec != -1)
+		len = form->prec;
+	ret = form->width > len ? form->width : len;
 	if (flags[1] != 1)
-		print_width(form->width, len, 0);
+		flags[3] == 1 ? print_width(form->width, len, 1) : print_width(form->width, len, 0);
 	ft_putstr_prec(sval, form->prec);
 	if (flags[1] == 1)
 		print_width(form->width, len, 0);
-	if (form->width > len) 
-		return (form->width);
-	return (len);
-}
-
-int			print_char(va_list ap, t_form *form, int *flags)
-{
-	char	cval;
-
-	cval = va_arg(ap, int);
-	if (flags[1] == 1)
-	{
-		ft_putchar(cval);
-		print_width(form->width, 1, 0);
-	}
-	else
-	{
-		print_width(form->width, 1, 0);
-		ft_putchar(cval);
-	}
-	if (form->width > 1)
-		return (form->width);
-	return (1);
+	return (ret);
 }
