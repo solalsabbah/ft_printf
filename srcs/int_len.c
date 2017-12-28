@@ -6,28 +6,22 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/27 15:04:31 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/26 15:45:02 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/12/28 16:08:13 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-int		int_len(long long n)
+int		int_len(long long nb)
 {
-	int i;
-		
-	i = 1;
-	if (n == 0)
-		return (1);
-	if (n < 0)
+	int len;
+
+	len = 1;
+	while (!(nb > -10 && nb < 10))
 	{
-		n = -n;
-		i++;
+		nb /= 10;
+		len++;
 	}
-	while (n >= 10)
-	{
-		n = n / 10;
-		i++;
-	}
-	return (i);
+	nb < 0 ? len++ : 0;
+	return (len);
 }

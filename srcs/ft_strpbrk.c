@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 13:59:03 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/14 13:59:07 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/12/28 14:38:30 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 char	*ft_strpbrk(const char *s1, const char *s2)
 {
 	int j;
-	
-	while(*s1 != 0)
-	{	
+
+	while (*s1 != 0)
+	{
 		j = 0;
 		while (s2[j] != 0)
 		{

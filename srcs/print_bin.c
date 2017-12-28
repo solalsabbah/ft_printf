@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 14:05:29 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/24 17:08:42 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/12/28 14:40:57 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 char		*calc_bin(long int nbr, int p)
 {
-	int	q;
-	int	r;
-	int	i;
+	int		q;
+	int		r;
+	int		i;
 	char	*str;
 
 	str = malloc(sizeof(str) * 32 + 1);
@@ -36,7 +36,7 @@ char		*calc_bin(long int nbr, int p)
 	return (str);
 }
 
-int		print_bin(va_list ap, t_form *form, int *flags)
+int			print_bin(va_list ap, t_form *form, int *flags)
 {
 	long int	nbr;
 	int			p;

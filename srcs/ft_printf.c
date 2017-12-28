@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 14:34:50 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/26 18:44:57 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/12/28 18:50:28 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_fct	g_fct_tab[] =
 	{'o', &print_oct},
 	{'O', &print_oct},
 	{'x', &print_hex},
-	{'X', &print_maj_hex},
+	{'X', &print_hex},
 	{'c', &print_char},
 	{'C', &print_char},
 	{'u', &print_uns_int},
@@ -292,6 +292,149 @@ int		main(void)
 	b = ft_printf("<%d>\n", 0);
 	printf("%d\n", a);
 	printf("%d\n", b);
+	
+	a = ft_printf("<%D>\n", 2147483647);
+	b = printf("<%D>\n", 2147483647);
+	printf("%d\n", a);
+	printf("%d\n", b);
+	
+	a = ft_printf("<%0.4c>\n", 'a');
+	b = printf("<%0.4c>\n", 'a');
+	printf("%d\n", a);
+	printf("%d\n", b);
+
+	a = printf("%hD, %hD\n", 0, 65535);
+	b = ft_printf("%hD, %hD\n", 0, 65535);
+	printf("%d\n", a);
+	printf("%d\n", b);
+	
+	a = ft_printf("<%0.4c>\n", 'a');
+	b = printf("<%0.4c>\n", 'a');
+	printf("%d\n", a);
+	printf("%d\n", b);
+
+	a = ft_printf("<%lld>\n", -9223372036854775808);
+	b = printf("<%lld>\n", -9223372036854775808);
+	printf("%d\n", a);
+	printf("%d\n", b);
+  	
+	a = printf("<%.8x>\n", 42);
+    b = ft_printf("<%.8x>\n", 42);
+	printf("%d\n", a);
+	printf("%d\n", b);
+	
+	a = printf("<%#.8x>\n", 42);
+    b = ft_printf("<%#.8x>\n", 42);
+	printf("%d\n", a);
+	printf("%d\n", b);
+	
+	a = printf("<%#6x>\n", 42);
+    b = ft_printf("<%#6x>\n", 42);
+	printf("%d\n", a);
+	printf("%d\n", b);
+	
+	a = printf("<%#6.5x>\n", 42);
+    b = ft_printf("<%#6.5x>\n", 42);
+	printf("%d\n", a);
+	printf("%d\n", b);
+	
+	a = printf("<%#x>\n", 42);
+    b = ft_printf("<%#x>\n", 42);
+	printf("%d\n", a);
+	printf("%d\n", b);
+	
+	a = printf("<%-0.3x>\n", 0);
+    b = ft_printf("<%#-0.3x>\n", 0);
+	printf("%d\n", a);
+	printf("%d\n", b);
+	
+	a = printf("<%-0.3x>\n", 2);
+    b = ft_printf("<%-0.3x>\n", 2);
+	printf("%d\n", a);
+	printf("%d\n", b);
+	
+	a = printf("<%-08.3x>\n", 2);
+    b = ft_printf("<%-08.3x>\n", 2);
+	printf("%d\n", a);
+	printf("%d\n", b);
+	
+	a = printf("<%#12x>\n", 0);
+    b = ft_printf("<%#12x>\n", 0);
+	printf("%d\n", a);
+	printf("%d\n", b);
+	
+	a = printf("<%#12.3x>\n", 0);
+    b = ft_printf("<%#12.3x>\n", 0);
+	printf("%d\n", a);
+	printf("%d\n", b);
+	
+	a = printf("<%#12.3x>\n", 1);
+    b = ft_printf("<%#12.3x>\n", 1);
+	printf("%d\n", a);
+	printf("%d\n", b);
+	
+	
+	a = printf("<%#12.1x>\n", 42);
+    b = ft_printf("<%#12.1x>\n", 42);
+	printf("%d\n", a);
+	printf("%d\n", b);
+
+	a = ft_printf("<%#12.O>\n", 0);
+	b = printf("<%#12.O>\n", 0);
+	printf("%d\n", a);
+	printf("%d\n", b);
+	
+	a = ft_printf("<%#12.O>\n", 0);
+	b = printf("<%#12.O>\n", 0);
+	printf("%d\n", a);
+	printf("%d\n", b);
+
+	a = ft_printf("<%#.O>\n", 0);
+	b = printf("<%#.O>\n", 0);
+	printf("%d\n", a);
+	printf("%d\n", b);
+
+	a = ft_printf("<%O>\n", 2147483647);
+	b = printf("<%O>\n", 2147483647);
+	printf("%d\n", a);
+	printf("%d\n", b);
+ 
+	a = printf("<%#o>\n", 35);
+    b = ft_printf("<%#o>\n", 35);
+	printf("%d\n", a);
+	printf("%d\n", b);
+	
+	a = printf("<%#.4o>\n", 0);
+    b = ft_printf("<%#.4o>\n", 0);
+	printf("%d\n", a);
+	printf("%d\n", b);
+	
+	a = printf("<%#.1o>\n", 0);
+    b = ft_printf("<%#.1o>\n", 0);
+	printf("%d\n", a);
+	printf("%d\n", b);
+	
+	a = printf("<%#.1o>\n", 0);
+    b = ft_printf("<%#.1o>\n", 0);
+	printf("%d\n", a);
+	printf("%d\n", b);
+	
+	a = printf("<%#12.15o>\n", 0);
+    b = ft_printf("<%#12.15o>\n", 0);
+	printf("%d\n", a);
+	printf("%d\n", b);
+	
+	a = printf("<%#12o>\n", 0);
+    b = ft_printf("<%#12o>\n", 0);
+	printf("%d\n", a);
+	printf("%d\n", b);
+
+	a = ft_printf("<%O>\n", 214);
+	b = printf("<%O>\n", 214);
+	printf("%d\n", a);
+	printf("%d\n", b);
+ 
+	
 	return (0);
 }
 

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_uns_int.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/12/28 15:16:27 by ssabbah           #+#    #+#             */
+/*   Updated: 2017/12/28 15:17:23 by ssabbah          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/libft.h"
 
 int		first_uns_case(t_form *form, int len, long long ival, int *flags)
@@ -108,7 +120,8 @@ int				fourth_uns_case(t_form *form, int len, long long ival, int *flags)
 			print_width(form->width, form->prec, 0);
 		}
 		else
-			form->prec == 0 && ival == 0 ? print_width(form->width, 0, 0) : print_width(form->width, len, 0);
+			form->prec == 0 && ival == 0 ? print_width(form->width, 0, 0) :
+				print_width(form->width, len, 0);
 		print_prec(form->prec, len, 1);
 		form->prec == 0 && ival == 0 ? 0 : ft_putnbr_uns(ival);
 		return (1);
@@ -122,11 +135,10 @@ int				fourth_uns_case(t_form *form, int len, long long ival, int *flags)
 	return (0);
 }
 
-
 int		print_uns_int(va_list ap, t_form *form, int *flags)
 {
-	int 			len;
-	int 			ret;
+	int					len;
+	int					ret;
 	unsigned long long	ival;
 
 	ival = va_arg(ap, unsigned long);
@@ -135,7 +147,7 @@ int		print_uns_int(va_list ap, t_form *form, int *flags)
 	ival = unsigned_cast(ival, form->length);
 	len = int_len(ival);
 	if (len > form->width)
-			ret = len;
+		ret = len;
 	else
 		ret = form->width;
 	form->prec == 0 && ival == 0 ? ret = form->width : 0;
@@ -148,7 +160,5 @@ int		print_uns_int(va_list ap, t_form *form, int *flags)
 		return (ret);
 	if (fourth_uns_case(form, len, ival, flags) == 1)
 		return (ret);
-	return (0);	
-
 	return (len);
 }

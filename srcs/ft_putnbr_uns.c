@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 11:36:47 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/24 19:27:38 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/12/28 14:37:10 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 void	ft_putnbr_uns(unsigned long long n)
 {
-	unsigned long long nb;
-	int p;
+	unsigned long long	nb;
+	int					p;
 
 	p = 0;
 	nb = n;
@@ -25,6 +25,6 @@ void	ft_putnbr_uns(unsigned long long n)
 		ft_putnbr_uns(nb / 10);
 		ft_putnbr_uns(nb % 10);
 	}
-	else 
+	else
 		ft_putchar(nb + '0');
 }

@@ -6,18 +6,18 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 16:31:52 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/13 13:55:51 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/12/28 14:37:46 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 #include <stdio.h>
 
-int			ft_putsign(int	nb)
+int			ft_putsign(int nb)
 {
-	if (nb <  0) 
+	if (nb < 0)
 		ft_putchar('-');
-	else 
+	else
 		ft_putchar('+');
 	return (0);
 }

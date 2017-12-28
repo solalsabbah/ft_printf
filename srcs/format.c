@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/24 16:15:00 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/26 13:12:16 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/12/28 17:46:02 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int			*init_tab(size_t n)
 {
-	size_t i;
-	int	*tab;
+	size_t	i;
+	int		*tab;
 
 	i = 0;
 	tab = malloc(sizeof(int) * n + 1);
@@ -29,8 +29,8 @@ int			*init_tab(size_t n)
 
 int			*ft_flags(const char *str)
 {
-	int	i;
-	int	*tab;
+	int		i;
+	int		*tab;
 
 	i = 0;
 	tab = init_tab(10);
@@ -39,22 +39,25 @@ int			*ft_flags(const char *str)
 		str[i] == '#' ? tab[0] = 1 : 0;
 		str[i] == '-' ? tab[1] = 1 : 0;
 		str[i] == '+' ? tab[2] = 1 : 0;
-		((str[i] == '#' || str[i] == '-' || str[i] == '+' || str[i] == ' ') && str[i + 1] == '0') || str[0] == '0' ? tab[3] = 1 : 0;
+		((str[i] == '#' || str[i] == '-' || str[i] == '+' || str[i] == ' ') &&
+			str[i + 1] == '0') || str[0] == '0' ? tab[3] = 1 : 0;
 		str[i] == ' ' ? tab[4] = 1 : 0;
-		str[i] == 'h' && str[i - 1] != 'h' && str[i + 1] != 'h' ? tab[5] = 1 : 0;
+		str[i] == 'h' && str[i - 1] != 'h' && str[i + 1] != 'h' ?
+			tab[5] = 1 : 0;
 		str[i] == 'h' && str[i + 1] == 'h' ? tab[6] = 1 : 0;
-		str[i] == 'l' && str[i - 1] != 'l' && str[i + 1] != 'l' ? tab[7] = 1 : 0;
+		str[i] == 'l' && str[i - 1] != 'l' && str[i + 1] != 'l' ?
+			tab[7] = 1 : 0;
 		str[i] == 'l' && str[i + 1] == 'l' ? tab[8] = 1 : 0;
 		str[i] == 'j' ? tab[9] = 1 : 0;
-		str[i] == 'z' ?	tab[10] = 1 : 0;
+		str[i] == 'z' ? tab[10] = 1 : 0;
 		i++;
 	}
 	return (tab);
 }
 
-int             length(const char *str, t_form *form)
+int			length(const char *str, t_form *form)
 {
-	int i;
+	int		i;
 
 	i = 0;
 	while (str[i] != 0)
@@ -70,15 +73,16 @@ int             length(const char *str, t_form *form)
 	return (0);
 }
 
-int		width(const char *str, t_form *form)
+int			width(const char *str, t_form *form)
 {
-	int i;
+	int		i;
+
 	i = 0;
 	while (str[i])
 	{
 		if (str[i] == '.')
 			return (0);
-		if (str[i] > '0' && str[i] <= '9' )
+		if (str[i] > '0' && str[i] <= '9')
 		{
 			form->width = ft_atoi(&str[i]);
 			return (1);
@@ -89,9 +93,10 @@ int		width(const char *str, t_form *form)
 	return (0);
 }
 
-int		precision(const char *str, t_form *form)
+int			precision(const char *str, t_form *form)
 {
-	int i;
+	int		i;
+
 	i = 0;
 	while (*str)
 	{

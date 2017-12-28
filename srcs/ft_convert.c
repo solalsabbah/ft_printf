@@ -6,18 +6,18 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 15:28:13 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/26 13:17:47 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/12/28 17:49:13 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 #include <stdio.h>
 
-char	*append_char(char const *s1, char c)
+char					*append_char(char const *s1, char c)
 {
-	char	*str;
-	int		i;
-	int		j;
+	char				*str;
+	int					i;
+	int					j;
 
 	if (s1 && c)
 	{
@@ -39,14 +39,13 @@ char	*append_char(char const *s1, char c)
 	return (NULL);
 }
 
-char	convert(int i, int maj)
+char					convert(int i, int maj)
 {
-	int a;
+	int					a;
 
+	a = 32;
 	if (maj == 1)
 		a = 0;
-	else
-		a = 32;
 	if (i > 9)
 		return (i + 55 + a);
 	else
@@ -54,15 +53,19 @@ char	convert(int i, int maj)
 	return (0);
 }
 
-char	*ft_convert_hex(unsigned long long n, int maj)
+char					*ft_convert_hex(unsigned long long n, t_form *form)
 {
-	long long	r;
-	long long 	q;
-	char 		*str;
-	char 		*c;
+	long long			r;
+	long long			q;
+	int					maj;
+	char				*str;
+	char				*c;
 
 	q = 1;
+	maj = 0;
 	str = malloc(sizeof(char) * 1);
+	if (form->field == 'X' || form->field == 'P')
+		maj = 1;
 	while (q != 0)
 	{
 		q = n / 16;
@@ -80,7 +83,7 @@ char	*ft_convert_hex(unsigned long long n, int maj)
 unsigned long long		ft_convert_oct(unsigned long long n)
 {
 	long long			res;
-	long long  			nb;
+	long long			nb;
 	long long			base;
 	unsigned long long	j;
 
@@ -89,7 +92,7 @@ unsigned long long		ft_convert_oct(unsigned long long n)
 	j = (long long)n;
 	base = 1;
 	while (j > 0)
-	{	
+	{
 		nb = nb * 10 + (j % 8);
 		res = res + (j % 8) * base;
 		j = j / 8;

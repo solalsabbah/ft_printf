@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/11 15:52:58 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/26 13:15:05 by ssabbah          ###   ########.fr       */
+/*   Updated: 2017/12/28 17:45:52 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ unsigned long long		ft_convert_oct(unsigned long long n);
 unsigned int	ft_convert_uns_oct(unsigned long long n);
 int				ft_printf(const char *restrict format, ...);
 int				ft_putsign(int	nb);
-char			*ft_convert_hex(unsigned long long n, int maj);
+char			*ft_convert_hex(unsigned long long n, t_form *form);
 char			*ft_convert_maj_hex(int n);
 char const		*ft_convert_long_hex(long int n, int maj);
 
@@ -73,7 +73,6 @@ int				print_uns_int(va_list ap, t_form *form, int *flags);
 int				print_hex(va_list ap, t_form *form, int *flags);
 int				print_char(va_list ap, t_form *form, int *flags);
 int				print_percent(va_list ap, t_form *form, int *flags);
-int				print_maj_hex(va_list ap, t_form *form, int *flags);
 int				print_oct(va_list ap, t_form *form, int *flags);
 int				print_str(va_list ap, t_form *form, int *flags);
 int				print_ptr(va_list ap, t_form *form, int *flags);
