@@ -103,12 +103,75 @@ int				ft_printf(const char *format, ...)
 	va_end(ap);
 	return (ret);
 }
+/*
 
 int		main(void)
 {
 	int a;	
 	int b;
 	
+	
+	a = printf("<%010d>\n", 110);
+	b = ft_printf("<%010d>\n", 110);
+	printf("%d\n", a);
+	printf("%d\n", b);		
+	
+	a = printf("<%010d>\n", -110);
+	b = ft_printf("<%010d>\n", -110);
+	printf("%d\n", a);
+	printf("%d\n", b);		
+	
+	a = printf("<%+6d>\n", 110);
+	b = ft_printf("<%+6d>\n", 110);
+	printf("%d\n", a);
+	printf("%d\n", b);		
+	
+	a = printf("<%+4d>\n", 110);
+	b = ft_printf("<%+4d>\n", 110);
+	printf("%d\n", a);
+	printf("%d\n", b);		
+	a = printf("<%+4.1d>\n", 110);
+	b = ft_printf("<%+4.1d>\n", 110);
+	printf("%d\n", a);
+	printf("%d\n", b);		
+	
+	a = printf("<%+6.d>\n", -40);
+	b = ft_printf("<%+6.d>\n", -40);
+	printf("%d\n", a);
+	printf("%d\n", b);		
+	
+
+	a = printf("<%+4.1d>\n", -32);
+	b = ft_printf("<%+4.1d>\n", -32);
+	printf("%d\n", a);
+	printf("%d\n", b);		
+	
+	a = printf("<%+5.d>\n", -5123);
+	b = ft_printf("<%+5.d>\n", -5123);
+	printf("%d\n", a);
+	printf("%d\n", b);		
+	
+	a = printf("<%+3.5d>\n", -5123);
+	b = ft_printf("<%+3.5d>\n", -5123);
+	printf("%d\n", a);
+	printf("%d\n", b);		
+	
+	a = printf("<%+.2d>\n", 0);
+	b = ft_printf("<%+.2d>\n", 0);
+	printf("%d\n", a);
+	printf("%d\n", b);		
+	
+	a = printf("<%15.5d>\n", 0);
+	b = ft_printf("<%15.5d>\n", 0);
+	printf("%d\n", a);
+	printf("%d\n", b);
+	
+	a = printf("<%.5d>\n", 0);
+	b = ft_printf("<%.5d>\n", 0);
+	printf("%d\n", a);
+	printf("%d\n", b);
+
+
 	a = printf("<%10d>\n", -42);
 	b = ft_printf("<%10d>\n", -42);
 	printf("%d\n", a);
@@ -128,9 +191,40 @@ int		main(void)
 	b = ft_printf("<% +d>\n", 42);
 	printf("%d\n", a);
 	printf("%d\n", b);		
+
+	a = printf("<%04d>\n", 110);
+	b = ft_printf("<%04d>\n", 110);
+	printf("%d\n", a);
+	printf("%d\n", b);		
 	
-	a = printf("<%03.2d>\n", 0);
-	b = ft_printf("<%03.2d>\n", 0);
+	a = printf("<%04.1d>\n", 110);
+	b = ft_printf("<%04.1d>\n", 110);
+	printf("%d\n", a);
+	printf("%d\n", b);		
+	
+	a = printf("<%06.d>\n", -40);
+	b = ft_printf("<%06.d>\n", -40);
+	printf("%d\n", a);
+	printf("%d\n", b);		
+	
+
+	a = printf("<%04.1d>\n", -32);
+	b = ft_printf("<%04.1d>\n", -32);
+	printf("%d\n", a);
+	printf("%d\n", b);		
+	
+	a = printf("<%05.d>\n", -5123);
+	b = ft_printf("<%05.d>\n", -5123);
+	printf("%d\n", a);
+	printf("%d\n", b);		
+	
+	a = printf("<%03.5d>\n", -5123);
+	b = ft_printf("<%03.5d>\n", -5123);
+	printf("%d\n", a);
+	printf("%d\n", b);		
+	
+	a = printf("<%0.2d>\n", 0);
+	b = ft_printf("<%0.2d>\n", 0);
 	printf("%d\n", a);
 	printf("%d\n", b);		
 	
@@ -159,14 +253,48 @@ int		main(void)
 	printf("%d\n", a);
 	printf("%d\n", b);
 	
-	a = printf("<%4.d>\n", 0);
-	b = ft_printf("<%4.d>\n", 0);
+	a = printf("<%15.4d>\n", -42);
+	b = ft_printf("<%15.4d>\n", -42);
+	printf("%d\n", a);
+	printf("%d\n", b);
+	
+	a = printf("<%.d>\n", 0);
+	b = ft_printf("<%.d>\n", 0);
+	printf("%d\n", a);
+	printf("%d\n", b);
+	
+	a = printf("<%.0d>\n", 0);
+	b = ft_printf("<%.0d>\n", 0);
+	printf("%d\n", a);
+	printf("%d\n", b);
+	
+	a = printf("<%10d>\n", -42);
+	b = ft_printf("<%10d>\n", -42);
+	printf("%d\n", a);
+	printf("%d\n", b);
+	
+	a = printf("<%10d>\n", -42);
+	b = ft_printf("<%10d>\n", -42);
+	printf("%d\n", a);
+	printf("%d\n", b);
+	
+	a = printf("<%zd>\n", 42);
+	b = ft_printf("<%zd>\n", 42);
+	printf("%d\n", a);
+	printf("%d\n", b);
+	
+	a = printf("<%zd>\n", 0);
+	b = ft_printf("<%zd>\n", 0);
+	printf("%d\n", a);
+	printf("%d\n", b);
+
+	a = printf("<%d>\n", 0);
+	b = ft_printf("<%d>\n", 0);
 	printf("%d\n", a);
 	printf("%d\n", b);
 	return (0);
 }
 
-/*
 */
 
 

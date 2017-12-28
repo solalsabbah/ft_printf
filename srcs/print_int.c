@@ -15,28 +15,22 @@
 
 int		first_case(t_form *form, int len, long long ival, int *flags)
 {
+	//	printf("[%d]\n", form->width);
 	if (flags[3] == 1 && flags[2] != 1 && flags[1] != 1 && flags[4] != 1)
 	{
-		form->prec > len ? print_width(form->width, 0, 1) : print_width(form->width, 0, 0);
-		ival < 0 ? ft_putsign(ival) : 0;
-		form->prec >= form->width ?  print_prec(form->prec, len, 1) : 0;	
-		if (form->prec < form->width)
-		{
-			len > form->prec && form->prec != -1 ? print_width(form->width, 0, 0) : 0;
-			len > form->prec && form->prec == -1 ? print_width(form->width, 0, 1) : 0;
-			if (form->prec >= len)
-			{
-				ival < 0 ? print_width(form->width, 0, 1) : print_width(form->width, 0, 0);
-				print_prec(form->prec, len, 1);
-			}
-		}
-		ft_putnbr(abs_val(ival));
+		form->prec == -1 && ival < 0 ? ft_putsign(ival) : 0;
+		form->prec > -1 || ival == 0 ? print_width(form->width, 0, 0) : print_width(form->width, 0, 1);
+		ival < 0  && form->prec != -1 ? ft_putsign(ival) : 0;
+		form->prec += ival < 0 ? 1 : 0;
+		print_prec(form->prec, len, 1);
+		form->prec == 0 && ival == 0 ? 0 : ft_putnbr(abs_val(ival));
 		return (1);
 	}
 	if (flags[2] == 1 && flags[1] != 1 && flags[3] != 1)
 	{
-		form->prec > len ? print_width(form->width - 1, 0, 0) : 0;
-		form->prec < len ? print_width(form->width - 1, 0, 0) : 0;
+		form->prec += ival < 0 ? 1 : 0;
+		form->width -= ival >= 0 ? 1 : 0;
+		print_width(form->width, 0, 0);
 		ft_putsign(ival);
 		print_prec(form->prec, len, 1);
 		ft_putnbr(abs_val(ival));
@@ -120,7 +114,7 @@ int				fourth_case(t_form *form, int len, long long ival, int *flags)
 {
 	if (flags[1] != 1 && flags[2] != 1 && flags[3] != 1 && flags[4] != 1)
 	{
-		print_width(form->width, 0, 0);
+		ival < 0 && form->prec > len ? print_width(--form->width, 0, 0) : print_width(form->width, 0, 0);
 		if (ival < 0)
 		{
 			ft_putchar('-');
@@ -144,17 +138,19 @@ int				print_int(va_list ap, t_form *form, int *flags)
 {
 	int			len;
 	int			ret;
-	long long	ival;
+	long long		ival;
 
 	ival = va_arg(ap, long long);
 	ival = signed_cast(ival, form->length);
-	len = int_len(ival);
-	
+	len = int_len(ival);	
 	ret = form->prec > len ? form->prec : len;
-	ret += form->prec > len && ival < 0 ? 1 : 0;
+	ret = form->prec <= 0 && ival == 0 ? 0 : ret;
+	ret += form->prec >= len && ival < 0 ? 1 : 0;
 	ret += (flags[2] == 1 && ival >= 0) || flags[4] == 1  ? 1 : 0;
 	ret -= flags[4] == 1 && (form->prec == 0 || ival < 0) ? 1 : 0;
 	ret = form->width > ret ? form->width : ret;
+	ret += flags[4] == 1 && ival == 0 && form->prec == 0 ? 1 : 0;
+	ret += !flags[4] && !flags[3] && !flags[2] && ival == 0 && form->prec == -1 ? 1 : 0;
 	form->prec == 0 && ival == 0 && form->width != 0 ? ret = form->width : 0;
 	form->width = form->prec > len ? form->width - form->prec : form->width - len;
 	form->width += ival == 0 && form->prec == 0 ? 1 : 0;
