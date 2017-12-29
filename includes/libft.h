@@ -17,6 +17,7 @@
 # include <string.h>
 # include <unistd.h>
 # include <stdarg.h>
+# include <wchar.h>
 
 # define H	0
 # define L	1
@@ -55,7 +56,7 @@ typedef	struct		s_fct
 	int			(*f) (va_list ap, t_form *form, int *flags);
 }			t_fct;
 
-
+char		*ft_getwchar(wchar_t wc);
 
 char		*ft_convert_oct(unsigned long long n);
 unsigned int	ft_convert_uns_oct(unsigned long long n);

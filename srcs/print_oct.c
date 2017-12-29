@@ -20,8 +20,6 @@ int			print_second_case(char *str, int len, t_form *form, int *flags)
 		flags[3] == 1 ? print_width(form->width, 0, 1) :
 			print_width(form->width, 0, 0);
 		print_prec(form->prec, len, 1);
-		form->prec == 0 && str[0] != '0' ? print_width(form->width, 0, 1) : 0;
-		form->prec == 0 && str[0] == '0' ? print_width(form->width, 0, 0) : 0;
 		str[0] == '0' && form->prec == 0 ? 0 : ft_putstr(str);
 	}
 	return (len);
@@ -36,7 +34,7 @@ int			print_first_case(char *str, int len, t_form *form, int *flags)
 			print_width(form->width, 0, 0);
 		form->prec > len || str[0] == '0' ? 0 : ft_putchar('0');
 		print_prec(form->prec, len, 1);
-		/*form->prec == 0 && str == 0 ? 0 :*/ ft_putstr(str);
+		ft_putstr(str);
 	}
 	if (flags[1] == 1)
 	{
@@ -75,6 +73,7 @@ int			print_oct(va_list ap, t_form *form, int *flags)
 	ret += flags[0] == 1 && str[0] == '0' && form->prec == 0 ? 1 : 0;
 	ret = form->width > ret ? form->width : ret;
 	form->width -= form->prec > len ? form->prec : len;
+	str[0] == '0' && form->prec == 0 ? form->width++ : 0;
 	print_first_case(str, len, form, flags);
 	print_second_case(str, len, form, flags);
 	return (ret);

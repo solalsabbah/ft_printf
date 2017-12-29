@@ -139,7 +139,7 @@ int				print_int(va_list ap, t_form *form, int *flags)
 	ival = signed_cast(ival, form->length);
 	len = int_len(ival);
 	ret = form->prec > len ? form->prec : len;
-	ret = form->prec <= 0 && ival == 0 ? 0 : ret;
+	ret = form->prec <= 0 && ival == 0 && !flags[2] ? 0 : ret;
 	ret += form->prec >= len && ival < 0 ? 1 : 0;
 	ret += (flags[2] == 1 && ival >= 0) || flags[4] == 1  ? 1 : 0;
 	ret -= flags[4] == 1 && (form->prec == 0 || ival < 0) ? 1 : 0;
@@ -149,6 +149,7 @@ int				print_int(va_list ap, t_form *form, int *flags)
 	form->prec == 0 && ival == 0 && form->width != 0 ? ret = form->width : 0;
 	form->width -= form->prec > len ? form->prec : len;
 	form->width += ival == 0 && form->prec == 0 ? 1 : 0;
+//	printf("[%d]\n", form->width);
 	if (first_case(form, len, ival, flags) == 1)
 		return (ret);
 	if (second_case(form, len, ival, flags) == 1)

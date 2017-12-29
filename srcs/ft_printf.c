@@ -483,6 +483,10 @@ int		main(void)
 	printf("% o|%+o\n", 42, 42);
 	ft_printf("% o|%+o\n", 42, 42);
 	
+	ft_printf("%03.2d\n", -1);	
+	ft_printf("<%5.o>\n", 0);	
+	ft_printf("<%5.0o>\n", 0);	
+	
 	return (0);
 }
 

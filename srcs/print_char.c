@@ -14,39 +14,30 @@
 
 int			print_wchar(wchar_t wc, t_form *form, int *flags)
 {
-		wchar_t c;
-		int		i;
-		int		error;
+	char	*str;
 
-		i = 0;
-		c = 0;
-		if ((0xD800 <= wc && wc <= 0xDFFF) || wc > 0x10FFFF || wc < 0x0)
-			error = 1;
-		else if (!wc)
-			c = wc;
-		else if (++i && wc <= 0x7F)
-			c = wc;
-		else if (i++ && wc <= 0x7FF)
-			c = (0x80 + (wc & 0x3F)) * 0x100 + (wc >> 6 | 0xC0);
-		else if (i++ && wc <= 0xFFFF)
-			c = ((0x80 + (wc & 0x3F)) * 0x100 + (0x80 + (wc >> 6 & 0x3F))) *
-				0x100 + (wc >> 12 | 0xE0);
-		else if (i++ && wc <= 0x10FFFF)
-			c = (((0x80 + (wc & 0x3F)) * 0x100 + (0x80 + (wc >> 6 & 0x3F))) *
-					0x100 + (0x80 + (wc >> 12 & 0x3F))) * 0x100 + (wc >> 18 | 0xF0);
-		ft_putchar(c);	
-		return (c);
+	if (wc == 0)
+	{
+		str = ft_strnew(1);
+		str[0] = -1;
+	}
+	else
+	{
+		if (!(str = ft_getwchar(wc)))
+			return (NULL);
+	}
+	return (wc);
 }
 
 int			print_char(va_list ap, t_form *form, int *flags)
 {
 	char		cval;
-	wchar_t		w;
+	wchar_t		wc;
 	cval = va_arg(ap, int);
 	if (form->field == 'C' || form->length == 'L')
 	{
-		w = va_arg(ap, wchar_t);
-		print_wchar(w, form, flags);
+		wc = va_arg(ap, wchar_t);
+		print_wchar(wc, form, flags);
 		return (1);	
 	}
 	if (flags[1] == 1)
