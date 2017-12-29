@@ -57,7 +57,7 @@ typedef	struct		s_fct
 
 
 
-unsigned long long		ft_convert_oct(unsigned long long n);
+char		*ft_convert_oct(unsigned long long n);
 unsigned int	ft_convert_uns_oct(unsigned long long n);
 int				ft_printf(const char *restrict format, ...);
 int				ft_putsign(int	nb);
@@ -126,6 +126,7 @@ t_list				*ft_lstnew(void const *content, size_t content_size);
 size_t				count_before(char const *s);
 size_t				count_after(char const *s);
 int					int_len(long long n);
+int				uns_len(unsigned long long nb);
 void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void				ft_strdel(char **as);

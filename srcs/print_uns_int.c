@@ -145,13 +145,11 @@ int		print_uns_int(va_list ap, t_form *form, int *flags)
 	if (form->field == 'U')
 		form->length = 'L';
 	ival = unsigned_cast(ival, form->length);
-	len = int_len(ival);
-	if (len > form->width)
-		ret = len;
-	else
-		ret = form->width;
+	len = uns_len(ival);
+	ret = len;
 	form->prec == 0 && ival == 0 ? ret = form->width : 0;
-	form->prec > ret ? ret = form->prec : 0;
+	ret = form->prec > ret ? form->prec : ret;
+	ret = form->width > ret ? form->width : ret;
 	if (first_uns_case(form, len, ival, flags) == 1)
 		return (ret);
 	if (second_uns_case(form, len, ival, flags) == 1)

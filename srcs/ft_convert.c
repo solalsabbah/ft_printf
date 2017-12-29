@@ -13,32 +13,6 @@
 #include "../includes/libft.h"
 #include <stdio.h>
 
-char					*append_char(char const *s1, char c)
-{
-	char				*str;
-	int					i;
-	int					j;
-
-	if (s1 && c)
-	{
-		str = malloc(sizeof(*str) * (ft_strlen(s1) + 1));
-		i = 0;
-		j = 0;
-		if (str == NULL)
-			return (NULL);
-		while (s1[i] != 0)
-		{
-			str[i] = s1[i];
-			i++;
-		}
-		str[i] = c;
-		i++;
-		str[i] = '\0';
-		return (str);
-	}
-	return (NULL);
-}
-
 char					convert(int i, int maj)
 {
 	int					a;
@@ -53,50 +27,48 @@ char					convert(int i, int maj)
 	return (0);
 }
 
-char					*ft_convert_hex(unsigned long long n, t_form *form)
+char					*ft_convert_hex(unsigned long long nb, t_form *form)
 {
-	long long			r;
-	long long			q;
-	int					maj;
+	long long			res;
+	int				maj;
+	int				i;
 	char				*str;
-	char				*c;
 
-	q = 1;
+	i = 0;
 	maj = 0;
-	str = malloc(sizeof(char) * 1);
+	str = ft_strnew(22);
 	if (form->field == 'X' || form->field == 'P')
 		maj = 1;
-	while (q != 0)
+	str[0] = 48;
+	while (nb > 0)
 	{
-		q = n / 16;
-		r = n % 16;
-		c = malloc(sizeof(char) * 2);
-		c[0] = convert(r, maj);
-		c[1] = 0;
-		str = ft_strcat(str, c);
-		n = q;
+		res = nb % 16;
+		str[i] = convert(res, maj);
+		nb = nb / 16;
+		i++;
 	}
 	ft_strrev(str);
 	return (str);
 }
 
-unsigned long long		ft_convert_oct(unsigned long long n)
+char			*ft_convert_oct(unsigned long long nb)
 {
-	long long			res;
-	long long			nb;
-	long long			base;
-	unsigned long long	j;
+	unsigned long long		res;
+	unsigned long long		base;
+	char				*str;
+	int				i;
 
-	res = 0;
-	nb = 0;
-	j = (long long)n;
-	base = 1;
-	while (j > 0)
+	i = 0;
+	res = nb;
+	str = ft_strnew(22);
+	str[0] = 48;
+	while (nb > 0)
 	{
-		nb = nb * 10 + (j % 8);
-		res = res + (j % 8) * base;
-		j = j / 8;
-		base = base * 10;
+		res = nb % 8;
+		str[i] = res + 48;
+		nb = nb / 8;
+		i++;
 	}
-	return (res);
+	ft_strrev(str);
+	return (str);
 }

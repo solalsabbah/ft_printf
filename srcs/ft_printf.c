@@ -12,6 +12,7 @@
 
 #include <stdio.h>
 #include <stdarg.h>
+#include <limits.h>
 #include "../includes/libft.h"
 
 t_fct	g_fct_tab[] =
@@ -103,13 +104,12 @@ int				ft_printf(const char *format, ...)
 	va_end(ap);
 	return (ret);
 }
-/*
+	/*
 
 int		main(void)
 {
 	int a;	
 	int b;
-	
 	
 	a = printf("<%010d>\n", 110);
 	b = ft_printf("<%010d>\n", 110);
@@ -433,7 +433,55 @@ int		main(void)
 	b = printf("<%O>\n", 214);
 	printf("%d\n", a);
 	printf("%d\n", b);
- 
+	
+	
+	a = printf("{% C}\n", L'a'); 
+	b = ft_printf("{% c}\n", L'a'); 
+	printf("%d\n", a);
+	printf("%d\n", b);
+	a = printf("a >%x<\n", LONG_MAX);
+	b = ft_printf("b >%x<\n", LONG_MAX);
+	printf("%d\n", a);
+	printf("%d\n", b);
+	
+	a = printf("a >%x<\n", 32);
+	b = ft_printf("b >%x<\n", 32);
+	printf("%d\n", a);
+	printf("%d\n", b);
+	
+	a = ft_printf("<%#.O>\n", 0);
+	b = printf("<%#.O>\n", 0);
+	printf("%d\n", a);
+	printf("%d\n", b);
+
+	a = printf("%U\n", ULONG_MAX);
+	b = ft_printf("%U\n", ULONG_MAX);
+	printf("%d\n", a);
+	printf("%d\n", b);
+	
+	a = printf("%lu\n", ULONG_MAX);
+	b = ft_printf("%lu\n", ULONG_MAX);
+	printf("%d\n", a);
+	printf("%d\n", b);
+	
+	a = printf("%lu\n", 0);
+	b = ft_printf("%lu\n", 0);
+	printf("%d\n", a);
+	printf("%d\n", b);
+	
+	a = printf("%u%u%u%u%u\n", 1, 100, 999, 42, 999988888);
+	printf("\n");	
+	b = ft_printf("%u%u%u%u%u\n", 1, 100, 999, 42, 999988888);
+	printf("%d\n", a);
+	printf("%d\n", b);
+	
+	a = printf("%4.15u\n", 100);
+	b = ft_printf("%4.15u\n", 100);
+	printf("%d\n", a);
+	printf("%d\n", b);
+	
+	printf("% o|%+o\n", 42, 42);
+	ft_printf("% o|%+o\n", 42, 42);
 	
 	return (0);
 }

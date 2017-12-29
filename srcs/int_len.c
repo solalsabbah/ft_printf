@@ -12,6 +12,19 @@
 
 #include "../includes/libft.h"
 
+int		uns_len(unsigned long long nb)
+{
+	int len;
+
+	len = 1;
+	while (nb >= 10)
+	{
+		nb /= 10;
+		len++;
+	}
+	return (len);
+}
+
 int		int_len(long long nb)
 {
 	int len;

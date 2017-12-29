@@ -70,7 +70,7 @@ int			print_hex(va_list ap, t_form *form, int *flags)
 	ival = unsigned_cast(ival, form->length);
 	str = ft_convert_hex(ival, form);
 	if (flags[2] == 1 || flags[4] == 1)
-		return (-1);
+		flags[4] = 0;
 	flags[1] == 1 && flags[3] == 1 ? flags[3] = 0 : 0;
 	len = ft_strlen(str);
 	ret = len;
