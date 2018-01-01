@@ -6,40 +6,48 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/26 12:16:58 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/28 18:21:46 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/01/01 19:29:55 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
+#include <locale.h>
 #include "../includes/libft.h"
 
 int			print_wchar(wchar_t wc, t_form *form, int *flags)
 {
 	char	*str;
+	int		ret;
 
 	if (wc == 0)
 	{
 		str = ft_strnew(1);
-		str[0] = -1;
+		str[0] = 0;
+		return (1);
 	}
 	else
 	{
-		if (!(str = ft_getwchar(wc)))
-			return (NULL);
+		if (!(str = ft_getwchar((wchar_t)wc)))
+			return (0);
 	}
-	return (wc);
+	ret = ft_strlen(str);
+	write(1, str, ret);
+	return (ret);
 }
 
 int			print_char(va_list ap, t_form *form, int *flags)
 {
 	char		cval;
 	wchar_t		wc;
-	cval = va_arg(ap, int);
-	if (form->field == 'C' || form->length == 'L')
+	int			ret;
+
+	if (form->field == 'C' || form->length == L)
 	{
 		wc = va_arg(ap, wchar_t);
-		print_wchar(wc, form, flags);
-		return (1);	
+		ret = print_wchar(wc, form, flags);
+		return (ret);	
 	}
+	cval = va_arg(ap, int);
 	if (flags[1] == 1)
 	{
 		ft_putchar(cval);

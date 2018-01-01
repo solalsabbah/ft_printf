@@ -6,11 +6,12 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 14:34:50 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/28 18:50:28 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/01/01 21:03:55 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include <locale.h>
 #include <stdarg.h>
 #include <limits.h>
 #include "../includes/libft.h"
@@ -59,6 +60,7 @@ int			ft_fmt(const char *str, va_list ap, t_form *form)
 	length(str, form);
 	field(str, form);
 	str = ft_strpbrk(str, "sSpdDioOuUxXcCBb%");
+	free(flags);
 	while (g_fct_tab[i].c != '0')
 	{
 		if (g_fct_tab[i].c == str[0])
@@ -106,15 +108,141 @@ int				ft_printf(const char *format, ...)
 }
 
 /*
+
 int		main(void)
 {
 	int a;	
 	int b;
+	setlocale(LC_ALL, "");
+	a = printf("<%C>\n", 15000);	
+	b = ft_printf("<%C>\n", 15000);	
+	printf("a = %d\n", a);
+	printf("b = %d\n", b);		
+
+	a = printf("<%C>\n", 0);	
+	b = ft_printf("<%C>\n", 0);	
+	printf("a = %d\n", a);
+	printf("b = %d\n", b);		
 	
+	a = printf("<%hhC>\n", 0);	
+	b = ft_printf("<%hhC>\n", 0);	
+	printf("a = %d\n", a);
+	printf("b = %d\n", b);
+
+	a = printf("\n%hhC\n, %hhC\n", 0, L'Á±≥');	
+	b = ft_printf("\n%hhC\n, %hhC\n", 0, L'Á±≥');	
+	printf("a = %d\n", a);
+	printf("b = %d\n", b);
+	
+	a = printf("<%C>\n", 1508);	
+	b = ft_printf("<%C>\n", 1508);	
+	printf("a = %d\n", a);
+	printf("b = %d\n", b);		
+	
+	printf("<%o>\n", 65);	
+	ft_printf("<%o>\n", 65);	
+	printf("\n");
+	
+	printf("<%x>\n", 65);	
+	ft_printf("<%x>\n", 65);	
+	return (0);
+}
+
+
+
+*/
+
+/*
+	
+	printf("<% 03d>\n", 0);	
+	ft_printf("<% 03d>\n", 0);	
+	printf("\n");
+	
+	printf("<% 04d>\n", 0);	
+	ft_printf("<% 04d>\n", 0);	
+	printf("\n");
+	
+	printf("<% 04d>\n", 0);	
+	ft_printf("<% 04d>\n", 0);	
+	printf("\n");
+	
+	printf("<% 04.6d>\n", 1);	
+	ft_printf("<% 04.6d>\n", 1);	
+	printf("\n");
+	
+	printf("<% 04.4d>\n", 7);	
+	ft_printf("<% 04.4d>\n", 7);	
+	printf("\n");
+	
+	printf("<% 05.3d>\n", -1);	
+	ft_printf("<% 05.3d>\n", -1);	
+	printf("\n");
+	
+	printf("<% 05.4d>\n", -2);	
+	ft_printf("<% 05.4d>\n", -2);	
+	printf("\n");
+	
+	printf("<% 0.3d>\n", -1);	
+	ft_printf("<% 0.3d>\n", -1);	
+	printf("\n");
+	
+	printf("<% 04d>\n", -1);	
+	ft_printf("<% 04d>\n", -1);
+	printf("\n");
+	
+	printf("<% 04d>\n", 2);	
+	ft_printf("<% 04d>\n", 2);	
+	printf("\n");
+	
+	printf("<% 08.3d>\n", -1);	
+	ft_printf("<% 08.3d>\n", -1);	
+	
+	printf("<% 3d>\n", 0);	
+	ft_printf("<% 3d>\n", 0);	
+	printf("\n");
+	
+	printf("<% 4d>\n", 0);	
+	ft_printf("<% 4d>\n", 0);	
+	printf("\n");
+	
+	printf("<% 4d>\n", 0);	
+	ft_printf("<% 4d>\n", 0);	
+	printf("\n");
+	
+	printf("<% 4.6d>\n", 1);	
+	ft_printf("<% 4.6d>\n", 1);	
+	printf("\n");
+	
+	printf("<% 4.4d>\n", 7);	
+	ft_printf("<% 4.4d>\n", 7);	
+	printf("\n");
+	
+	printf("<% 5.3d>\n", -1);	
+	ft_printf("<% 5.3d>\n", -1);	
+	printf("\n");
+	
+	printf("<% 5.4d>\n", -2);	
+	ft_printf("<% 5.4d>\n", -2);	
+	printf("\n");
+	
+	printf("<% .3d>\n", -1);	
+	ft_printf("<% .3d>\n", -1);	
+	printf("\n");
+	
+	printf("<% 4d>\n", -1);	
+	ft_printf("<% 4d>\n", -1);
+	printf("\n");
+	
+	printf("<% 4d>\n", 2);	
+	ft_printf("<% 4d>\n", 2);	
+	printf("\n");
+	
+	printf("<% 8.3d>\n", -1);	
+	ft_printf("<% 8.3d>\n", -1);	
+	
+
 	a = printf("<%010d>\n", 110);
 	b = ft_printf("<%010d>\n", 110);
-	printf("%d\n", a);
-	printf("%d\n", b);		
 	
 	a = printf("<%010d>\n", -110);
 	b = ft_printf("<%010d>\n", -110);
@@ -611,12 +739,32 @@ int		main(void)
 	ft_printf("<%- 3.10d>\n", 23);	
 	
 	printf("\n");
+	printf("<% -5d>\n", 1);	
+	ft_printf("<% -5d>\n", 1);	
+
+	printf("\n");
+	printf("<% -3d>\n", 2);	
+	ft_printf("<% -3d>\n", 2);	
+
+	printf("\n");
+	printf("<% -5d>\n", 0);	
+	ft_printf("<% -5d>\n", 0);	
+
+	printf("\n");
 	printf("<% -3d>\n", 0);	
 	ft_printf("<% -3d>\n", 0);	
 
 	printf("\n");
-	printf("<% -3.10d>\n", -1);	
-	ft_printf("<% -3.10d>\n",-1);	
+	printf("<% -.10d>\n", -1);	
+	ft_printf("<% -.10d>\n",-1);	
+	
+	printf("\n");
+	printf("<% -.d>\n", -43);	
+	ft_printf("<% -.d>\n",-43);	
+	
+	printf("\n");
+	printf("<% -3.2d>\n", 43);	
+	ft_printf("<% -3.2d>\n",43);	
 	
 	printf("\n");
 	printf("<% -3.10d>\n", 0);	
@@ -625,11 +773,9 @@ int		main(void)
 	printf("\n");
 	printf("<% -3.d>\n", 0);	
 	ft_printf("<% -3.d>\n", 0);	
-	
+*/	
 
-	return (0);
-}
-
+/*
 */
 
 /*

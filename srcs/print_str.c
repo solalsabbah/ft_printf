@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/26 12:20:41 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/28 15:12:14 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/01/01 18:57:11 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,14 @@ int				print_str(va_list ap, t_form *form, int *flags)
 	int			len;
 	int			ret;
 	const char	*sval;
+	wchar_t		*wc;
 
+	if (form->field == 'S' || form->length == L)
+	{
+		wc = va_arg(ap, wchar_t *);
+		print_wstr(wc, form, flags);
+		return (1);
+	}
 	sval = va_arg(ap, char *);
 	if (sval == NULL)
 	{

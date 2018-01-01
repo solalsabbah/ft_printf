@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/11 15:52:58 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/28 17:45:52 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/01/01 18:57:52 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ typedef	struct		s_fct
 }			t_fct;
 
 char		*ft_getwchar(wchar_t wc);
+int			ft_wcharlen(wchar_t c);
+int				print_wstr(wchar_t *wc, t_form *form, int *flags);
 
 char		*ft_convert_oct(unsigned long long n);
 unsigned int	ft_convert_uns_oct(unsigned long long n);

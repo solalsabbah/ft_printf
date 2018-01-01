@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 15:28:13 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/28 17:49:13 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/01/01 20:59:22 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ char					*ft_convert_hex(unsigned long long nb, t_form *form)
 		i++;
 	}
 	ft_strrev(str);
+	free(str);
 	return (str);
 }
 
@@ -70,5 +71,6 @@ char			*ft_convert_oct(unsigned long long nb)
 		i++;
 	}
 	ft_strrev(str);
+	free(str);
 	return (str);
 }

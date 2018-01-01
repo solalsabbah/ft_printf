@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 14:53:57 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/28 18:49:08 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/01/01 20:54:38 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int			print_oct(va_list ap, t_form *form, int *flags)
 	int					len;
 	int					ret;
 	char				*str;
-	unsigned long long			ival;
+	unsigned long long	ival;
 	
 	ival = va_arg(ap, unsigned long long);
 	if (form->field == 'O')

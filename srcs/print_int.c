@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 17:45:39 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/28 16:30:11 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/01/01 21:00:05 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,17 +58,32 @@ int		second_case(t_form *form, int len, long long ival, int *flags)
 		form->prec == 0 && ival == 0 ? 0 : ft_putnbr(abs_val(ival));
 		return (1);
 	}
-	if ((flags[4] && !flags[1]) || (flags[3] == 1 && flags[4] == 1 && flags[2] != 1 && flags[1] != 1))
+	if (flags[3] == 1 && flags[4] == 1 && flags[2] != 1 && flags[1] != 1)
 	{
-		ival >= 0 ? ft_putchar(' ') : 0;
-		ival < 0 ? form->width++ : 0;
-		form->prec > -1 ? print_width(--form->width, 0, 0) : 0;
+		ival >= 0 || (form->width > 1 && ival < 0 && form->prec != -1)? ft_putchar(' ') : 0;
+		ival < 0 && form->width > 1 ? form->width-- : 0;
+		if (form->prec == -1 && ival < 0)
+			form->width = form->width + 2;
+		form->prec > 0 ? print_width(--form->width, 0, 0) : 0;
 		ival < 0 ? ft_putsign(ival) : 0;
-		form->prec == -1 ? print_width(--form->width, 0, 1) : 0;
-		ival <= 0 ? print_prec(++form->prec, len, 1) : print_prec(form->prec, len, 1);
-		ival == 0 ? 0 : ft_putnbr(abs_val(ival));
+	  	form->prec < 0 ? print_width(--form->width, 0, 1) : 0;
+		ival <= 0 ? print_prec(form->prec + 1, len, 1) : print_prec(form->prec, len, 1);
+		ival == 0 && form->prec == 0 ? 0 : ft_putnbr(abs_val(ival));
 		return (1);
 	}
+	if (flags[4] == 1 && flags[3] == 0 && flags[2] == 0 && flags[1] == 0)
+	{
+		ival >= 0 || (form->width > 1 && ival < 0 && form->prec != -1)? ft_putchar(' ') : 0;
+		ival < 0 && form->width > 1 ? form->width-- : 0;
+		if (form->prec == -1 && ival < 0)
+			form->width = form->width + 2;
+		print_width(--form->width, 0, 0);
+		ival < 0 ? ft_putsign(ival) : 0;
+		ival <= 0 ? print_prec(form->prec + 1, len, 1) : print_prec(form->prec, len, 1);
+		ival == 0 && form->prec == 0 ? 0 : ft_putnbr(abs_val(ival));
+		return (1);
+	}
+	return (0);
 }
 
 int		third_case(t_form *form, int len, long long ival, int *flags)
@@ -83,14 +98,14 @@ int		third_case(t_form *form, int len, long long ival, int *flags)
 		print_width(--form->width, 0, 0);
 		return (1);
 	}
-	if (flags[1] == 1 && flags[4] == 1 && flags[3] != 1) // work here
+	if (flags[1] == 1 && flags[4] == 1 && flags[3] != 1)
 	{
-		form->prec > -1 ? print_width(--form->width, 0, 0) : 0;
 		ival >= 0 ? ft_putchar(' ') : 0;
 		ival < 0 ? ft_putsign(ival) : 0;
-		ival <= 0 ? print_prec(++form->prec, len, 1) : print_prec(form->prec, len, 1);
-		ival == 0 ? 0 : ft_putnbr(abs_val(ival));
-		
+		ival <= 0 ? print_prec(form->prec + 1, len, 1) : print_prec(form->prec, len, 1);
+		(ival == 0 && form->prec == -1) || ival != 0 ? ft_putnbr(abs_val(ival)) : 0;
+		print_width(--form->width, 0, 0);
+			
 		return (1);
 	}
 	return (0);
@@ -105,11 +120,10 @@ int				fourth_case(t_form *form, int len, long long ival, int *flags)
 		if (ival < 0)
 		{
 			ft_putchar('-');
-			ival = -ival;
 			len--;
 		}
 		print_prec(form->prec, len, 1);
-		form->prec == 0 && ival == 0 ? 0 : ft_putnbr(ival);
+		form->prec == 0 && ival == 0 ? 0 : ft_putnbr(abs_val(ival));
 		return (1);
 	}
 	return (0);
