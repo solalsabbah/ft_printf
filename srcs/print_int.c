@@ -17,9 +17,9 @@ int		first_case(t_form *form, int len, long long ival, int *flags)
 {
 	if (flags[3] == 1 && flags[2] != 1 && flags[1] != 1 && flags[4] != 1)
 	{
-		form->prec == -1 && ival < 0 ? ft_putsign(ival) : 0;
-		form->prec > -1 || ival == 0 ? print_width(form->width, 0, 0) : print_width(form->width, 0, 1);
-		ival < 0  && form->prec != -1 ? ft_putsign(ival) : 0;
+		ival < 0 ? ft_putsign(ival) : 0;
+		form->width -= ival < 0 && form->prec != -1? 1 : 0;
+		form->prec > -1 ? print_width(form->width, 0, 0) : print_width(form->width, 0, 1);
 		form->prec += ival < 0 ? 1 : 0;
 		print_prec(form->prec, len, 1);
 		form->prec == 0 && ival == 0 ? 0 : ft_putnbr(abs_val(ival));
@@ -35,12 +35,11 @@ int		first_case(t_form *form, int len, long long ival, int *flags)
 		ft_putnbr(abs_val(ival));
 		return (1);
 	}
-	if ((flags[1] == 1 && flags[2] != 1 && flags[3] != 1 && flags[4] != 1))
+	if ((flags[1] == 1 && flags[2] != 1 && flags[4] != 1))
 	{
-		print_prec(form->prec, len, 1);
-		if (form->prec > len)
-			len = form->prec;
-		ft_putnbr(ival);
+		ival < 0 ? ft_putsign(ival) : 0;
+		ival < 0 ? print_prec(++form->prec, len, 1) : print_prec(form->prec, len, 1);
+		form->prec == 0 && ival == 0 ? 0 : ft_putnbr(abs_val(ival));
 		print_width(form->width, 0, 0);
 		return (1);
 	}
@@ -51,27 +50,25 @@ int		second_case(t_form *form, int len, long long ival, int *flags)
 {
 	if (flags[2] == 1 && flags[3] == 1 && flags[1] != 1)
 	{
+		ival >= 0 ? --form->width : 0;
+		form->prec > -1 ? print_width(form->width, 0, 0) : 0;
 		ft_putsign(ival);
-		ival >= 0 ? form->width-- : 0;
-		print_width(form->width, 0, 1);
-		ft_putnbr(abs_val(ival));
+		form->prec == -1 ? print_width(form->width, 0, 1) : 0;
+		ival < 0 ? print_prec(++form->prec, len, 1) : print_prec(form->prec, len, 1);
+		form->prec == 0 && ival == 0 ? 0 : ft_putnbr(abs_val(ival));
 		return (1);
 	}
-	if (flags[3] == 1 && flags[4] == 1 && flags[2] != 1 && flags[1] != 1)
+	if ((flags[4] && !flags[1]) || (flags[3] == 1 && flags[4] == 1 && flags[2] != 1 && flags[1] != 1))
 	{
-		ft_putchar(' ');
-		print_width(form->width - 1, 0, 1);
-		ft_putnbr(abs_val(ival));
+		ival >= 0 ? ft_putchar(' ') : 0;
+		ival < 0 ? form->width++ : 0;
+		form->prec > -1 ? print_width(--form->width, 0, 0) : 0;
+		ival < 0 ? ft_putsign(ival) : 0;
+		form->prec == -1 ? print_width(--form->width, 0, 1) : 0;
+		ival <= 0 ? print_prec(++form->prec, len, 1) : print_prec(form->prec, len, 1);
+		ival == 0 ? 0 : ft_putnbr(abs_val(ival));
 		return (1);
 	}
-	if (flags[4] == 1 && flags[1] != 1 && flags[2] != 1 && flags[3] != 1)
-	{
-		ival >= 0 && form->width <= 0 ? ft_putchar(' ') : print_width(form->width, 0, 0);
-		print_prec(form->prec, len, 1);
-		form->prec == 0 && ival == 0 ? 0 : ft_putnbr(ival);
-		return (1);
-	}
-	return (0);
 }
 
 int		third_case(t_form *form, int len, long long ival, int *flags)
@@ -79,25 +76,21 @@ int		third_case(t_form *form, int len, long long ival, int *flags)
 	if (flags[2] == 1 && flags[1] == 1)
 	{
 		ft_putsign(ival);
+		ival < 0 ? form->prec++ : 0;
 		print_prec(form->prec, len, 1);
-		ft_putnbr(abs_val(ival));
+		form->prec == 0 && ival == 0 ? 0 : ft_putnbr(abs_val(ival));
 		len < form->prec ? len = form->prec : 0;
-		print_width(form->width - 1, 0, 0);
+		print_width(--form->width, 0, 0);
 		return (1);
 	}
-	if (flags[1] == 1 && flags[4] == 1 && flags[3] != 1)
+	if (flags[1] == 1 && flags[4] == 1 && flags[3] != 1) // work here
 	{
-		if (ival < 0)
-		{
-			ft_putnbr(ival);
-		}
-		else
-		{
-			ft_putchar(' ');
-			ft_putnbr(ival);
-			form->width--;
-		}
-		print_width(form->width, 0, 0);
+		form->prec > -1 ? print_width(--form->width, 0, 0) : 0;
+		ival >= 0 ? ft_putchar(' ') : 0;
+		ival < 0 ? ft_putsign(ival) : 0;
+		ival <= 0 ? print_prec(++form->prec, len, 1) : print_prec(form->prec, len, 1);
+		ival == 0 ? 0 : ft_putnbr(abs_val(ival));
+		
 		return (1);
 	}
 	return (0);
@@ -119,12 +112,6 @@ int				fourth_case(t_form *form, int len, long long ival, int *flags)
 		form->prec == 0 && ival == 0 ? 0 : ft_putnbr(ival);
 		return (1);
 	}
-	if (flags[1] == 1 && flags[3] == 1)
-	{
-		ft_putnbr(ival);
-		print_width(form->width, 0, 0);
-		return (1);
-	}
 	return (0);
 }
 
@@ -134,7 +121,7 @@ int				print_int(va_list ap, t_form *form, int *flags)
 	int				ret;
 	long long		ival;
 
-	form->field == 'D' ? form->length = 'L' : 0; 	
+	form->field == 'D' ? form->length = L : 0;
 	ival = va_arg(ap, long long);
 	ival = signed_cast(ival, form->length);
 	len = int_len(ival);
@@ -149,7 +136,6 @@ int				print_int(va_list ap, t_form *form, int *flags)
 	form->prec == 0 && ival == 0 && form->width != 0 ? ret = form->width : 0;
 	form->width -= form->prec > len ? form->prec : len;
 	form->width += ival == 0 && form->prec == 0 ? 1 : 0;
-//	printf("[%d]\n", form->width);
 	if (first_case(form, len, ival, flags) == 1)
 		return (ret);
 	if (second_case(form, len, ival, flags) == 1)
