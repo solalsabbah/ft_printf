@@ -15,28 +15,7 @@
 #include <stdarg.h>
 #include <limits.h>
 #include "../includes/libft.h"
-
-t_fct	g_fct_tab[] =
-{
-	{'S', &print_str},
-	{'s', &print_str},
-	{'p', &print_ptr},
-	{'d', &print_int},
-	{'D', &print_int},
-	{'i', &print_int},
-	{'o', &print_oct},
-	{'O', &print_oct},
-	{'x', &print_hex},
-	{'X', &print_hex},
-	{'c', &print_char},
-	{'C', &print_char},
-	{'u', &print_uns_int},
-	{'U', &print_uns_int},
-	{'b', &print_bin},
-	{'B', &print_bin},
-	{'%', &print_percent},
-	{0, NULL}
-};
+#include "../includes/ft_fct_tab.c"
 
 void		init_format(t_form *form)
 {
@@ -80,16 +59,14 @@ int				ft_printf(const char *format, ...)
 	int		ret;
 	t_form 		 form;
 	va_list		ap;
-//	const char	*p;
 
 	i = 0;
 	ret = 0;
 	va_start(ap, format);
-//	p = format;
 	while (format[i] != 0) 
 	{
 		format[i] != '%' ? ft_putchar(format[i]) : 0;
-		if (p[i] == '%')
+		if (format[i] == '%')
 		{
 			if (ft_strpbrk(&format[i + 1], "sSpdDioOuUxXcCBb%") != NULL)
 			{

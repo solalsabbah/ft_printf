@@ -36,8 +36,8 @@ int				print_str(va_list ap, t_form *form, int *flags)
 {
 	int			len;
 	int			ret;
-	const char	*sval;
-	wchar_t		*wc;
+	char			*sval;
+	wchar_t			*wc;
 
 	if (form->field == 'S' || form->length == L)
 	{
@@ -62,5 +62,6 @@ int				print_str(va_list ap, t_form *form, int *flags)
 	ft_putstr_prec(sval, form->prec);
 	if (flags[1] == 1)
 		print_width(form->width, len, 0);
+//	free(sval);
 	return (ret);
 }
