@@ -14,7 +14,7 @@
 
 char		*ft_strrev(char *str)
 {
-	char	tmp;
+	char		tmp;
 	int		i;
 	int		j;
 

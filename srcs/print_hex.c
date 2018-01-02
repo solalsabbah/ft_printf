@@ -82,5 +82,6 @@ int			print_hex(va_list ap, t_form *form, int *flags)
 	ret += form->width > 0 ? form->width : 0;
 	hex_one(str, len, form, flags);
 	hex_two(str, len, form, flags);
+	free((char*)str);
 	return (ret);
 }

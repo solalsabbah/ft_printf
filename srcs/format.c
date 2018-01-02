@@ -24,6 +24,7 @@ int			*init_tab(size_t n)
 		tab[i] = 0;
 		i++;
 	}
+	tab[i] = '\0';
 	return (tab);
 }
 

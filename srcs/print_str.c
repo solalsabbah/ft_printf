@@ -42,8 +42,8 @@ int				print_str(va_list ap, t_form *form, int *flags)
 	if (form->field == 'S' || form->length == L)
 	{
 		wc = va_arg(ap, wchar_t *);
-		print_wstr(wc, form, flags);
-		return (1);
+		ret = print_wstr(wc, form, flags);
+		return (ret);
 	}
 	sval = va_arg(ap, char *);
 	if (sval == NULL)

@@ -48,7 +48,6 @@ char					*ft_convert_hex(unsigned long long nb, t_form *form)
 		i++;
 	}
 	ft_strrev(str);
-	free(str);
 	return (str);
 }
 
@@ -71,6 +70,5 @@ char			*ft_convert_oct(unsigned long long nb)
 		i++;
 	}
 	ft_strrev(str);
-	free(str);
 	return (str);
 }

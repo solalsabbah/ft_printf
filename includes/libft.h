@@ -59,6 +59,7 @@ typedef	struct		s_fct
 char		*ft_getwchar(wchar_t wc);
 int			ft_wcharlen(wchar_t c);
 int				print_wstr(wchar_t *wc, t_form *form, int *flags);
+int			print_wchar(wchar_t wc, t_form *form, int *flags);
 
 char		*ft_convert_oct(unsigned long long n);
 unsigned int	ft_convert_uns_oct(unsigned long long n);

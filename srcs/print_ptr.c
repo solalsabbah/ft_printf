@@ -51,5 +51,6 @@ int		print_ptr(va_list ap, t_form *form, int *flags)
 		ret = form->width;
 	form->width -= len > form->prec ? (len + 2) : (form->prec + 2);
 	ptr_one(str, len, form, flags);
+	free(str);
 	return (ret);
 }

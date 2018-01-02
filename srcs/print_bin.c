@@ -13,12 +13,11 @@
 #include "../includes/libft.h"
 #include <stdio.h>
 
-char		*calc_bin(long int nbr, int p)
+char		*calc_bin(char *str, long int nbr, int p)
 {
 	int		q;
 	int		r;
 	int		i;
-	char	*str;
 
 	str = malloc(sizeof(str) * 32 + 1);
 	q = 1;
@@ -53,8 +52,9 @@ int			print_bin(va_list ap, t_form *form, int *flags)
 		nbr = -nbr;
 		p = 1;
 	}
-	str = calc_bin(nbr, p);
+	str = calc_bin(str, nbr, p);
 	len = ft_strlen(str);
 	ft_putstr(ft_strrev(str));
+	free(str);
 	return (p + len);
 }

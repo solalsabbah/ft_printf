@@ -60,12 +60,12 @@ int			ft_fmt(const char *str, va_list ap, t_form *form)
 	length(str, form);
 	field(str, form);
 	str = ft_strpbrk(str, "sSpdDioOuUxXcCBb%");
-	free(flags);
 	while (g_fct_tab[i].c != '0')
 	{
 		if (g_fct_tab[i].c == str[0])
 		{
 			ret = g_fct_tab[i].f(ap, form, flags);
+			free(flags);
 			return (ret);
 		}
 		i++;
@@ -78,24 +78,24 @@ int				ft_printf(const char *format, ...)
 	int		i;
 	int		len;
 	int		ret;
-	t_form  form;
+	t_form 		 form;
 	va_list		ap;
-	const char	*p;
+//	const char	*p;
 
 	i = 0;
 	ret = 0;
 	va_start(ap, format);
-	p = format;
-	while (p[i] != 0) 
+//	p = format;
+	while (format[i] != 0) 
 	{
-		p[i] != '%' ? ft_putchar(p[i]) : 0;
+		format[i] != '%' ? ft_putchar(format[i]) : 0;
 		if (p[i] == '%')
 		{
-			if (ft_strpbrk(&p[i + 1], "sSpdDioOuUxXcCBb%") != NULL)
+			if (ft_strpbrk(&format[i + 1], "sSpdDioOuUxXcCBb%") != NULL)
 			{
-				len = ft_strpbrk(&p[i + 1], "sSpdDioOuUxXcCBb%") - &p[i + 1];
-				ret = ret + ft_fmt(ft_strsub(&p[i + 1], 0, len + 1), ap, &form) - 1;
-				i = ft_strpbrk(&p[i + 1], "sSpdDioOuUxXcCBb%") - &p[0];
+				len = ft_strpbrk(&format[i + 1], "sSpdDioOuUxXcCBb%") - &format[i + 1];
+				ret = ret + ft_fmt(ft_strsub(&format[i + 1], 0, len + 1), ap, &form) - 1;
+				i = ft_strpbrk(&format[i + 1], "sSpdDioOuUxXcCBb%") - &format[0];
 			}
 			else 
 				ret--;
@@ -106,16 +106,17 @@ int				ft_printf(const char *format, ...)
 	va_end(ap);
 	return (ret);
 }
-
 /*
+
 
 int		main(void)
 {
 	int a;	
 	int b;
 	setlocale(LC_ALL, "");
-	a = printf("<%C>\n", 15000);	
-	b = ft_printf("<%C>\n", 15000);	
+	
+	a = printf("<%hhC>\n", 15000);	
+	b = ft_printf("<%hhC>\n", 15000);	
 	printf("a = %d\n", a);
 	printf("b = %d\n", b);		
 
@@ -124,27 +125,22 @@ int		main(void)
 	printf("a = %d\n", a);
 	printf("b = %d\n", b);		
 	
-	a = printf("<%hhC>\n", 0);	
-	b = ft_printf("<%hhC>\n", 0);	
+	a = printf("<%hhC>\n", 400);	
+	b = ft_printf("<%hhC>\n", 400);	
+	printf("a = %d\n", a);
+	printf("b = %d\n", b);
+	
+	a = printf("<%hhC>\n", 230);	
+	b = ft_printf("<%hhC>\n", 230);	
 	printf("a = %d\n", a);
 	printf("b = %d\n", b);
 
-	a = printf("\n%hhC\n, %hhC\n", 0, L'Á±≥');	
-	b = ft_printf("\n%hhC\n, %hhC\n", 0, L'Á±≥');	
+	
+	a = printf("<%5.4S>\n", L"㪘Ɛפ");	
+	b = ft_printf("<%5.4S>\n", L"㪘Ɛפ");	
 	printf("a = %d\n", a);
 	printf("b = %d\n", b);
-	
-	a = printf("<%C>\n", 1508);	
-	b = ft_printf("<%C>\n", 1508);	
-	printf("a = %d\n", a);
-	printf("b = %d\n", b);		
-	
-	printf("<%o>\n", 65);	
-	ft_printf("<%o>\n", 65);	
-	printf("\n");
-	
-	printf("<%x>\n", 65);	
-	ft_printf("<%x>\n", 65);	
+
 	return (0);
 }
 

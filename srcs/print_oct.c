@@ -55,7 +55,7 @@ int			print_oct(va_list ap, t_form *form, int *flags)
 {
 	int					len;
 	int					ret;
-	char				*str;
+	char					*str;
 	unsigned long long	ival;
 	
 	ival = va_arg(ap, unsigned long long);
@@ -76,5 +76,6 @@ int			print_oct(va_list ap, t_form *form, int *flags)
 	str[0] == '0' && form->prec == 0 ? form->width++ : 0;
 	print_first_case(str, len, form, flags);
 	print_second_case(str, len, form, flags);
+	free((char*)str);
 	return (ret);
 }
