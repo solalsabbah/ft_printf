@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/11 16:34:28 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/01/03 19:04:28 by ssabbah          ###   ########.fr       */
+/*   Created: 2016/11/19 15:06:47 by ssabbah           #+#    #+#             */
+/*   Updated: 2017/04/27 13:31:49 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "libft.h"
 
-size_t		ft_strlen(const char *str)
+void	ft_strdel(char **as)
 {
-	size_t i;
-
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	return (i);
+	if (as != NULL)
+	{
+		free(*as);
+		*as = NULL;
+	}
 }

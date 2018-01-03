@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/28 15:16:27 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/01/03 18:12:38 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/01/03 18:52:20 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int		print_uns_int(va_list ap, t_form *form)
 	if (third_uns_case(form, len, ival) == 1)
 		return (ret);
 	if (fourth_uns_case(form, len, ival) == 1)
+		return (ret);
+	if (fifth_uns_case(form, len, ival) == 1)
 		return (ret);
 	return (len);
 }

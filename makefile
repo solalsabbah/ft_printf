@@ -6,7 +6,7 @@
 #    By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/29 10:48:28 by ssabbah           #+#    #+#              #
-#    Updated: 2018/01/03 18:11:49 by ssabbah          ###   ########.fr        #
+#    Updated: 2018/01/03 19:20:47 by ssabbah          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,6 +52,9 @@ FILES= 	abs_val.c\
 	print_width.c\
 	print_wstr.c\
 	flags_uns_int.c\
+	flags_int.c\
+	ft_strdel.c \
+	ft_strcmp.c
 
 OBJ= $(FILES:.c=.o)
 

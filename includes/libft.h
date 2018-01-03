@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/11 15:52:58 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/01/03 18:32:42 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/01/03 18:57:52 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,12 @@ int					second_uns_case(t_form *form, int len, long long ival);
 int					third_uns_case(t_form *form, int len, long long ival);
 int					fourth_uns_case(t_form *form, int len, long long ival);
 int					fifth_uns_case(t_form *form, int len, long long ival);
+
+int					first_case(t_form *form, int len, long long ival);
+int					second_case(t_form *form, int len, long long ival);
+int					third_case(t_form *form, int len, long long ival);
+int					fourth_case(t_form *form, int len, long long ival);
+int					fifth_case(t_form *form, int len, long long ival);
 
 int					ft_fmt(va_list ap, t_form *form);
 void				init_format(t_form *form);

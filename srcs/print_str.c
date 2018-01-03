@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/26 12:20:41 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/01/03 18:01:59 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/01/03 19:39:30 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int				ft_putstr_prec(char const *s, int prec)
 	return (0);
 }
 
-int				ascii_str(char *sval, int len, t_form *form)
+int				ascii_str(char **sval, int len, t_form *form)
 {
 	int			ret;
 
@@ -42,9 +42,11 @@ int				ascii_str(char *sval, int len, t_form *form)
 	if (form->minus != 1)
 		form->zero == 1 ? print_width(form->width, len, 1) :
 			print_width(form->width, len, 0);
-	ft_putstr_prec(sval, form->prec);
+	ft_putstr_prec(*sval, form->prec);
 	if (form->minus == 1)
 		print_width(form->width, len, 0);
+	if (ft_strcmp(*sval, "(null)") == 0)
+		ft_strdel(sval);
 	return (ret);
 }
 
@@ -67,5 +69,5 @@ int				print_str(va_list ap, t_form *form)
 	}
 	else
 		len = ft_strlen(sval);
-	return (ascii_str(sval, len, form));
+	return (ascii_str(&sval, len, form));
 }
