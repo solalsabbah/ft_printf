@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 15:28:13 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/01/01 20:59:22 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/01/03 17:59:05 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ char					convert(int i, int maj)
 char					*ft_convert_hex(unsigned long long nb, t_form *form)
 {
 	long long			res;
-	int				maj;
-	int				i;
+	int					maj;
+	int					i;
 	char				*str;
 
 	i = 0;
@@ -51,12 +51,12 @@ char					*ft_convert_hex(unsigned long long nb, t_form *form)
 	return (str);
 }
 
-char			*ft_convert_oct(unsigned long long nb)
+char					*ft_convert_oct(unsigned long long nb)
 {
 	unsigned long long		res;
 	unsigned long long		base;
-	char				*str;
-	int				i;
+	char					*str;
+	int						i;
 
 	i = 0;
 	res = nb;

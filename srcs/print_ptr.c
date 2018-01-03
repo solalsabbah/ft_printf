@@ -6,27 +6,27 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 14:06:27 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/01/01 21:03:52 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/01/03 15:08:05 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 #include <stdio.h>
 
-int		ptr_one(const char *str, int len, t_form *form, int *flags)
+int		ptr_one(const char *str, int len, t_form *form)
 {
-	if (flags[1] == 1)
+	if (form->minus == 1)
 	{
 		ft_putstr("0x");
 		print_prec(form->prec, len, 1);
 		ft_putstr(str);
 		print_width(form->width, 0, 0);
 	}
-	else if (flags[1] != 1)
+	else if (form->minus != 1)
 	{
 		form->prec == 0 && str[0] == '0' ? len = 0 : 0;
-		flags[3] == 1 ? print_width(form->width, 0, 1) : 0;
-		flags[3] != 1 ? print_width(form->width, 0, 0) : 0;
+		form->zero == 1 ? print_width(form->width, 0, 1) : 0;
+		form->zero != 1 ? print_width(form->width, 0, 0) : 0;
 		ft_putstr("0x");
 		print_prec(form->prec, len, 1);
 		str[0] == '0' && form->prec > -1 ? 0 : ft_putstr(str);
@@ -34,7 +34,7 @@ int		ptr_one(const char *str, int len, t_form *form, int *flags)
 	return (0);
 }
 
-int		print_ptr(va_list ap, t_form *form, int *flags)
+int		print_ptr(va_list ap, t_form *form)
 {
 	void		*adr;
 	char		*str;
@@ -50,7 +50,7 @@ int		print_ptr(va_list ap, t_form *form, int *flags)
 	if (form->width > ret)
 		ret = form->width;
 	form->width -= len > form->prec ? (len + 2) : (form->prec + 2);
-	ptr_one(str, len, form, flags);
+	ptr_one(str, len, form);
 	free(str);
 	return (ret);
 }

@@ -6,16 +6,20 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/28 14:26:25 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/28 14:27:04 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/01/03 16:06:54 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-void	field(const char *str, t_form *form)
+void	field(char **str, t_form *form)
 {
-	char c;
-
-	c = find_char(str, "sSpdDioOuUxXcCBb%");
-	form->field = c;
+	if (**str == 's' || **str == 'S' || **str == 'p' || **str == 'd' ||
+			**str == 'D' || **str == 'i' || **str == 'o' || **str == 'O' ||
+			**str == 'u' || **str == 'U' || **str == 'x' || **str == 'X' ||
+			**str == 'c' || **str == 'C' || **str == 'b' || **str == 'B' ||
+			**str == '%')
+		form->field = *(*str)++;
+	else
+		form->field = 0;
 }

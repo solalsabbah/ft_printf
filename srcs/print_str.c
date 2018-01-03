@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/26 12:20:41 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/01/01 18:57:11 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/01/03 18:01:59 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,32 @@ int				ft_putstr_prec(char const *s, int prec)
 	return (0);
 }
 
-int				print_str(va_list ap, t_form *form, int *flags)
+int				ascii_str(char *sval, int len, t_form *form)
 {
-	int			len;
 	int			ret;
-	char			*sval;
+
+	if (form->prec < len && form->prec != -1)
+		len = form->prec;
+	ret = form->width > len ? form->width : len;
+	if (form->minus != 1)
+		form->zero == 1 ? print_width(form->width, len, 1) :
+			print_width(form->width, len, 0);
+	ft_putstr_prec(sval, form->prec);
+	if (form->minus == 1)
+		print_width(form->width, len, 0);
+	return (ret);
+}
+
+int				print_str(va_list ap, t_form *form)
+{
 	wchar_t			*wc;
+	char			*sval;
+	int				len;
 
 	if (form->field == 'S' || form->length == L)
 	{
 		wc = va_arg(ap, wchar_t *);
-		ret = print_wstr(wc, form, flags);
-		return (ret);
+		return (print_wstr(wc, form));
 	}
 	sval = va_arg(ap, char *);
 	if (sval == NULL)
@@ -53,15 +67,5 @@ int				print_str(va_list ap, t_form *form, int *flags)
 	}
 	else
 		len = ft_strlen(sval);
-	if (form->prec < len && form->prec != -1)
-		len = form->prec;
-	ret = form->width > len ? form->width : len;
-	if (flags[1] != 1)
-		flags[3] == 1 ? print_width(form->width, len, 1) :
-			print_width(form->width, len, 0);
-	ft_putstr_prec(sval, form->prec);
-	if (flags[1] == 1)
-		print_width(form->width, len, 0);
-//	free(sval);
-	return (ret);
+	return (ascii_str(sval, len, form));
 }

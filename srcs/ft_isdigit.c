@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_prec.c                                       :+:      :+:    :+:   */
+/*   isdigit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/23 16:08:13 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/01/03 17:24:54 by ssabbah          ###   ########.fr       */
+/*   Created: 2018/01/03 12:47:57 by ssabbah           #+#    #+#             */
+/*   Updated: 2018/01/03 17:45:59 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-int		print_prec(int prec, int len, int type)
+int	ft_isdigit(int c)
 {
-	char c;
-
-	c = ' ';
-	if (type == 1)
-		c = '0';
-	while (prec > len)
-	{
-		ft_putchar(c);
-		prec--;
-	}
-	return (prec);
+	if (c >= 48 && c <= 57)
+		return (1);
+	return (0);
 }

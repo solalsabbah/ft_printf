@@ -6,18 +6,18 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/01 18:49:35 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/01/01 19:08:54 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/01/03 18:28:38 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-int				print_wstr(wchar_t *wc, t_form *form, int *flags)
+int				print_wstr(wchar_t *wc, t_form *form)
 {
-	static char 	*str;
-	int	i;
-	int	ret;
-	int	prec;
+	static char		*str;
+	int				i;
+	int				ret;
+	int				prec;
 
 	i = 0;
 	ret = 0;
@@ -30,7 +30,7 @@ int				print_wstr(wchar_t *wc, t_form *form, int *flags)
 		free(str);
 		if (form->prec != -1 && form->prec < prec)
 			return (ret);
-		ret = ret + print_wchar(wc[i], form, flags);
+		ret = ret + print_wchar(wc[i], form);
 		i++;
 	}
 	return (ret);

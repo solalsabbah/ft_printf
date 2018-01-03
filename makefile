@@ -6,7 +6,7 @@
 #    By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/29 10:48:28 by ssabbah           #+#    #+#              #
-#    Updated: 2017/12/23 16:34:36 by ssabbah          ###   ########.fr        #
+#    Updated: 2018/01/03 18:11:49 by ssabbah          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,14 +21,17 @@ FILES= 	abs_val.c\
 	ft_bzero.c\
 	ft_convert.c\
 	ft_getwchar.c\
+	ft_isdigit.c\
 	ft_printf.c\
 	ft_putchar.c\
 	ft_putnbr.c\
 	ft_putnbr_uns.c\
+	ft_putsign.c\
 	ft_putstr.c\
 	ft_strcat.c\
 	ft_strdup.c\
 	ft_strjoin.c\
+	ft_strlen.c\
 	ft_strncmp.c\
 	ft_strnew.c\
 	ft_strpbrk.c\
@@ -48,24 +51,25 @@ FILES= 	abs_val.c\
 	print_uns_int.c\
 	print_width.c\
 	print_wstr.c\
+	flags_uns_int.c\
 
 OBJ= $(FILES:.c=.o)
 
 CC = gcc
 
-HEADER= includes
+HEADERS= includes
 FLAGS=  -w -g -Wall -Wextra -Werror
 
 SRC = $(addprefix srcs/,$(FILES))
 INCDIR= ./includes/
 OBJDIR= ./obj/
 
-all: $(NAME)
+all : $(NAME)
 
 $(NAME) :
-	@ $(CC) $(FLAGS) -I $(HEADER) -c $(SRC)
+	@ $(CC) $(FLAGS) -I $(HEADERS) -c $(SRC)
 	@ ar rc $(NAME) $(OBJ)
-	@ ranlib $(NAME)
+	@ ranlib $@
 	@echo  '\x1b[42m' '\x1b[34m' " *================================*  " '\x1b[0m'
 	@echo  '\x1b[42m' '\x1b[34m' " *                                *  " '\x1b[0m'
 	@echo  '\x1b[42m' '\x1b[34m' " *  Compiling libftprintf.a... OK *  " '\x1b[0m'

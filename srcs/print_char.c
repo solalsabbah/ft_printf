@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/26 12:16:58 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/01/01 19:29:55 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/01/03 17:50:19 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <locale.h>
 #include "../includes/libft.h"
 
-int			print_wchar(wchar_t wc, t_form *form, int *flags)
+int			print_wchar(wchar_t wc, t_form *form)
 {
 	char	*str;
 	int		ret;
@@ -35,7 +35,7 @@ int			print_wchar(wchar_t wc, t_form *form, int *flags)
 	return (ret);
 }
 
-int			print_char(va_list ap, t_form *form, int *flags)
+int			print_char(va_list ap, t_form *form)
 {
 	char		cval;
 	wchar_t		wc;
@@ -44,21 +44,21 @@ int			print_char(va_list ap, t_form *form, int *flags)
 	if (form->field == 'C' || form->length == L)
 	{
 		wc = va_arg(ap, wchar_t);
-		ret = print_wchar(wc, form, flags);
-		return (ret);	
+		ret = print_wchar(wc, form);
+		return (ret);
 	}
 	cval = va_arg(ap, int);
-	if (flags[1] == 1)
+	if (form->minus == 1)
 	{
 		ft_putchar(cval);
 		print_width(form->width, 1, 0);
 	}
 	else
 	{
-		flags[3] == 1 ? print_width(form->width, 1, 1) : print_width(form->width, 1, 0);
+		form->zero == 1 ? print_width(form->width, 1, 1) :
+			print_width(form->width, 1, 0);
 		ft_putchar(cval);
 	}
-	if (form->width > 1)
-		return (form->width);
-	return (1);
+	ret = form->width > 1 ? form->width : 1;
+	return (ret);
 }
