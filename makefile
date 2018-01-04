@@ -6,7 +6,7 @@
 #    By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/29 10:48:28 by ssabbah           #+#    #+#              #
-#    Updated: 2018/01/03 19:20:47 by ssabbah          ###   ########.fr        #
+#    Updated: 2018/01/04 11:51:29 by ssabbah          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,7 +61,7 @@ OBJ= $(FILES:.c=.o)
 CC = gcc
 
 HEADERS= includes
-FLAGS=  -w -g -Wall -Wextra -Werror
+FLAGS= -Wall -Wextra -Werror
 
 SRC = $(addprefix srcs/,$(FILES))
 INCDIR= ./includes/

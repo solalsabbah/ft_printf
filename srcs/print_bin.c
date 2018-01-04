@@ -6,18 +6,19 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 14:05:29 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/01/03 15:02:00 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/01/04 11:53:13 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 #include <stdio.h>
 
-char		*calc_bin(char *str, long int nbr, int p)
+char		*calc_bin(long int nbr, int p)
 {
 	int		q;
 	int		r;
 	int		i;
+	char	*str;
 
 	str = malloc(sizeof(str) * 32 + 1);
 	q = 1;
@@ -51,7 +52,7 @@ int			print_bin(va_list ap, t_form *form)
 		nbr = -nbr;
 		p = 1;
 	}
-	str = calc_bin(str, nbr, p);
+	str = calc_bin(nbr, p);
 	len = ft_strlen(str);
 	ft_putstr(ft_strrev(str));
 	free(str);

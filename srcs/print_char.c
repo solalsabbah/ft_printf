@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/26 12:16:58 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/01/03 17:50:19 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/01/04 11:52:37 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int			print_wchar(wchar_t wc, t_form *form)
 	char	*str;
 	int		ret;
 
+	form->width = form->width;
 	if (wc == 0)
 	{
 		str = ft_strnew(1);
