@@ -6,11 +6,11 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 14:06:27 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/01/03 15:08:05 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/02/03 16:37:41 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "../includes/ft_printf.h"
 #include <stdio.h>
 
 int		ptr_one(const char *str, int len, t_form *form)

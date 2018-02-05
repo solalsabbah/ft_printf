@@ -6,13 +6,13 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/01 16:38:44 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/01/01 17:35:59 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/02/03 16:34:13 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <wctype.h>
 #include <stdlib.h>
-#include "../includes/libft.h"
+#include "../includes/ft_printf.h"
 
 int	ft_wcharlen(wchar_t c)
 {

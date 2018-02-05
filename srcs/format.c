@@ -6,11 +6,11 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/24 16:15:00 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/01/03 17:43:53 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/02/03 16:34:07 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "../includes/ft_printf.h"
 
 void		init_format(t_form *form)
 {

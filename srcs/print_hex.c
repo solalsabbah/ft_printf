@@ -6,11 +6,11 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 14:52:22 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/01/03 17:50:48 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/02/03 16:34:13 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "../includes/ft_printf.h"
 #include <stdio.h>
 
 int			ft_puthash(t_form *form)

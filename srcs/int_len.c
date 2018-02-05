@@ -6,11 +6,11 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/27 15:04:31 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/28 16:08:13 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/02/03 16:34:13 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "../includes/ft_printf.h"
 
 int		uns_len(unsigned long long nb)
 {

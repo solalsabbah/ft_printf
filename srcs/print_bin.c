@@ -6,11 +6,11 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 14:05:29 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/01/04 11:53:13 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/02/03 16:34:13 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "../includes/ft_printf.h"
 #include <stdio.h>
 
 char		*calc_bin(long int nbr, int p)

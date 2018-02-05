@@ -6,11 +6,11 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 16:31:52 by ssabbah           #+#    #+#             */
-/*   Updated: 2017/12/28 14:37:46 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/02/03 16:34:07 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "../includes/ft_printf.h"
 #include <stdio.h>
 
 int			ft_putsign(int nb)

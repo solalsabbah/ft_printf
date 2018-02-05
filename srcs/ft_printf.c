@@ -6,7 +6,7 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 14:34:50 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/01/03 19:29:32 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/02/03 16:34:07 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <locale.h>
 #include <stdarg.h>
 #include <limits.h>
-#include "../includes/libft.h"
+#include "../includes/ft_printf.h"
 #include "../includes/ft_fct_tab.h"
 
 int				ft_fmt(va_list ap, t_form *form)

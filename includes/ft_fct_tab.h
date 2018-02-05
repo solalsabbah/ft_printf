@@ -6,13 +6,13 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 15:13:43 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/01/03 16:45:35 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/02/03 16:35:23 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_FCT_TAB_H
 # define FT_FCT_TAB_H
-# include "libft.h"
+# include "printf.h"
 
 t_fct	g_fct_tab[] =
 {

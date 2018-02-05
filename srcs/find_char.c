@@ -6,12 +6,12 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/28 14:27:12 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/01/03 12:34:45 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/02/03 16:34:07 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "../includes/libft.h"
+#include "../includes/ft_printf.h"
 
 char	find_char(const char *s1, const char *s2)
 {

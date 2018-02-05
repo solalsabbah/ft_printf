@@ -6,11 +6,11 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/23 16:08:13 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/01/03 17:24:54 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/02/03 16:36:43 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "../includes/ft_printf.h"
 
 int		print_prec(int prec, int len, int type)
 {

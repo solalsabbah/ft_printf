@@ -6,13 +6,13 @@
 /*   By: ssabbah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/26 12:16:58 by ssabbah           #+#    #+#             */
-/*   Updated: 2018/01/04 11:52:37 by ssabbah          ###   ########.fr       */
+/*   Updated: 2018/02/03 16:34:13 by ssabbah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <locale.h>
-#include "../includes/libft.h"
+#include "../includes/ft_printf.h"
 
 int			print_wchar(wchar_t wc, t_form *form)
 {
